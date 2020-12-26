@@ -186,7 +186,7 @@ function MDT:initToolbar(frame)
 
     ---line
     local line = AceGUI:Create("Icon")
-    line:SetImage("Interface\\AddOns\\ManbabyungeonTools\\Textures\\icons",0,0.25,0.75,1)
+    line:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\icons",0,0.25,0.75,1)
     toolbarTools["line"] = line
     line:SetCallback("OnClick",function (widget,callbackName)
         if currentTool == "line" then MDT:UpdateSelectedToolbarTool() else MDT:UpdateSelectedToolbarTool("line") end
