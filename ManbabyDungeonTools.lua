@@ -3019,12 +3019,36 @@ MDT.zoneIdToDungeonIdx = {
     [1493] = 26,--upper mecha
     [1494] = 26,--upper mecha
     [1497] = 26,--upper mecha
+    [1663] = 30, -- hoa
+    [1664] = 30, -- hoa nave of pain
+    [1665] = 30, -- hoa sanctuary of souls
+    [1666] = 35, -- necrotic wake
+    [1667] = 35, -- necrotic wake stitchwerks
+    [1668] = 35, -- necrotic wake zolramus
+    [1669] = 31, -- mists of tirna scithe
+    [1674] = 32, -- plaguefall
+    [1675] = 33, -- sanguine depths depths of despair
+    [1676] = 33, -- sanguine depths amphitheater of sorrow
+    [1677] = 29, -- de other side ardenweald
+    [1678] = 29, -- de other side mechagon
+    [1679] = 29, -- de other side zul'gurub
+    [1680] = 29, -- de other side de other side
+    [1683] = 36, -- theater of pain theater of pain
+    [1684] = 36, -- theater of pain chambers of conquest
+    [1685] = 36, -- theater of pain altars of agony
+    [1686] = 36, -- theater of pain upper barrow of carnage
+    [1687] = 36, -- theater of pain lower barrow of carnage
+    [1692] = 34, -- spires of ascension honors ascent
+    [1693] = 34, -- spires of ascension gardens of repose
+    [1694] = 34, -- spires of ascension font of fealty
+    [1695] = 34, -- spires of ascension seat of the archon
+    [1697] = 32 -- plaguefall festering sanctum
 }
 local lastUpdatedDungeonIdx
 function MDT:CheckCurrentZone(init)
     local zoneId = C_Map.GetBestMapForUnit("player")
     local dungeonIdx = MDT.zoneIdToDungeonIdx[zoneId]
-    if dungeonIdx and (not lastUpdatedDungeonIdx or  dungeonIdx ~= lastUpdatedDungeonIdx) then
+    if dungeonIdx and ((not lastUpdatedDungeonIdx or dungeonIdx ~= lastUpdatedDungeonIdx) or (db.currentDungeonIdx ~= dungeonIdx)) then
         lastUpdatedDungeonIdx = dungeonIdx
         MDT:UpdateToDungeon(dungeonIdx,nil,init)
     end
