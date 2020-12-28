@@ -40,7 +40,7 @@ jobs:
       - name: Change TOC version
         run: |
           cd .releases/${{steps.init.outputs.addon_name}}
-          sed -i 's/## Version: .*/## Version: ${{steps.get_version.outputs.VERSION_NO_V}}/g' ManbabyDungeonTools.toc
+          sed -i 's/## Version: .*/## Version: ${{steps.get_version.outputs.VERSION_NO_V}}/g' ${{steps.init.outputs.addon_name}}.toc
       - name: Create retail zip
         run: |
           cd .releases
