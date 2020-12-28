@@ -1,4 +1,4 @@
-Fork of MDT, now marginally sanitized for wider distribution.
+Fork of MDT including mob data for usability, now marginally sanitized for wider distribution.
 
 ##  Dungeon Tools
 
