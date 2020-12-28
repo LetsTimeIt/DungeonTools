@@ -18,7 +18,9 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: |
+          echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+          echo ::set-output name=VERSION_NO_V::${GITHUB_REF/refs\/tags\/v/}
       - name: Get name of addon
         id: init
         run: |
@@ -38,7 +40,7 @@ jobs:
       - name: Change TOC version
         run: |
           cd .releases/${{steps.init.outputs.addon_name}}
-          sed -i 's/## Version: (.+)/## Version: ${{steps.get_version.outputs.VERSION}}/g' ManbabyDungeonTools.toc
+          sed -i 's/## Version: .*/## Version: ${{steps.get_version.outputs.VERSION_NO_V}}/g' ManbabyDungeonTools.toc
       - name: Create retail zip
         run: |
           cd .releases
