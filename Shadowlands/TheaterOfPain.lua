@@ -189,6 +189,12 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1;
+        ["spells"] = {
+            [341902] = {};
+            [330784] = {
+                ["interruptible"] = true;
+            };
+        };
     };
     [2] = {
         ["clones"] = {
@@ -214,6 +220,11 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1;
+        ["spells"] = {
+            [337178] = {};
+            [331510] = {};
+            [320679] = {};
+        };
     };
     [3] = {
         ["clones"] = {
@@ -232,6 +243,10 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 7;
         ["scale"] = 1.4;
+        ["stealthDetect"] = true;
+        ["spells"] = {
+            [333241] = {};
+        };
     };
     [4] = {
         ["clones"] = {
@@ -253,6 +268,11 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 0;
         ["scale"] = 1;
+        ["spells"] = {
+            [320069] = {};
+            [324085] = {};
+            [326892] = {};
+        };
     };
     [5] = {
         ["clones"] = {
@@ -274,6 +294,12 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 0;
         ["scale"] = 1;
+        ["spells"] = {
+            [320120] = {
+                ["interruptible"] = true;
+            };
+            [320248] = {};
+        };
     };
     [6] = {
         ["clones"] = {
@@ -295,6 +321,16 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 0;
         ["scale"] = 1;
+        ["spells"] = {
+            [320300] = {
+                ["interruptible"] = true;
+            };
+            [320272] = {};
+            [333231] = {
+                ["interruptible"] = true;
+            };
+            [320293] = {};
+        };
     };
     [7] = {
         ["clones"] = {
@@ -313,6 +349,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 0;
         ["scale"] = 1.3;
+        ["spells"] = {
+            [333540] = {};
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Stun"] = true;
+        };
     };
     [8] = {
         ["clones"] = {
@@ -343,6 +386,20 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1.4;
+        ["spells"] = {
+            [319997] = {};
+            [330532] = {};
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [9] = {
         ["clones"] = {
@@ -380,6 +437,16 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1.4;
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [10] = {
         ["clones"] = {
@@ -394,9 +461,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Dokigg the Brutalizer";
         ["displayId"] = 97488;
         ["creatureType"] = "Humanoid";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 20;
         ["scale"] = 2;
+        ["spells"] = {
+            [331316] = {};
+            [342125] = {};
+        };
     };
     [11] = {
         ["clones"] = {
@@ -411,9 +482,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Harugia the Bloodthirsty";
         ["displayId"] = 95969;
         ["creatureType"] = "Humanoid";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 20;
         ["scale"] = 2;
+        ["spells"] = {
+            [333861] = {};
+            [334023] = {};
+        };
     };
     [12] = {
         ["clones"] = {
@@ -433,6 +508,22 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 5;
         ["scale"] = 1.4;
+        ["spells"] = {
+            [330545] = {};
+            [330562] = {
+                ["interruptible"] = true;
+            };
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [13] = {
         ["clones"] = {
@@ -447,9 +538,14 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Advent Nevermore";
         ["displayId"] = 95966;
         ["creatureType"] = "Humanoid";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 20;
         ["scale"] = 2;
+        ["spells"] = {
+            [333827] = {};
+            [331275] = {};
+            [333861] = {};
+        };
     };
     [14] = {
         ["clones"] = {
@@ -467,9 +563,22 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Xav the Unfallen";
         ["displayId"] = 95439;
         ["creatureType"] = "Humanoid";
-        ["level"] = 60;
+        ["level"] = 62;
         ["count"] = 0;
         ["scale"] = 1.6;
+        ["spells"] = {
+            [320644] = {};
+            [331618] = {};
+            [320050] = {
+                ["comboCount"] = 3;
+                ["spells"] = {
+                    [317231] = {};
+                    [339415] = {};
+                    [320729] = {};
+                };
+            };
+            [320102] = {};
+        }
     };
     [15] = {
         ["clones"] = {
@@ -628,6 +737,22 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 2;
         ["scale"] = 1;
+        ["spells"] = {
+            [332550] = {};
+            [330810] = {
+                ["interruptible"] = true;
+            };
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [16] = {
         ["clones"] = {
@@ -648,9 +773,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Portal Guardian";
         ["displayId"] = 96442;
         ["creatureType"] = "Elemental";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 8;
         ["scale"] = 1.6;
+        ["spells"] = {
+            [330716] = {};
+            [330725] = {};
+        };
     };
     [17] = {
         ["clones"] = {
@@ -736,6 +865,25 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1;
+        ["spells"] = {
+            [333293] = {};
+            [342675] = {
+                ["interruptible"] = true
+            };
+            [341771] = {
+                ["interruptible"] = true;
+            };
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [18] = {
         ["clones"] = {
@@ -785,6 +933,25 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1.3;
+        ["spells"] = {
+            [333708] = {};
+            [330784] = {
+                ["interruptible"] = true;
+            };
+            [330868] = {
+                ["interruptible"] = true;
+            };
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [19] = {
         ["clones"] = {
@@ -800,9 +967,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Soulforged Bonereaver";
         ["displayId"] = 94812;
         ["creatureType"] = "Undead";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 8;
         ["scale"] = 1.6;
+        ["spells"] = {
+            [331237] = {};
+            [331223] = {};
+        };
     };
     [20] = {
         ["clones"] = {
@@ -830,9 +1001,16 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Nefarious Darkspeaker";
         ["displayId"] = 97011;
         ["creatureType"] = "Undead";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 6;
         ["scale"] = 1.6;
+        ["spells"] = {
+            [330875] = {
+                ["interruptible"] = true;
+            };
+            [333299] = {};
+            [333294] = {};
+        };
     };
     [21] = {
         ["clones"] = {
@@ -850,9 +1028,16 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Kul'tharok";
         ["displayId"] = 96088;
         ["creatureType"] = "Undead";
-        ["level"] = 60;
+        ["level"] = 62;
         ["count"] = 0;
         ["scale"] = 1.3;
+        ["spells"] = {
+            [319521] = {};
+            [319626] = {};
+            [319669] = { 
+                ["interruptible"] = true;
+            };
+        };
     };
     [22] = {
         ["clones"] = {
@@ -902,6 +1087,25 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1.3;
+        ["spells"] = {
+            [330693] = {};
+            [330703] = {
+                ["interruptible"] = true;
+            };
+            [341969] = {
+                ["interruptible"] = true;
+            };
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [23] = {
         ["clones"] = {
@@ -1005,6 +1209,19 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 1;
         ["scale"] = 1;
+        ["spells"] = {
+            [330693] = {};
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [24] = {
         ["clones"] = {
@@ -1035,6 +1252,22 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 4;
         ["scale"] = 1.7;
+        ["spells"] = {
+            [330697] = {};
+            [341977] = {
+                ["interruptible"] = true;
+            };
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [25] = {
         ["clones"] = {
@@ -1104,6 +1337,20 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 60;
         ["count"] = 5;
         ["scale"] = 1.7;
+        ["spells"] = {
+            [332836] = {};
+            [330586] = {};
+        };
+        ["characteristics"] = {
+            ["Taunt"] = true;
+            ["Incapacitate"] = true;
+            ["Shackle Undead"] = true;
+            ["Root"] = true;
+            ["Control Undead"] = true;
+            ["Disorient"] = true;
+            ["Stun"] = true;
+            ["Repentance"] = true;
+        };
     };
     [26] = {
         ["clones"] = {
@@ -1212,9 +1459,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Rancid Gasbag";
         ["displayId"] = 97161;
         ["creatureType"] = "Undead";
-        ["level"] = 60;
+        ["level"] = 61;
         ["count"] = 8;
         ["scale"] = 2;
+        ["spells"] = {
+            [330614] = {};
+            [330973] = {};
+        };
     };
     [27] = {
         ["clones"] = {
@@ -1232,9 +1483,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Gorechop";
         ["displayId"] = 95106;
         ["creatureType"] = "Undead";
-        ["level"] = 60;
+        ["level"] = 62;
         ["count"] = 0;
         ["scale"] = 1.7;
+        ["spells"] = {
+            [323515] = {};
+            [318406] = {};
+        };
     };
     [28] = {
         ["clones"] = {
@@ -1252,9 +1507,16 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = "Mordretha, the Endless Empress";
         ["displayId"] = 96078;
         ["creatureType"] = "Humanoid";
-        ["level"] = 60;
+        ["level"] = 62;
         ["count"] = 0;
         ["scale"] = 1;
+        ["spells"] = {
+            [324079] = {};
+            [323608] = {};
+            [323683] = {};
+            [324449] = {};
+            [339573] = {};
+        };
     };
     [29] = {
         ["clones"] = {
@@ -1272,6 +1534,11 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 61;
         ["id"] = 162744;
         ["health"] = 256320;
+        ["spells"] = {
+            [342135] = {};
+            [336996] = {};
+            [317605] = {};
+        };
     };
     [30] = {
         ["clones"] = {
@@ -1289,6 +1556,11 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 61;
         ["id"] = 167532;
         ["health"] = 256320;
+        ["spells"] = {
+            [331288] = {};
+            [332708] = {};
+            [342135] = {};
+        };
     };
     [31] = {
         ["clones"] = {
@@ -1306,6 +1578,11 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["level"] = 61;
         ["id"] = 167534;
         ["health"] = 256320;
+        ["spells"] = {
+            [333839] = {};
+            [333845] = {};
+            [317605] = {};
+        };
     };
 };
 
