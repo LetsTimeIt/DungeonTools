@@ -1,10 +1,10 @@
-local Type, Version = "MDTSpellButton", 1
+local ButtonType, ButtonVersion = "MDTSpellButton", 1
 local AceGUI = LibStub and LibStub("AceGUI-3.0", true)
 
 local width,height = 248,32
 local tinsert,SetPortraitToTexture,SetPortraitTextureFromCreatureDisplayID,GetItemQualityColor,MouseIsOver = table.insert,SetPortraitToTexture,SetPortraitTextureFromCreatureDisplayID,GetItemQualityColor,MouseIsOver
 
-local methods = {
+local buttonMethods = {
     ["OnAcquire"] = function(self)
         self:SetWidth(width);
         self:SetHeight(height);
@@ -88,6 +88,7 @@ local methods = {
         self.frame:Disable();
     end,
     ["Enable"] = function(self)
+        
         self.background:Show();
         self.frame:Enable();
     end,
@@ -104,12 +105,13 @@ local methods = {
         self.titletext = title;
         self.title:SetText(title);
     end,
+    ["SetScript"] = function() end
 
 }
-
 --Constructor
-local function Constructor()
-    local name = "MDTSpellButton"..AceGUI:GetNextWidgetNum(Type);
+local function ButtonConstructor()
+    local name = "MDTSpellButton"..AceGUI:GetNextWidgetNum(ButtonType);
+
     local button = CreateFrame("BUTTON", name, UIParent, "OptionsListButtonTemplate");
     button:SetHeight(height);
     button:SetWidth(width);
@@ -164,13 +166,14 @@ local function Constructor()
         icon = icon,
         interruptibleIcon = interruptibleIcon,
         background = background,
-        type = Type
+        type = ButtonType,
+        parent = UIParent
     }
-    for method, func in pairs(methods) do
+    for method, func in pairs(buttonMethods) do
         widget[method] = func
     end
 
     return AceGUI:RegisterAsWidget(widget);
 end
 
-AceGUI:RegisterWidgetType(Type, Constructor, Version)
+AceGUI:RegisterWidgetType(ButtonType, ButtonConstructor, ButtonVersion)
