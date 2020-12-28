@@ -1,5 +1,5 @@
 ## Interface: 90002
-## Title: Manbaby Dungeon Tools
+## Title:  Dungeon Tools
 ## Author: Nnoggie
 ## Version: 3.3.4
 ## Notes: Tool for planning and optimizing Mythic+ dungeon runs
@@ -14,16 +14,16 @@
 ## Notes-zhCN: 规划和优化大秘境地下城运行的工具
 ## Notes-zhTW: 幫助你計算 M+ 的小怪%，規劃出最佳拉怪路線。
 ## OptionalDeps: ElvUI, LibStub, LibUIDropDownMenu, Ace3
-## SavedVariables: ManbabyDungeonToolsDB
+## SavedVariables: DungeonToolsDB
 
 libs\load_libs.xml
 init.lua
 locales.xml
-AceGUIWidget-ManbabyDungeonToolsPullButton.lua
-AceGUIWidget-ManbabyDungeonToolsNewPullButton.lua
-AceGUIWidget-ManbabyDungeonToolsSpellButton.lua
+AceGUIWidget-DungeonToolsPullButton.lua
+AceGUIWidget-DungeonToolsNewPullButton.lua
+AceGUIWidget-DungeonToolsSpellButton.lua
 Utility.lua
-ManbabyDungeonTools.lua
+DungeonTools.lua
 DungeonEnemies.xml
 pulls.lua
 EnemyInfo.lua

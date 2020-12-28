@@ -17,16 +17,16 @@ MDT.BackdropColor = { 0.058823399245739, 0.058823399245739, 0.058823399245739, 0
 local AceGUI = LibStub("AceGUI-3.0")
 local db
 local icon = LibStub("LibDBIcon-1.0")
-local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("ManbabyDungeonTools", {
+local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("DungeonTools", {
 	type = "data source",
-	text = "Manbaby Dungeon Tools",
+	text = " Dungeon Tools",
 	icon = "Interface\\ICONS\\inv_relics_hourglass",
 	OnClick = function(button,buttonPressed)
 		if buttonPressed == "RightButton" then
 			if db.minimap.lock then
-				icon:Unlock("ManbabyDungeonTools")
+				icon:Unlock("DungeonTools")
 			else
-				icon:Lock("ManbabyDungeonTools")
+				icon:Lock("DungeonTools")
 			end
 		else
 			MDT:ShowInterface()
@@ -34,21 +34,21 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("ManbabyDungeonTools", {
 	end,
 	OnTooltipShow = function(tooltip)
 		if not tooltip or not tooltip.AddLine then return end
-		tooltip:AddLine(mythicColor .."Manbaby Dungeon Tools|r")
+		tooltip:AddLine(mythicColor .." Dungeon Tools|r")
 		tooltip:AddLine(L["Click to toggle AddOn Window"])
 		tooltip:AddLine(L["Right-click to lock Minimap Button"])
 	end,
 })
 
-SLASH_MANBABYDUNGEONTOOLS1 = "/mplus"
-SLASH_MANBABYDUNGEONTOOLS2 = "/mdt"
-SLASH_MANBABYDUNGEONTOOLS3 = "/manbabydungeontools"
+SLASH_DUNGEONTOOLS1 = "/mplus"
+SLASH_DUNGEONTOOLS2 = "/mdt"
+SLASH_DUNGEONTOOLS3 = "/dungeontools"
 
 BINDING_NAME_MDTTOGGLE = L["Toggle Window"]
 BINDING_NAME_MDTNPC = L["New NPC at Cursor Position"]
 BINDING_NAME_MDTWAYPOINT = L["New Patrol Waypoint at Cursor Position"]
 
-function SlashCmdList.MANBABYDUNGEONTOOLS(cmd, editbox)
+function SlashCmdList.DUNGEONTOOLS(cmd, editbox)
 	local rqst, arg = strsplit(' ', cmd)
 	if rqst == "devmode" then
 		MDT:ToggleDevMode()
@@ -142,11 +142,11 @@ do
     end)
 
     function MDT.ADDON_LOADED(self, addon)
-        if addon == "ManbabyDungeonTools" then
-			db = LibStub("AceDB-3.0"):New("ManbabyDungeonToolsDB", defaultSavedVars).global
-			icon:Register("ManbabyDungeonTools", LDB, db.minimap)
+        if addon == "DungeonTools" then
+			db = LibStub("AceDB-3.0"):New("DungeonToolsDB", defaultSavedVars).global
+			icon:Register("DungeonTools", LDB, db.minimap)
 			if not db.minimap.hide then
-				icon:Show("ManbabyDungeonTools")
+				icon:Show("DungeonTools")
 			end
 
             --if db.dataCollectionActive then MDT.DataCollection:Init() end
@@ -1059,7 +1059,7 @@ function MDT:MakeTopBottomTextures(frame)
 		frame.topPanelString:SetJustifyV("CENTER")
 		--frame.topPanelString:SetWidth(600)
 		frame.topPanelString:SetHeight(20)
-		frame.topPanelString:SetText("Manbaby Dungeon Tools")
+		frame.topPanelString:SetText(" Dungeon Tools")
 		frame.topPanelString:ClearAllPoints()
 		frame.topPanelString:SetPoint("CENTER", frame.topPanel, "CENTER", 10, 0)
 		frame.topPanelString:Show()
@@ -1489,16 +1489,16 @@ function MDT:MakeSidePanel(frame)
         if value == true then
             frame.toggleForceColorBlindMode:SetDisabled(false)
             MDT:ColorAllPulls()
-            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\helpIconRnbw")
+            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\DungeonTools\\Textures\\helpIconRnbw")
         else
             frame.toggleForceColorBlindMode:SetDisabled(true)
-            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\helpIconGrey")
+            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\DungeonTools\\Textures\\helpIconGrey")
         end
 	end)
     --AutomaticColorsCogwheel
     frame.AutomaticColorsCogwheel = AceGUI:Create("Icon")
     local colorCogwheel = frame.AutomaticColorsCogwheel
-    colorCogwheel:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\helpIconRnbw")
+    colorCogwheel:SetImage("Interface\\AddOns\\DungeonTools\\Textures\\helpIconRnbw")
     colorCogwheel:SetImageSize(25,25)
     colorCogwheel:SetWidth(35)
     colorCogwheel:SetCallback("OnEnter",function(...)
@@ -3634,10 +3634,10 @@ function MDT:MakeAutomaticColorsFrame(frame)
             frame.toggleForceColorBlindMode:SetDisabled(false)
             MDT:ColorAllPulls()
             MDT:DrawAllHulls()
-            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\helpIconRnbw")
+            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\DungeonTools\\Textures\\helpIconRnbw")
         else
             frame.toggleForceColorBlindMode:SetDisabled(true)
-            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\helpIconGrey")
+            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\DungeonTools\\Textures\\helpIconGrey")
         end
 	end)
     frame.automaticColorsFrame:AddChild(frame.AutomaticColorsCheck)
@@ -3681,7 +3681,7 @@ function MDT:MakeAutomaticColorsFrame(frame)
             db.colorPaletteInfo.autoColoring = true
             frame.AutomaticColorsCheck:SetValue(db.colorPaletteInfo.autoColoring)
             frame.AutomaticColorsCheckSidePanel:SetValue(db.colorPaletteInfo.autoColoring)
-            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\ManbabyDungeonTools\\Textures\\helpIconRnbw")
+            MDT.main_frame.AutomaticColorsCogwheel:SetImage("Interface\\AddOns\\DungeonTools\\Textures\\helpIconRnbw")
             frame.toggleForceColorBlindMode:SetDisabled(false)
         end
         MDT:SetPresetColorPaletteInfo()
@@ -4391,7 +4391,7 @@ end
 ---Register the options of the addon to the blizzard options
 function MDT:RegisterOptions()
     MDT.blizzardOptionsMenuTable = {
-        name = "Manbaby Dungeon Tools",
+        name = " Dungeon Tools",
         type = 'group',
         args = {
             --[[
@@ -4427,7 +4427,7 @@ function MDT:RegisterOptions()
                 set = function(_, newValue)
                     db.minimap.hide = not newValue
                     if not db.minimap.hide then
-                        icon:Show("ManbabyDungeonTools")
+                        icon:Show("DungeonTools")
                     else
                         icon:Hide("ManbayDungeonTools")
                     end
@@ -4473,8 +4473,8 @@ function MDT:RegisterOptions()
             },
         }
     }
-	LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("ManbabyDungeonTools", MDT.blizzardOptionsMenuTable)
-	self.blizzardOptionsMenu = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ManbabyDungeonTools", "ManbabyDungeonTools")
+	LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("DungeonTools", MDT.blizzardOptionsMenuTable)
+	self.blizzardOptionsMenu = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("DungeonTools", "DungeonTools")
 end
 
 function MDT:Round(number, decimals)
@@ -4938,7 +4938,7 @@ function MDT:ResetDataCache()
 end
 
 function MDT:HardReset()
-    ManbabyDungeonToolsDB = nil
+    DungeonToolsDB = nil
     ReloadUI()
 end
 
