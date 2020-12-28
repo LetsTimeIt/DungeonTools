@@ -35,6 +35,10 @@ jobs:
         run: |
           cd .releases/${{steps.init.outputs.addon_name}}
           rm -rf $(cat ../../.releaseignore)
+      - name: Change TOC version
+        run: |
+          cd .releases/${{steps.init.output.addon_name}}
+          sed -i 's/## Version: (.+)/## Version: ${{steps.get_version.outputs.VERSION}}/g' ManbabyDungeonTools.toc
       - name: Create retail zip
         run: |
           cd .releases
