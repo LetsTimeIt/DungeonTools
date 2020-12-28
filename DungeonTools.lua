@@ -2407,7 +2407,7 @@ end
 ---ReturnToLivePreset
 function MDT:ReturnToLivePreset()
     local preset,presetIdx = self:GetCurrentLivePreset()
-    self:UpdateToDungeon(preset.value.currentDungeonIdx,true)
+    self:UpdateToDungeon(preset.value.currentDungeonIdx, 1, true)
     db.currentPreset[db.currentDungeonIdx] = presetIdx
     self:UpdatePresetDropDown()
     self:UpdateMap()
@@ -2748,24 +2748,24 @@ function MDT:CreateDungeonSelectDropdown(frame)
             db.currentExpansion = 2
             db.currentDungeonIdx = 15
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx)
+            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
         elseif key == 27 then
             db.currentExpansion = 1
             db.currentDungeonIdx = 1
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx)
+            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
         elseif key == 28 then
             db.currentExpansion = 3
             db.currentDungeonIdx = 29
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx)
+            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
         elseif key == 37 then
             db.currentExpansion = 2
             db.currentDungeonIdx = 15
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx)
+            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
         else
-            MDT:UpdateToDungeon(key)
+            MDT:UpdateToDungeon(key, 1)
         end
 	end)
 	group:AddChild(group.DungeonDropdown)
@@ -2964,17 +2964,24 @@ end
 
 ---UpdateToDungeon
 ---Updates the map to the specified dungeon
-function MDT:UpdateToDungeon(dungeonIdx, ignoreUpdateMap, init)
+function MDT:UpdateToDungeon(dungeonIdx, sublevel, ignoreUpdateMap, init)
     db.currentExpansion = 1
     if dungeonIdx>=15 then db.currentExpansion = 2 end
     if dungeonIdx>=29 then db.currentExpansion = 3 end
+
+    if dungeonIdx and ((not lastUpdatedDungeonIdx or dungeonIdx ~= lastUpdatedDungeonIdx) or (db.currentDungeonIdx ~= dungeonIdx)) then
+        lastUpdatedDungeonIdx = dungeonIdx
+    end
+
     db.currentDungeonIdx = dungeonIdx
-	if not db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel then 
-        db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel=1 
+    if not db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel or db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel ~= (sublevel or 1) then 
+        db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel=sublevel or 1
     end
     if init then return end
 	MDT:UpdatePresetDropDown()
-	if not ignoreUpdateMap then MDT:UpdateMap() end
+    if not ignoreUpdateMap then 
+        MDT:UpdateMap()
+    end
     MDT:ZoomMapToDefault()
      --Colors the first pull in "Default" presets
     if db.currentPreset[db.currentDungeonIdx] == 1 then MDT:ColorPull() end
@@ -3018,39 +3025,119 @@ MDT.zoneIdToDungeonIdx = {
     [1493] = 26,--upper mecha
     [1494] = 26,--upper mecha
     [1497] = 26,--upper mecha
-    [1663] = 30, -- hoa
-    [1664] = 30, -- hoa nave of pain
-    [1665] = 30, -- hoa sanctuary of souls
-    [1666] = 35, -- necrotic wake
-    [1667] = 35, -- necrotic wake stitchwerks
-    [1668] = 35, -- necrotic wake zolramus
+    [1663] = { -- halls of atonement
+        ["dungeon"] = 30;
+        ["subzone"] = 1;
+    }, 
+    [1664] = { -- halls of atonement - nave of pain
+        ["dungeon"] = 30;
+        ["subzone"] = 2;
+    }, 
+    [1665] = { -- halls of atonement - sanctuary of souls
+        ["dungeon"] = 30;
+        ["subzone"] = 3;
+    },
+    [1666] = { -- necrotic wake
+        ["dungeon"] = 35;
+        ["subzone"] = 1;
+    },
+    [1667] = { -- necrotic wake - stitchwerks
+        ["dungeon"] = 35;
+        ["subzone"] = 2;
+    },
+    [1668] = { -- necrotic wake - zolramus
+        ["dungeon"] = 35;
+        ["subzone"] = 3;
+    },
     [1669] = 31, -- mists of tirna scithe
-    [1674] = 32, -- plaguefall
-    [1675] = 33, -- sanguine depths depths of despair
-    [1676] = 33, -- sanguine depths amphitheater of sorrow
-    [1677] = 29, -- de other side ardenweald
-    [1678] = 29, -- de other side mechagon
-    [1679] = 29, -- de other side zul'gurub
-    [1680] = 29, -- de other side de other side
-    [1683] = 36, -- theater of pain theater of pain
-    [1684] = 36, -- theater of pain chambers of conquest
-    [1685] = 36, -- theater of pain altars of agony
-    [1686] = 36, -- theater of pain upper barrow of carnage
-    [1687] = 36, -- theater of pain lower barrow of carnage
-    [1692] = 34, -- spires of ascension honors ascent
-    [1693] = 34, -- spires of ascension gardens of repose
-    [1694] = 34, -- spires of ascension font of fealty
-    [1695] = 34, -- spires of ascension seat of the archon
-    [1697] = 32 -- plaguefall festering sanctum
+    [1674] = { -- plaguefall
+        ["dungeon"] = 32;
+        ["subzone"] = 1;
+    },
+    [1697] = { -- plaguefall festering sanctum
+        ["dungeon"] = 32;
+        ["subzone"] = 2;
+     },
+    [1675] = { -- sanguine depths depths of despair
+        ["dungeon"] = 33;
+        ["subzone"] = 1;
+    },
+    [1676] = { -- sanguine depths - amphitheater of sorrow
+        ["dungeon"] = 33;
+        ["subzone"] = 2;
+    },
+    [1677] = { -- de other side ardenweald
+        ["dungeon"] = 29;
+        ["subzone"] = 4;
+    },
+    [1678] = { -- de other side mechagon
+        ["dungeon"] = 29;
+        ["subzone"] = 2;
+    },
+    [1679] = { -- de other side zul'gurub
+        ["dungeon"] = 29;
+        ["subzone"] = 3;
+    },
+    [1680] = { -- de other side - main platform
+        ["dungeon"] = 29;
+        ["subzone"] = 1;
+    },
+    [1683] = { -- theater of pain
+        ["dungeon"] = 36;
+        ["subzone"] = 1;
+    },
+    [1684] = { -- theater of pain chambers of conquest
+        ["dungeon"] = 36;
+        ["subzone"] = 2;
+    };
+    [1685] = {  -- theater of pain altars of agony
+        ["dungeon"] = 36;
+        ["subzone"] = 3;
+    },
+    [1686] = {  -- theater of pain upper barrow of carnage
+        ["dungeon"] = 36;
+        ["subzone"] = 4;
+    },
+    [1687] = {  -- theater of pain lower barrow of carnage
+        ["dungeon"] = 36;
+        ["subzone"] = 5;
+    },
+    [1692] = {  -- spires of ascension honors ascent
+        ["dungeon"] = 34;
+        ["subzone"] = 1;
+    },
+    [1693] = { -- spires of ascension gardens of repose
+        ["dungeon"] = 34;
+        ["subzone"] = 2;
+    };
+    [1694] = { -- spires of ascension font of fealty
+        ["dungeon"] = 34;
+        ["subzone"] = 3;
+    },
+    [1695] = { -- spires of ascension seat of the archon
+        ["dungeon"] = 34;
+        ["subzone"] = 4;
+    }
 }
 local lastUpdatedDungeonIdx
 function MDT:CheckCurrentZone(init)
     local zoneId = C_Map.GetBestMapForUnit("player")
     local dungeonIdx = MDT.zoneIdToDungeonIdx[zoneId]
-    if dungeonIdx and ((not lastUpdatedDungeonIdx or dungeonIdx ~= lastUpdatedDungeonIdx) or (db.currentDungeonIdx ~= dungeonIdx)) then
-        lastUpdatedDungeonIdx = dungeonIdx
-        MDT:UpdateToDungeon(dungeonIdx,nil,init)
+    -- Check if we actually have a zone
+    if not dungeonIdx then 
+        return 
     end
+
+    local dungeon = 0
+    local floor = 1
+    -- If it's a table (new format, we load up the values)
+    if type(dungeonIdx) == "table" then
+        dungeon = dungeonIdx.dungeon
+        floor = dungeonIdx.subzone
+    else
+        dungeon = dungeonIdx
+    end
+    MDT:UpdateToDungeon(dungeon, floor, nil, init)
 end
 
 ---CountPresets
@@ -3329,7 +3416,7 @@ end
 
 function MDT:ImportPreset(preset, fromLiveSession)
     --change dungeon to dungeon of the new preset
-    self:UpdateToDungeon(preset.value.currentDungeonIdx,true)
+    self:UpdateToDungeon(preset.value.currentDungeonIdx, 1, true)
     local mdiEnabled = preset.mdiEnabled
     --search for uid
     local updateIndex
@@ -5161,7 +5248,7 @@ function initFrames()
     --gotta set the list here, as affixes are not ready to be retrieved yet on login
     main_frame.sidePanel.affixDropdown:UpdateAffixList()
     main_frame.sidePanel.affixDropdown:SetAffixWeek(MDT:GetCurrentPreset().week or (MDT:GetCurrentAffixWeek() or 1))
-    MDT:UpdateToDungeon(db.currentDungeonIdx)
+    MDT:UpdateToDungeon(db.currentDungeonIdx, db.currentSublevel)
 	main_frame:Hide()
 
     --Maximize if needed
