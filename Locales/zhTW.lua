@@ -17,6 +17,7 @@ L["+ Add pull"] = "+ 新增拉怪"
 --[[ L["4.RF-4.RF"] = ""--]]
 L["Aberration"] = "變異怪"
 L["Abyss Dweller"] = "深渊居住者"
+L["Random abilities"] = "Random Abilities:"
 L["Abyssal Cultist"] = "深渊祭师"
 L["Abyssal Eel"] = "深渊鳗鱼"
 L["Adderis"] = "阿德里斯"
