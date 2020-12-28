@@ -560,8 +560,7 @@ L["Mistveil Defender"] = "纱雾防御者"
 L["Mistveil Gorgegullet"] = "纱雾噬喉者"
 L["Mistveil Guardian"] = "纱雾守护者"
 L["Mistveil Matriarch"] = "纱雾龙母"
---[[Translation missing --]]
---[[ L["Mistveil Nightblossom"] = ""--]]
+L["Mistveil Nightblossom"] = "纱雾夜花"
 L["Mistveil Shaper"] = "纱雾塑形者"
 L["Mistveil Stalker"] = "纱雾追猎者"
 L["Mistveil Stinger"] = "纱雾钉刺蛾"
@@ -622,13 +621,11 @@ L["Plague Doctor"] = "瘟疫博士"
 L["Plaguebelcher"] = "魔药喷吐者"
 L["Plaguebinder"] = "魔药束缚者"
 L["Plagueborer"] = "钻凋者"
---[[Translation missing --]]
---[[ L["Plaguebound"] = ""--]]
+L["Plaguebound"] = "凋缚者"
 L["Plaguebound Devoted"] = "凋缚狂热者"
 L["Plaguebound Fallen"] = "凋缚陨落者"
 L["Plaguefall"] = "凋魂之殇"
---[[Translation missing --]]
---[[ L["plaguefallDevotedNote"] = ""--]]
+L["plaguefallDevotedNote"] = "在与艾柯尔·胆肉交战前被渗液残躯转化的凋缚狂热者不会获得进度。"
 L["Plagueroc"] = "凋零大鹏"
 L["Plain Texture"] = "普通材质"
 L["Players can join the live session by either clicking this button or the Live Session chat link"] = "玩家可以通过点击此按钮或实时连线链接加入实时连线"
@@ -916,14 +913,10 @@ L["The Warden's Court"] = "守望者庭院"
 L["Theater of Pain"] = "伤逝剧场"
 L["theaterOfPain_miniBossNote"] = "只有一个决斗者能活下来"
 L["TheaterOfPainFloor1"] = "伤逝剧场"
---[[Translation missing --]]
---[[ L["TheaterOfPainFloor2"] = ""--]]
---[[Translation missing --]]
---[[ L["TheaterOfPainFloor3"] = ""--]]
---[[Translation missing --]]
---[[ L["TheaterOfPainFloor4"] = ""--]]
---[[Translation missing --]]
---[[ L["TheaterOfPainFloor5"] = ""--]]
+L["TheaterOfPainFloor2"] = "征服密室"
+L["TheaterOfPainFloor3"] = "苦痛祭坛"
+L["TheaterOfPainFloor4"] = "屠灭坟冢上层"
+L["TheaterOfPainFloor5"] = "屠灭坟冢下层"
 L["TheNecroticWakeFloor1"] = "通灵战潮"
 L["TheNecroticWakeFloor2"] = "缝合车间"
 L["TheNecroticWakeFloor3"] = "佐尔拉姆斯"
