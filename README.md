@@ -1,4 +1,4 @@
-Yeah this is just nnogie's addon yoinked under a GPL 2 license because he's a ginoromous man baby
+Fork of MDT, now marginally sanitized for wider distribution.
 
 ##  Dungeon Tools
 
