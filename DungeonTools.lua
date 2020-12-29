@@ -4517,7 +4517,7 @@ function MDT:RegisterOptions()
                     if not db.minimap.hide then
                         icon:Show("DungeonTools")
                     else
-                        icon:Hide("ManbayDungeonTools")
+                        icon:Hide("DungeonTools")
                     end
                 end,
                 order = 1,
