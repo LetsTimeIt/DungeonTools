@@ -19,7 +19,7 @@ local db
 local icon = LibStub("LibDBIcon-1.0")
 local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("DungeonTools", {
 	type = "data source",
-	text = " Dungeon Tools",
+	text = "Dungeon Tools",
 	icon = "Interface\\ICONS\\inv_relics_hourglass",
 	OnClick = function(button,buttonPressed)
 		if buttonPressed == "RightButton" then
@@ -34,7 +34,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("DungeonTools", {
 	end,
 	OnTooltipShow = function(tooltip)
 		if not tooltip or not tooltip.AddLine then return end
-		tooltip:AddLine(mythicColor .." Dungeon Tools|r")
+		tooltip:AddLine(mythicColor .."Dungeon Tools|r")
 		tooltip:AddLine(L["Click to toggle AddOn Window"])
 		tooltip:AddLine(L["Right-click to lock Minimap Button"])
 	end,
@@ -1059,7 +1059,7 @@ function MDT:MakeTopBottomTextures(frame)
 		frame.topPanelString:SetJustifyV("CENTER")
 		--frame.topPanelString:SetWidth(600)
 		frame.topPanelString:SetHeight(20)
-		frame.topPanelString:SetText(" Dungeon Tools")
+		frame.topPanelString:SetText("Dungeon Tools")
 		frame.topPanelString:ClearAllPoints()
 		frame.topPanelString:SetPoint("CENTER", frame.topPanel, "CENTER", 10, 0)
 		frame.topPanelString:Show()
@@ -4479,7 +4479,7 @@ end
 ---Register the options of the addon to the blizzard options
 function MDT:RegisterOptions()
     MDT.blizzardOptionsMenuTable = {
-        name = " Dungeon Tools",
+        name = "Dungeon Tools",
         type = 'group',
         args = {
             --[[
