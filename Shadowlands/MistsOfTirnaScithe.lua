@@ -6,7 +6,24 @@ MDT.mapInfo[dungeonIndex] = {
 };
 
 MDT.dungeonTotalCount[dungeonIndex] = {normal=260,teeming=1000,teemingEnabled=true}
-MDT.mapPOIs[dungeonIndex] = {}
+MDT.mapPOIs[dungeonIndex] = {
+    [1] = {
+        [1] = {
+            ["y"] = -91.558949170714;
+            ["x"] = 777.82214682534;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "";
+            ["type"] = "graveyard";
+        };
+        [2] = {
+            ["y"] = -122.57438230062;
+            ["x"] = 775.9664045582;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Overgrown Roots";
+            ["type"] = "generalNote";
+        };
+    };
+};
 MDT.dungeonEnemies[dungeonIndex] = {
     [1] = {
         ["clones"] = {

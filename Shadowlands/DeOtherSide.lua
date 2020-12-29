@@ -36,27 +36,69 @@ MDT.mapPOIs[dungeonIndex] = {
             ["x"] = 425.34581434668;
             ["connectionIndex"] = 1;
             ["target"] = 2;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = -1;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
         };
         [2] = {
             ["y"] = -321.44105600137;
             ["x"] = 609.62984287316;
             ["connectionIndex"] = 2;
             ["target"] = 4;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = 2;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
         };
         [3] = {
             ["y"] = -323.0244548815;
             ["x"] = 233.5615662991;
             ["connectionIndex"] = 3;
             ["target"] = 3;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = -2;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
+        };
+        [4] = {
+            ["y"] = -443.09469971671;
+            ["x"] = 343.33885297951;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Haunted Urn";
+            ["type"] = "generalNote";
+        };
+        [5] = {
+            ["y"] = -295.55640810943;
+            ["x"] = 551.72850107961;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Haunted Urn";
+            ["type"] = "generalNote";
+        };
+        [6] = {
+            ["y"] = -101.78380147813;
+            ["x"] = 424.18832078272;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "";
+            ["type"] = "graveyard";
+        };
+        [7] = {
+            ["y"] = -324.37716003983;
+            ["x"] = 587.0285490497;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "Triggers upon entering Ardenweald side area";
+            ["type"] = "graveyard";
+        };
+        [8] = {
+            ["y"] = -499.53413660739;
+            ["x"] = 441.04733019363;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "Triggers upon entering Mechagon side area";
+            ["type"] = "graveyard";
+        };
+        [9] = {
+            ["y"] = -325.9685941744;
+            ["x"] = 263.0370852186;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "Triggers upon entering Zul'Gurub side area";
+            ["type"] = "graveyard";
         };
     };
     [2] = {
@@ -65,9 +107,16 @@ MDT.mapPOIs[dungeonIndex] = {
             ["x"] = 414.86600451766;
             ["connectionIndex"] = 1;
             ["target"] = 1;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = 1;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
+        };
+        [2] = {
+            ["y"] = -337.47118602133;
+            ["x"] = 519.45839513231;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Sludge Manufacturing Control (requires Engineering)";
+            ["type"] = "generalNote";
         };
     };
     [3] = {
@@ -76,9 +125,16 @@ MDT.mapPOIs[dungeonIndex] = {
             ["x"] = 697.51109695369;
             ["connectionIndex"] = 3;
             ["target"] = 1;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = 2;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
+        };
+        [2] = {
+            ["y"] = -249.08996618058;
+            ["x"] = 494.88787593588;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Haunted Urn";
+            ["type"] = "generalNote";
         };
     };
     [4] = {
@@ -87,9 +143,16 @@ MDT.mapPOIs[dungeonIndex] = {
             ["x"] = 283.13229583992;
             ["connectionIndex"] = 2;
             ["target"] = 1;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = -2;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
+        };
+        [2] = {
+            ["y"] = -219.60900976823;
+            ["x"] = 424.03667345319;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Haunted Urn";
+            ["type"] = "generalNote";
         };
     };
 };

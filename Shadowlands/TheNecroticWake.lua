@@ -30,9 +30,44 @@ MDT.mapPOIs[dungeonIndex] = {
             ["x"] = 228.01889531903;
             ["connectionIndex"] = 1;
             ["target"] = 2;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = 1;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
+        };
+        [2] = {
+            ["y"] = -188.31066875698;
+            ["x"] = 616.33066072652;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Forgotten Forgehammer";
+            ["type"] = "generalNote";
+        };
+        [3] = {
+            ["y"] = -297.13962563631;
+            ["x"] = 585.84050743775;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Discarded Shield";
+            ["type"] = "generalNote";
+        };
+        [4] = {
+            ["y"] = -144.82212491921;
+            ["x"] = 586.92262049255;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Bloody Javelin";
+            ["type"] = "generalNote";
+        };
+        [5] = {
+            ["y"] = -156.01618773812;
+            ["x"] = 490.37390123937;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Malfunctioning Goliath";
+            ["type"] = "generalNote";
+        };
+        [6] = {
+            ["y"] = -223.16256124329;
+            ["x"] = 656.76380737118;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "";
+            ["type"] = "graveyard";
         };
     };
 };
