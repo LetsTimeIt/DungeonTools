@@ -1,4 +1,4 @@
-#  Dungeon Tools
+# Dungeon Tools
 
 ![Release version badge](https://img.shields.io/github/v/release/LetsTimeIt/DungeonTools?style=flat-square)
 ![Download Count](https://img.shields.io/github/downloads/LetsTimeIt/DungeonTools/total?style=flat-square)
