@@ -1,5 +1,5 @@
 ## Interface: 90002
-## Title:  Dungeon Tools
+## Title: Dungeon Tools
 ## Author: Nnoggie
 ## Version: 3.3.4
 ## Notes: Tool for planning and optimizing Mythic+ dungeon runs
