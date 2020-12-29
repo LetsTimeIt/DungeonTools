@@ -2748,24 +2748,24 @@ function MDT:CreateDungeonSelectDropdown(frame)
             db.currentExpansion = 2
             db.currentDungeonIdx = 15
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
+            MDT:UpdateToDungeon(db.currentDungeonIdx)
         elseif key == 27 then
             db.currentExpansion = 1
             db.currentDungeonIdx = 1
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
+            MDT:UpdateToDungeon(db.currentDungeonIdx)
         elseif key == 28 then
             db.currentExpansion = 3
             db.currentDungeonIdx = 29
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
+            MDT:UpdateToDungeon(db.currentDungeonIdx)
         elseif key == 37 then
             db.currentExpansion = 2
             db.currentDungeonIdx = 15
             MDT:UpdateDungeonDropDown()
-            MDT:UpdateToDungeon(db.currentDungeonIdx, 1)
+            MDT:UpdateToDungeon(db.currentDungeonIdx)
         else
-            MDT:UpdateToDungeon(key, 1)
+            MDT:UpdateToDungeon(key)
         end
 	end)
 	group:AddChild(group.DungeonDropdown)
@@ -2965,6 +2965,7 @@ end
 ---UpdateToDungeon
 ---Updates the map to the specified dungeon
 function MDT:UpdateToDungeon(dungeonIdx, sublevel, ignoreUpdateMap, init)
+    sublevel = sublevel or 1
     db.currentExpansion = 1
     if dungeonIdx>=15 then db.currentExpansion = 2 end
     if dungeonIdx>=29 then db.currentExpansion = 3 end
@@ -3089,7 +3090,7 @@ MDT.zoneIdToDungeonIdx = {
     [1684] = { -- theater of pain chambers of conquest
         ["dungeon"] = 36;
         ["subzone"] = 2;
-    };
+    },
     [1685] = {  -- theater of pain altars of agony
         ["dungeon"] = 36;
         ["subzone"] = 3;
@@ -3109,7 +3110,7 @@ MDT.zoneIdToDungeonIdx = {
     [1693] = { -- spires of ascension gardens of repose
         ["dungeon"] = 34;
         ["subzone"] = 2;
-    };
+    },
     [1694] = { -- spires of ascension font of fealty
         ["dungeon"] = 34;
         ["subzone"] = 3;
