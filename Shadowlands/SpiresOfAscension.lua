@@ -34,6 +34,13 @@ MDT.mapPOIs[dungeonIndex] = {
             ["template"] = "MapLinkPinTemplate";
             ["direction"] = 1;
         };
+        [2] = {
+            ["y"] = -345.89731299095;	
+            ["x"] = 361.09898097497;	
+            ["template"] = "DeathReleasePinTemplate";	
+            ["graveyardDescription"] = "";	
+            ["type"] = "graveyard";	
+        };
     };
     [2] = {
         [1] = {
@@ -54,6 +61,34 @@ MDT.mapPOIs[dungeonIndex] = {
             ["template"] = "MapLinkPinTemplate";
             ["direction"] = 1;
         };
+        [3] = {	
+            ["y"] = -122.83103530167;	
+            ["x"] = 301.64700510522;	
+            ["template"] = "MapLinkPinTemplate";	
+            ["text"] = "Kyrian Spear";	
+            ["type"] = "generalNote";	
+        };	
+        [4] = {	
+            ["y"] = -493.87894840153;	
+            ["x"] = 490.09515745679;	
+            ["template"] = "MapLinkPinTemplate";	
+            ["text"] = "Kyrian Spear";	
+            ["type"] = "generalNote";	
+        };	
+        [5] = {	
+            ["y"] = -342.51133095232;	
+            ["x"] = 323.08041483261;	
+            ["template"] = "DeathReleasePinTemplate";	
+            ["graveyardDescription"] = "Unlocks after defeating Kin-Tara";	
+            ["type"] = "graveyard";	
+        };	
+        [6] = {	
+            ["y"] = -240.40016400675;	
+            ["x"] = 562.50022312014;	
+            ["template"] = "DeathReleasePinTemplate";	
+            ["graveyardDescription"] = "Unlocks after defeating Ventunax";	
+            ["type"] = "graveyard";	
+        };
     };
     [3] = {
         [1] = {
@@ -73,6 +108,20 @@ MDT.mapPOIs[dungeonIndex] = {
             ["type"] = "mapLink";
             ["template"] = "MapLinkPinTemplate";
             ["direction"] = 1;
+        };
+        [3] = {	
+            ["y"] = -430.33840567777;	
+            ["x"] = 350.09270202038;	
+            ["template"] = "MapLinkPinTemplate";	
+            ["text"] = "Kyrian Spear";	
+            ["type"] = "generalNote";	
+        };	
+        [4] = {	
+            ["y"] = -262.61163279755;	
+            ["x"] = 419.95135836915;	
+            ["template"] = "DeathReleasePinTemplate";	
+            ["graveyardDescription"] = "Unlocks after defeating Oryphrion";	
+            ["type"] = "graveyard";	
         };
     };
     [4] = {
