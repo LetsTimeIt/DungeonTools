@@ -46,6 +46,13 @@ MDT.mapPOIs[dungeonIndex] = {
             ["template"] = "MapLinkPinTemplate";
             ["direction"] = -1;
         };
+        [2] = {
+            ["y"] = -443.74558037599;
+            ["x"] = 426.04043608995;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "";
+            ["type"] = "graveyard";
+        };
     };
     [2] = {
         [1] = {
@@ -99,6 +106,20 @@ MDT.mapPOIs[dungeonIndex] = {
             ["text"] = L["theaterOfPain_miniBossNote"];
             ["type"] = "generalNote";
         };
+        [7] = {
+            ["y"] = -392.73095754421;
+            ["x"] = 416.76770335719;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Necrolord Banner";
+            ["type"] = "generalNote";
+        };
+        [8] = {
+            ["y"] = -209.39696813302;
+            ["x"] = 270.59732612419;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "Unlocks after entering Chamber of Conquest";
+            ["type"] = "graveyard";
+        };
     };
     [3] = {
         [1] = {
@@ -109,6 +130,13 @@ MDT.mapPOIs[dungeonIndex] = {
             ["type"] = "mapLink";
             ["template"] = "MapLinkPinTemplate";
             ["direction"] = -1;
+        };
+        [2] = {
+            ["y"] = -481.2482763287;
+            ["x"] = 594.08777013326;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Necrolord Banner";
+            ["type"] = "generalNote";
         };
     };
     [4] = {
@@ -138,6 +166,13 @@ MDT.mapPOIs[dungeonIndex] = {
             ["type"] = "mapLink";
             ["template"] = "MapLinkPinTemplate";
             ["direction"] = -1;
+        };
+        [4] = {
+            ["y"] = -308.10529656379;
+            ["x"] = 534.6491790377;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Necrolord Banner";
+            ["type"] = "generalNote";
         };
     };
     [5] = {
