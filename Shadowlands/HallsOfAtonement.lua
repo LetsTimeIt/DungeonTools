@@ -300,13 +300,13 @@ MDT.dungeonEnemies[dungeonIndex] = {
             };
             [3] = {
                 ["sublevel"] = 1;
-                ["inspiring"] = true;
                 ["x"] = 539.49317710124;
                 ["g"] = 15;
                 ["y"] = -208.37933262827;
             };
             [4] = {
                 ["sublevel"] = 1;
+                ["inspiring"] = true;
                 ["x"] = 561.69958131078;
                 ["patrol"] = {
                     [1] = {
@@ -441,6 +441,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
                     };
                 };
                 ["g"] = 22;
+                ["inspiring"] = true;
                 ["y"] = -396.37545570552;
             };
             [9] = {
@@ -1708,6 +1709,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
                 ["y"] = -317.10071484616;
             };
             [14] = {
+                ["inspiring"] = true;
                 ["y"] = -316.60880923677;
                 ["x"] = 340.21293432154;
                 ["g"] = 35;
