@@ -118,7 +118,7 @@ MDT.mapPOIs[dungeonIndex] = {
             ["text"] = "Sludge Manufacturing Control (requires Engineering)";
             ["type"] = "generalNote";
         };
-        [2] = {
+        [3] = {
             ["y"] = -423.20469070385;
             ["x"] = 444.28053165947;
             ["template"] = "DeathReleasePinTemplate";
@@ -143,7 +143,7 @@ MDT.mapPOIs[dungeonIndex] = {
             ["text"] = "Haunted Urn";
             ["type"] = "generalNote";
         };
-        [2] = {
+        [3] = {
             ["y"] = -268.43122431625;
             ["x"] = 261.99949355366;
             ["template"] = "DeathReleasePinTemplate";

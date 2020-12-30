@@ -53,20 +53,13 @@ MDT.mapPOIs[dungeonIndex] = {
             ["type"] = "generalNote";
         };
         [7] = {
-            ["y"] = -295.76573755137;
-            ["x"] = 101.67977798315;
-            ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "";
-            ["type"] = "graveyard";
-        };
-        [8] = {
             ["y"] = -98.675708844608;
             ["x"] = 408.65728113078;
             ["template"] = "DeathReleasePinTemplate";
             ["graveyardDescription"] = "Unlocks after defeating Kryxis the Voracious";
             ["type"] = "graveyard";
         };
-        [9] = {
+        [8] = {
             ["y"] = -342.44570099325;
             ["x"] = 518.54572171996;
             ["template"] = "DeathReleasePinTemplate";
