@@ -30,9 +30,114 @@ MDT.mapPOIs[dungeonIndex] = {
             ["x"] = 228.01889531903;
             ["connectionIndex"] = 1;
             ["target"] = 2;
-            ["type"] = "mapLink";
-            ["template"] = "MapLinkPinTemplate";
             ["direction"] = 1;
+            ["template"] = "MapLinkPinTemplate";
+            ["type"] = "mapLink";
+        };
+        [2] = {
+            ["y"] = -188.31066875698;
+            ["x"] = 616.33066072652;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Forgotten Forgehammer";
+            ["type"] = "generalNote";
+        };
+        [3] = {
+            ["y"] = -297.13962563631;
+            ["x"] = 585.84050743775;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Discarded Shield";
+            ["type"] = "generalNote";
+        };
+        [4] = {
+            ["y"] = -144.82212491921;
+            ["x"] = 586.92262049255;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Bloody Javelin";
+            ["type"] = "generalNote";
+        };
+        [5] = {
+            ["y"] = -156.01618773812;
+            ["x"] = 490.37390123937;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Malfunctioning Goliath";
+            ["type"] = "generalNote";
+        };
+        [6] = {
+            ["y"] = -223.16256124329;
+            ["x"] = 656.76380737118;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "";
+            ["type"] = "graveyard";
+        };
+        [7] = {
+            ["y"] = -394.34331775388;
+            ["x"] = 514.27595332048;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Malfunctioning Goliath";
+            ["type"] = "generalNote";
+        };
+        [8] = {
+            ["y"] = -483.60004670789;
+            ["x"] = 486.25633014021;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Discharged Anima";
+            ["type"] = "generalNote";
+        };
+        [9] = {
+            ["y"] = -413.97865500939;
+            ["x"] = 343.60455815493;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Forgotten Forgehammer";
+            ["type"] = "generalNote";
+        };
+        [10] = {
+            ["y"] = -378.87936998411;
+            ["x"] = 373.58663852442;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Bloody Javelin";
+            ["type"] = "generalNote";
+        };
+        [11] = {
+            ["y"] = -352.02213138089;
+            ["x"] = 208.52692076207;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Malfunctioning Goliath";
+            ["type"] = "generalNote";
+        };
+        [12] = {
+            ["y"] = -279.14761083898;
+            ["x"] = 337.13695888768;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Discarded Shield";
+            ["type"] = "generalNote";
+        };
+        [13] = {
+            ["y"] = -258.24962208186;
+            ["x"] = 336.58231320964;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Forgotten Forgehammer";
+            ["type"] = "generalNote";
+        };
+        [14] = {
+            ["y"] = -175.10140200299;
+            ["x"] = 304.90565362191;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Bloody Javelin";
+            ["type"] = "generalNote";
+        };
+        [15] = {
+            ["y"] = -163.73595470458;
+            ["x"] = 114.3838694898;
+            ["template"] = "MapLinkPinTemplate";
+            ["text"] = "Discharged Anima";
+            ["type"] = "generalNote";
+        };
+        [16] = {
+            ["y"] = -223.2330352819;
+            ["x"] = 212.96176651974;
+            ["template"] = "DeathReleasePinTemplate";
+            ["graveyardDescription"] = "Unlocks after defeating Amarth";
+            ["type"] = "graveyard";
         };
     };
 };
