@@ -196,7 +196,6 @@ MDT.dungeonEnemies[dungeonIndex] = {
             };
             [3] = {
                 ["sublevel"] = 1;
-                ["inspiring"] = true;
                 ["x"] = 351.34414485775;
                 ["g"] = 10;
                 ["y"] = -132.87993338916;
@@ -211,6 +210,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
                 ["y"] = -127.14833985717;
                 ["x"] = 343.54124065103;
                 ["g"] = 11;
+                ["inspiring"] = true;
                 ["sublevel"] = 1;
             };
             [6] = {
