@@ -2777,6 +2777,7 @@ function MDT:CreateDungeonSelectDropdown(frame)
         else
             MDT:UpdateToDungeon(key)
         end
+        frame.sidePanel.affixDropdown:SetAffixWeek(MDT:GetCurrentPreset().week or MDT:GetCurrentAffixWeek() or 1)
 	end)
 	group:AddChild(group.DungeonDropdown)
 
