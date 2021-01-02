@@ -1,8 +1,8 @@
 ---Tracks spells casted by enemies and adds them to the dataset
 local db
 local f
-local MDT = MDT
-
+local MDT = DungeonTools
+local commsObject = MDT.commsObject
 MDT.DataCollection = {}
 local DC = MDT.DataCollection
 function DC:Init()
@@ -232,7 +232,7 @@ function MDT:RequestDataCollectionUpdate()
     if true then return end
     local distribution = self:IsPlayerInGroup()
     if not distribution then return end
-    MDTcommsObject:SendCommMessage(self.dataCollectionPrefixes.request, "0", distribution, nil, "ALERT")
+    commsObject:SendCommMessage(self.dataCollectionPrefixes.request, "0", distribution, nil, "ALERT")
 end
 
 ---Distribute collected data to party/raid
@@ -250,7 +250,7 @@ function DC:DistributeData()
             [2] = db.dataCollectionCC
         }
         local export = MDT:TableToString(package,false,5)
-        MDTcommsObject:SendCommMessage(MDT.dataCollectionPrefixes.distribute, export, distribution, nil, "BULK",nil,nil)
+        commsObject:SendCommMessage(MDT.dataCollectionPrefixes.distribute, export, distribution, nil, "BULK",nil,nil)
     end
 end
 

@@ -1,6 +1,7 @@
 local dungeonIndex = 8
 local nerfMultiplier = 1
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=220,teeming=264,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {
 	[1] = {

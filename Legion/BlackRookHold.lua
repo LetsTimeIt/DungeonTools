@@ -1,6 +1,7 @@
 local dungeonIndex = 1
 local nerfMultiplier = 0.834
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = { normal=300, teeming=360, teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {--Black Rook Hold
 	[1] = {

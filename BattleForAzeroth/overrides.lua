@@ -1,3 +1,4 @@
+local MDT = DungeonTools
 local displayIdOverrides = {
 
 }

@@ -1,4 +1,4 @@
-local MDT = MDT
+local MDT = DungeonTools
 local db
 local tonumber,tinsert,slen,pairs,ipairs,tostring,next,type,sformat,twipe,max,tremove,DrawLine = tonumber,table.insert,string.len,pairs,ipairs,tostring,next,type,string.format,table.wipe,math.max,table.remove,DrawLine
 local L = MDT.L
@@ -66,7 +66,7 @@ function MDT:DoFramesOverlap(frameA, frameB, offset)
 end
 
 
-MDTDungeonEnemyMixin = {};
+DungeonToolsEnemyMixin = {};
 
 local defaultSizes = {
     ["texture_Background"] = 20,
@@ -83,13 +83,13 @@ local defaultSizes = {
     ["texture_DragUp"] = 8,
 }
 
-function MDTDungeonEnemyMixin:updateSizes(scale)
+function DungeonToolsEnemyMixin:updateSizes(scale)
     for tex,size in pairs(defaultSizes) do
         self[tex]:SetSize(size*self.normalScale*scale,size*self.normalScale*scale)
     end
 end
 
-function MDTDungeonEnemyMixin:OnEnter()
+function DungeonToolsEnemyMixin:OnEnter()
     self:updateSizes(1.2)
     self:SetFrameLevel(self:GetFrameLevel()+5)
     self:DisplayPatrol(true)
@@ -131,7 +131,7 @@ function MDTDungeonEnemyMixin:OnEnter()
     end
 end
 
-function MDTDungeonEnemyMixin:OnLeave()
+function DungeonToolsEnemyMixin:OnLeave()
     self:updateSizes(1)
     self:SetFrameLevel(self:GetFrameLevel()-5)
     if db.devMode then
@@ -306,7 +306,7 @@ local function setUpMouseHandlersAwakened(self,clone,scale,riftOffsets)
     end)
 end
 
-function MDTDungeonEnemyMixin:OnClick(button, down)
+function DungeonToolsEnemyMixin:OnClick(button, down)
 
     if button == "LeftButton" then
         if IsShiftKeyDown() then
@@ -393,7 +393,7 @@ function MDT:GetPatrolBlips()
     return patrolPoints
 end
 
-function MDTDungeonEnemyMixin:DisplayPatrol(shown)
+function DungeonToolsEnemyMixin:DisplayPatrol(shown)
     local scale = MDT:GetScale()
 
     --Hide all points/line
@@ -489,7 +489,8 @@ function MDT:DisplayBlipTooltip(blip, shown)
     ]]
     local occurence = (blip.data.isBoss and "") or blip.cloneIdx
 
-    local text = data.name.." "..occurence..group.."\n"..string.format(L["Level %d %s"],data.level,data.creatureType).."\n".. string.format(L["%s HP"],MDT:FormatEnemyHealth(health)).."\n"
+    local mobName = data.name or ""
+    local text = mobName.." "..occurence..group.."\n"..string.format(L["Level %d %s"],data.level,data.creatureType).."\n".. string.format(L["%s HP"],MDT:FormatEnemyHealth(health)).."\n"
     local count = MDT:IsCurrentPresetTeeming() and data.teemingCount or data.count
     text = text ..L["Forces"]..": ".. MDT:FormatEnemyForces(count)
     local reapingText
@@ -607,7 +608,7 @@ end
 
 local emissaryIds = {[155432]=true,[155433]=true,[155434]=true}
 
-function MDTDungeonEnemyMixin:SetUp(data,clone)
+function DungeonToolsEnemyMixin:SetUp(data,clone)
     local scale = MDT:GetScale()
     self:ClearAllPoints()
     self:SetPoint("CENTER", MDT.main_frame.mapPanelTile1,"TOPLEFT",clone.x*scale,clone.y*scale)
@@ -706,7 +707,7 @@ function MDT:DungeonEnemies_UpdateEnemies()
             if clone.sublevel == currentSublevel or (not clone.sublevel) then
                 --skip rifts that were dragged to another sublevel
                 if not (data.corrupted and riftOffsets and riftOffsets[data.id] and riftOffsets[data.id].sublevel) then
-                    local blip = MDT.dungeonEnemies_framePools:Acquire("MDTDungeonEnemyTemplate")
+                    local blip = MDT.dungeonEnemies_framePools:Acquire("DungeonToolsEnemyTemplate")
                     blip:SetUp(data,clone)
                     blip.enemyIdx = enemyIdx
                     blip.cloneIdx = cloneIdx
@@ -721,7 +722,7 @@ function MDT:DungeonEnemies_UpdateEnemies()
                 for enemyIdx,data in pairs(enemies) do
                     if data.id == npcId then
                         for cloneIdx,clone in pairs(data["clones"]) do
-                            local blip = MDT.dungeonEnemies_framePools:Acquire("MDTDungeonEnemyTemplate")
+                            local blip = MDT.dungeonEnemies_framePools:Acquire("DungeonToolsEnemyTemplate")
                             blip:SetUp(data,clone)
                             blip.enemyIdx = enemyIdx
                             blip.cloneIdx = cloneIdx
@@ -736,7 +737,7 @@ end
 function MDT:DungeonEnemies_CreateFramePools()
     db = self:GetDB()
     MDT.dungeonEnemies_framePools = MDT.dungeonEnemies_framePools or CreateFramePoolCollection()
-    MDT.dungeonEnemies_framePools:CreatePool("Button", MDT.main_frame.mapPanelFrame, "MDTDungeonEnemyTemplate");
+    MDT.dungeonEnemies_framePools:CreatePool("Button", MDT.main_frame.mapPanelFrame, "DungeonToolsEnemyTemplate");
 end
 
 function MDT:FindPullOfBlip(blip)
@@ -908,6 +909,10 @@ end
 ---DungeonEnemies_GetPullColor
 ---Returns the custom color for a pull
 function MDT:DungeonEnemies_GetPullColor(pull,pulls)
+    if not preset or not preset.value or not preset.value.pulls then
+        r,g,b = MDT:HexToRGB(db.defaultColor)
+        return r,g,b
+    end
     pulls = pulls or preset.value.pulls
     local r,g,b = MDT:HexToRGB(pulls[pull]["color"])
     if not r then

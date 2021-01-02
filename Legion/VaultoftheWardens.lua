@@ -1,6 +1,7 @@
 local dungeonIndex = 13
 local pi = math.pi
 local nerfMultiplier = 1
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=210,teeming=252,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {--Vault of the Wardens
 	[1] = {

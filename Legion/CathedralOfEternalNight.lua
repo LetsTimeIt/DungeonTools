@@ -1,6 +1,7 @@
 local dungeonIndex = 2
 local pi = math.pi
 local nerfMultiplier = 1
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=305,teeming=335,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = { --Cathedral of Eternal Night
 	[2] = {

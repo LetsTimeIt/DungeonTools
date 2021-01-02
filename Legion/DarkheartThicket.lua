@@ -1,6 +1,7 @@
 local dungeonIndex = 4
 local nerfMultiplier = 1
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=280,teeming=336,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {--Darkheart Thicket
 	[1] = {

@@ -1,4 +1,4 @@
-local MDT = MDT
+local MDT = DungeonTools
 local L = MDT.L
 local sizex,sizey = 350,33
 local AceGUI = LibStub("AceGUI-3.0")

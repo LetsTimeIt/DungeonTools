@@ -1,4 +1,4 @@
-local MDT = MDT
+local MDT = DungeonTools
 local L = MDT.L
 local Compresser = LibStub:GetLibrary("LibCompress")
 local Encoder = Compresser:GetAddonEncodeTable()
@@ -15,7 +15,8 @@ local configForDeflate = {
     [8]= {level = 8},
     [9]= {level = 9},
 }
-MDTcommsObject = LibStub("AceAddon-3.0"):NewAddon("MDTCommsObject","AceComm-3.0","AceSerializer-3.0")
+MDT.commsObject = LibStub("AceAddon-3.0"):NewAddon("DungeonToolsCommsObject","AceComm-3.0","AceSerializer-3.0")
+local commsObject = MDT.commsObject
 
 -- Lua APIs
 local tostring, string_char, strsplit,tremove,tinsert = tostring, string.char, strsplit,table.remove,table.insert
@@ -182,7 +183,7 @@ MDT.dataCollectionPrefixes = {
     ["distribute"] = "MDTDataDist",
 }
 
-function MDTcommsObject:OnEnable()
+function commsObject:OnEnable()
     self:RegisterComm(presetCommPrefix)
     for _,prefix in pairs(MDT.liveSessionPrefixes) do
         self:RegisterComm(prefix)
@@ -230,7 +231,7 @@ hooksecurefunc("SetItemRef", function(link, text)
     end
 end)
 
-function MDTcommsObject:OnCommReceived(prefix, message, distribution, sender)
+function commsObject:OnCommReceived(prefix, message, distribution, sender)
     --[[
         Sender has no realm name attached when sender is from the same realm as the player
         UnitFullName("Nnoggie") returns no realm while UnitFullName("player") does
@@ -668,7 +669,7 @@ function MDT:SendToGroup(distribution,silent,preset)
     preset.mdiEnabled = db.MDI.enabled
     preset.difficulty = db.currentDifficulty
     local export = MDT:TableToString(preset,false,5)
-    MDTcommsObject:SendCommMessage("MDTPreset", export, distribution, nil, "BULK",displaySendingProgress,{distribution,preset,silent})
+    commsObject:SendCommMessage("MDTPreset", export, distribution, nil, "BULK",displaySendingProgress,{distribution,preset,silent})
 end
 
 ---GetPresetSize

@@ -1,4 +1,4 @@
-local MDT = MDT
+local MDT = DungeonTools
 local L = MDT.L
 local db
 local tonumber,tinsert,slen,pairs,ipairs,tostring,next,type,sformat,tremove,twipe = tonumber,table.insert,string.len,pairs,ipairs,tostring,next,type,string.format,table.remove,table.wipe
@@ -11,7 +11,7 @@ function MDT:POI_CreateFramePools()
     MDT.poi_framePools:CreatePool("Button", MDT.main_frame.mapPanelFrame, "MapLinkPinTemplate")
     MDT.poi_framePools:CreatePool("Button", MDT.main_frame.mapPanelFrame, "DeathReleasePinTemplate")
     MDT.poi_framePools:CreatePool("Button", MDT.main_frame.mapPanelFrame, "VignettePinTemplate")
-    MDT.poi_framePools:CreatePool("Frame", MDT.main_frame.mapPanelFrame, "MDTAnimatedLineTemplate")
+    MDT.poi_framePools:CreatePool("Frame", MDT.main_frame.mapPanelFrame, "DungeonToolsAnimatedLineTemplate")
 end
 
 --devMode
@@ -579,7 +579,7 @@ local function animateLine(self, elapsed)
 end
 
 local function createAnimatedLine(parent)
-    local animatedLine = MDT.poi_framePools:Acquire("MDTAnimatedLineTemplate")
+    local animatedLine = MDT.poi_framePools:Acquire("DungeonToolsAnimatedLineTemplate")
     animatedLine:Show()
     animatedLine.phase = 0
     animatedLine.frames = {}
@@ -616,7 +616,7 @@ function MDT:ShowAnimatedLine(parent, frame1, frame2, sizeX, sizeY, gap, color, 
 end
 
 function MDT:KillAllAnimatedLines()
-    local linePool = self.poi_framePools:GetPool("MDTAnimatedLineTemplate")
+    local linePool = self.poi_framePools:GetPool("DungeonToolsAnimatedLineTemplate")
     local _,activeLines = linePool:EnumerateActive()
     for animatedLine,_ in pairs(activeLines) do
         animatedLine:SetScript("onUpdate",nil)

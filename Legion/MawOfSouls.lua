@@ -1,6 +1,7 @@
 local dungeonIndex = 7
 local nerfMultiplier = 1
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=150,teeming=180,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {--Maw of Souls
 	[1] = {

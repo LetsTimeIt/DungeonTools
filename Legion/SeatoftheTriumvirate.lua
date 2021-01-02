@@ -1,4 +1,5 @@
 local dungeonIndex = 11
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=275,teeming=329,teemingEnabled=true}
 local nerfMultiplier = 1
 local pi = math.pi

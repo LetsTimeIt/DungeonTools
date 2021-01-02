@@ -1,6 +1,6 @@
-local MDT = MDT
+local MDT = DungeonTools
 local L = MDT.L
-local MDTcommsObject = MDTcommsObject
+local commsObject = MDT.commsObject
 local twipe,tinsert = table.wipe,table.insert
 
 local timer
@@ -74,7 +74,7 @@ function MDT:LiveSession_NotifyEnabled()
         local distribution = self:IsPlayerInGroup()
         if (not distribution) or (not self.liveSessionActive) then return end
         local uid = self.livePresetUID
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.enabled, uid, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.enabled, uid, distribution, nil, "ALERT")
     end
     --self:SendToGroup(self:IsPlayerInGroup(),true,self:GetCurrentLivePreset())
 end
@@ -86,7 +86,7 @@ function MDT:LiveSession_RequestSession()
     self.liveSessionRequested = true
     self.liveSessionActiveSessions = self.liveSessionActiveSessions or {}
     twipe(self.liveSessionActiveSessions)
-    MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.request, "0", distribution, nil, "ALERT")
+    commsObject:SendCommMessage(self.liveSessionPrefixes.request, "0", distribution, nil, "ALERT")
 end
 
 
@@ -129,7 +129,7 @@ end
 function MDT:LiveSession_RequestPreset(fullName)
     local distribution = self:IsPlayerInGroup()
     if (not distribution) or (not self.liveSessionActive) then return end
-    MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.reqPre, fullName, distribution,nil, "ALERT")
+    commsObject:SendCommMessage(self.liveSessionPrefixes.reqPre, fullName, distribution,nil, "ALERT")
 end
 
 ---Sends a map ping
@@ -139,7 +139,7 @@ function MDT:LiveSession_SendPing(x, y, sublevel)
         local distribution = self:IsPlayerInGroup()
         if distribution then
             local scale = self:GetScale()
-            MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.ping, x*(1/scale)..":"..y*(1/scale)..":"..sublevel, distribution, nil, "ALERT")
+            commsObject:SendCommMessage(self.liveSessionPrefixes.ping, x*(1/scale)..":"..y*(1/scale)..":"..sublevel, distribution, nil, "ALERT")
         end
     end
 end
@@ -150,7 +150,7 @@ function MDT:LiveSession_SendObject(obj)
         local distribution = self:IsPlayerInGroup()
         if distribution then
             local export = MDT:TableToString(obj,false,5)
-            MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.obj, export, distribution, nil, "ALERT")
+            commsObject:SendCommMessage(self.liveSessionPrefixes.obj, export, distribution, nil, "ALERT")
         end
     end
 end
@@ -160,7 +160,7 @@ function MDT:LiveSession_SendObjectOffsets(objIdx, x, y)
     if self:GetCurrentPreset().uid == self.livePresetUID then
         local distribution = self:IsPlayerInGroup()
         if distribution then
-            MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.objOff, objIdx..":"..x..":"..y, distribution, nil, "ALERT")
+            commsObject:SendCommMessage(self.liveSessionPrefixes.objOff, objIdx..":"..x..":"..y, distribution, nil, "ALERT")
         end
     end
 end
@@ -171,7 +171,7 @@ function MDT:LiveSession_SendUpdatedObjects(changedObjects)
         local distribution = self:IsPlayerInGroup()
         if distribution then
             local export = MDT:TableToString(changedObjects,false,5)
-            MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.objChg, export, distribution, nil, "ALERT")
+            commsObject:SendCommMessage(self.liveSessionPrefixes.objChg, export, distribution, nil, "ALERT")
         end
     end
 end
@@ -181,7 +181,7 @@ function MDT:LiveSession_SendCommand(cmd)
     if self:GetCurrentPreset().uid == self.livePresetUID then
         local distribution = self:IsPlayerInGroup()
         if distribution then
-            MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.cmd, cmd, distribution, nil, "ALERT")
+            commsObject:SendCommMessage(self.liveSessionPrefixes.cmd, cmd, distribution, nil, "ALERT")
         end
     end
 end
@@ -192,7 +192,7 @@ function MDT:LiveSession_SendNoteCommand(cmd, noteIdx, text, y)
         local distribution = self:IsPlayerInGroup()
         if distribution then
             text = text..":"..(y or "0")
-            MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.note, cmd..":"..noteIdx..":"..text, distribution, nil, "ALERT")
+            commsObject:SendCommMessage(self.liveSessionPrefixes.note, cmd..":"..noteIdx..":"..text, distribution, nil, "ALERT")
         end
     end
 end
@@ -205,7 +205,7 @@ function MDT:LiveSession_SendPreset(preset)
         preset.mdiEnabled = db.MDI.enabled
         preset.difficulty = db.currentDifficulty
         local export = MDT:TableToString(preset,false,5)
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.preset, export, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.preset, export, distribution, nil, "ALERT")
     end
 end
 
@@ -214,7 +214,7 @@ function MDT:LiveSession_SendPulls(pulls)
     local distribution = self:IsPlayerInGroup()
     if distribution then
         local msg = MDT:TableToString(pulls,false,5)
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.pull, msg, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.pull, msg, distribution, nil, "ALERT")
     end
 end
 
@@ -222,7 +222,7 @@ end
 function MDT:LiveSession_SendAffixWeek(week)
     local distribution = self:IsPlayerInGroup()
     if distribution then
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.week, week.."", distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.week, week.."", distribution, nil, "ALERT")
     end
 end
 
@@ -232,7 +232,7 @@ function MDT:LiveSession_SendFreeholdSelector(value, week)
     if distribution then
         value = value and "T:" or "F:"
         local msg = value..week
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.free, msg, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.free, msg, distribution, nil, "ALERT")
     end
 end
 
@@ -241,7 +241,7 @@ function MDT:LiveSession_SendBoralusSelector(faction)
     local distribution = self:IsPlayerInGroup()
     if distribution then
         local msg = faction..""
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.bora, msg, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.bora, msg, distribution, nil, "ALERT")
     end
 end
 
@@ -250,7 +250,7 @@ function MDT:LiveSession_SendMDI(action, data)
     local distribution = self:IsPlayerInGroup()
     if distribution then
         local msg = action..":"..data
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.mdi, msg, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.mdi, msg, distribution, nil, "ALERT")
     end
 end
 
@@ -272,7 +272,7 @@ function MDT:LiveSession_SendCorruptedPositions(offsets)
     local distribution = self:IsPlayerInGroup()
     if distribution then
         local export = MDT:TableToString(offsets,false,5)
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.corrupted, export, distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.corrupted, export, distribution, nil, "ALERT")
     end
 end
 
@@ -281,6 +281,6 @@ function MDT:LiveSession_SendDifficulty()
     local distribution = self:IsPlayerInGroup()
     if distribution then
         local export = self:GetDB().currentDifficulty
-        MDTcommsObject:SendCommMessage(self.liveSessionPrefixes.difficulty, export.."", distribution, nil, "ALERT")
+        commsObject:SendCommMessage(self.liveSessionPrefixes.difficulty, export.."", distribution, nil, "ALERT")
     end
 end

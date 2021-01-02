@@ -1,6 +1,7 @@
 local dungeonIndex = 5
 local nerfMultiplier = 1
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=206,teeming=242,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {--Eye of Azshara
 	[1] = {

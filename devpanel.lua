@@ -1,5 +1,5 @@
 local AceGUI = LibStub("AceGUI-3.0")
-local MDT = MDT
+local MDT = DungeonTools
 local db
 local tonumber,tinsert,slen,pairs,ipairs,tostring,next,type,sformat = tonumber,table.insert,string.len,pairs,ipairs,tostring,next,type,string.format
 local UnitName,UnitGUID,UnitCreatureType,UnitHealthMax,UnitLevel = UnitName,UnitGUID,UnitCreatureType,UnitHealthMax,UnitLevel

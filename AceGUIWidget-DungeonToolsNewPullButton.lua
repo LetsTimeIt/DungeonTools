@@ -1,5 +1,6 @@
 local Type, Version = "MDTNewPullButton", 1
 local AceGUI = LibStub and LibStub("AceGUI-3.0", true)
+local MDT = DungeonTools
 local L = MDT.L
 local width,height = 248,32
 
