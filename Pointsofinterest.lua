@@ -644,7 +644,7 @@ function MDT:DrawAllAnimatedLines()
             MDT:HideAnimatedLine(blip.animatedLine)
         elseif blip.data.corrupted and blip.selected then
             local connectedFrame
-            local _,active = MDT.poi_framePools:GetPool("DungeonToolsVignettePinTemplate"):EnumerateActive()
+            local _,active = MDT.poi_framePools:GetPool("VignettePinTemplate"):EnumerateActive()
             for poiFrame,_ in pairs(active) do
                 if poiFrame.spireIndex and poiFrame.npcId and poiFrame.npcId == blip.data.id then
                     connectedFrame = poiFrame
@@ -659,7 +659,7 @@ function MDT:DrawAllAnimatedLines()
         end
     end
     --draw lines from active spires to doors when their associated npc is dragged into other sublevel
-    local _,activeSpires = MDT.poi_framePools:GetPool("DungeonToolsVignettePinTemplate"):EnumerateActive()
+    local _,activeSpires = MDT.poi_framePools:GetPool("VignettePinTemplate"):EnumerateActive()
     for poiFrame,_ in pairs(activeSpires) do
         if poiFrame.spireIndex and poiFrame.npcId and not poiFrame.isSpire and not poiFrame.animatedLine then
             local connectedDoor = MDT:FindConnectedDoor(poiFrame.npcId,1)
