@@ -1,6 +1,7 @@
 local dungeonIndex = 12
 local nerfMultiplier = 1
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=392,teeming=466,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] ={ --The Arcway
     [1] = {

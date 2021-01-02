@@ -2,7 +2,7 @@
 ..\FrameXML\UI.xsd">
     <Script file="DungeonEnemies.lua"/>
 
-    <Button name="MDTDungeonEnemyTemplate" enableMouse="true" virtual="true" mixin="MDTDungeonEnemyMixin">
+    <Button name="DungeonToolsEnemyTemplate" enableMouse="true" virtual="true" mixin="DungeonToolsEnemyMixin">
 
         <Layers>
 
@@ -137,5 +137,5 @@
             <OnClick method="OnClick"/>
         </Scripts>
     </Button>
-    <Frame name="MDTAnimatedLineTemplate" virtual="true"/>
+    <Frame name="DungeonToolsAnimatedLineTemplate" virtual="true"/>
 </Ui>

@@ -1,4 +1,4 @@
-local MDT = MDT
+local MDT = DungeonTools
 local L = MDT.L
 local dungeonIndex = 29
 MDT.mapInfo[dungeonIndex] = {

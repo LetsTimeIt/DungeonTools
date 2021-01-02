@@ -1,6 +1,6 @@
 local ButtonType, ButtonVersion = "MDTSpellButton", 1
 local AceGUI = LibStub and LibStub("AceGUI-3.0", true)
-
+local MDT = DungeonTools
 local width,height = 248,32
 local tinsert,SetPortraitToTexture,SetPortraitTextureFromCreatureDisplayID,GetItemQualityColor,MouseIsOver = table.insert,SetPortraitToTexture,SetPortraitTextureFromCreatureDisplayID,GetItemQualityColor,MouseIsOver
 

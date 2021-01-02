@@ -44,9 +44,9 @@ SLASH_DUNGEONTOOLS1 = "/mplus"
 SLASH_DUNGEONTOOLS2 = "/mdt"
 SLASH_DUNGEONTOOLS3 = "/dungeontools"
 
-BINDING_NAME_MDTTOGGLE = L["Toggle Window"]
-BINDING_NAME_MDTNPC = L["New NPC at Cursor Position"]
-BINDING_NAME_MDTWAYPOINT = L["New Patrol Waypoint at Cursor Position"]
+BINDING_NAME_DungeonToolsToggle = L["Toggle Window"]
+BINDING_NAME_DungeonToolsNPC = L["New NPC at Cursor Position"]
+BINDING_NAME_DungeonToolsWaypoint = L["New Patrol Waypoint at Cursor Position"]
 
 function SlashCmdList.DUNGEONTOOLS(cmd, editbox)
 	local rqst, arg = strsplit(' ', cmd)
@@ -149,23 +149,6 @@ do
 				icon:Show("DungeonTools")
 			end
 
-            --if db.dataCollectionActive then MDT.DataCollection:Init() end
-            --fix db corruption
-            do
-                for _,presets in pairs(db.presets) do
-                    for presetIdx,preset in pairs(presets) do
-                        if presetIdx == 1 then
-                            if preset.text ~= "Default" then
-                                preset.text = "Default"
-                                preset.value = {}
-                            end
-                        end
-                    end
-                end
-                for k,v in pairs(db.currentPreset) do
-                    if v <= 0 then db.currentPreset[k] = 1 end
-                end
-            end
             --register AddOn Options
             MDT:RegisterOptions()
             self:UnregisterEvent("ADDON_LOADED")

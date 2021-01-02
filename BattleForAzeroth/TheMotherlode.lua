@@ -1,4 +1,4 @@
-local MDT = MDT
+local MDT = DungeonTools
 local L = MDT.L
 local dungeonIndex = 21
 MDT.dungeonTotalCount[dungeonIndex] = {normal=384,teeming=460,teemingEnabled=true}

@@ -1,3 +1,3 @@
 local AddonName, MDT = ...
-_G["MDT"] = MDT
+_G["DungeonTools"] = MDT
 MDT.L = {}

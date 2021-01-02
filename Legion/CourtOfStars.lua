@@ -1,6 +1,7 @@
 local dungeonIndex = 3
 local nerfMultiplier = 1
 local pi = math.pi
+local MDT = DungeonTools
 MDT.dungeonTotalCount[dungeonIndex] = {normal=160,teeming=192,teemingEnabled=true}
 MDT.dungeonBosses[dungeonIndex] = {--Court of Stars
 	[1] = {
