@@ -1784,7 +1784,6 @@ MDT.dungeonEnemies[dungeonIndex] = {
             };
             [25] = {
                 ["sublevel"] = 1;
-                ["inspiring"] = true;
                 ["y"] = -294.79205566701;
                 ["g"] = 36;
                 ["x"] = 360.67591917998;
