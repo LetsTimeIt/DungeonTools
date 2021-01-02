@@ -641,8 +641,35 @@ function MDT:GetDB()
 end
 
 local framesInitialized
+
+function MDT:ImportFromLegacyMDT()
+    mdtDb = LibStub("AceDB-3.0"):New("MythicDungeonToolsDB", defaultSavedVars).global
+    for dungeonIdx,presets in pairs(mdtDb.presets) do
+        if not db.presets[dungeonIdx] then
+            db.presets[dungeonIdx] = {}
+        end
+        oldPresetLen = #db.presets[dungeonIdx]
+        newPresetLen = #presets
+        -- Quick hack
+        db.presets[dungeonIdx][newPresetLen] = MDT:DeepCopy(db.presets[dungeonIdx][oldPresetLen])
+        currentIdx = oldPresetLen
+        for _,preset in pairs(presets) do
+            if preset["text"] ~= "Default" and preset["text"] ~= "<New Preset>" then
+                db.presets[dungeonIdx][currentIdx] = MDT:DeepCopy(preset)
+                db.presets[dungeonIdx][currentIdx]["text"] = preset["text"].." (Imported)";
+                currentIdx = currentIdx + 1
+            end
+        end
+    end
+    db.Imported = true
+end
 function MDT:ShowInterface(force)
     if not framesInitialized then initFrames() end
+    
+    if not db.Imported then
+        MDT:ImportFromLegacyMDT()
+    end
+
 	if self.main_frame:IsShown() and not force then
 		MDT:HideInterface()
 	else
