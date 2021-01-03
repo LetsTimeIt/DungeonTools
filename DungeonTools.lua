@@ -643,16 +643,16 @@ end
 local framesInitialized
 
 function MDT:ImportFromLegacyMDT()
-    mdtDb = LibStub("AceDB-3.0"):New("MythicDungeonToolsDB", defaultSavedVars).global
+    local mdtDb = LibStub("AceDB-3.0"):New("MythicDungeonToolsDB", defaultSavedVars).global
     for dungeonIdx,presets in pairs(mdtDb.presets) do
         if not db.presets[dungeonIdx] then
             db.presets[dungeonIdx] = {}
         end
-        oldPresetLen = #db.presets[dungeonIdx]
-        newPresetLen = #presets
+        local oldPresetLen = #db.presets[dungeonIdx]
+        local newPresetLen = #presets
         -- Quick hack
         db.presets[dungeonIdx][newPresetLen] = MDT:DeepCopy(db.presets[dungeonIdx][oldPresetLen])
-        currentIdx = oldPresetLen
+        local currentIdx = oldPresetLen
         for _,preset in pairs(presets) do
             if preset["text"] ~= "Default" and preset["text"] ~= "<New Preset>" then
                 db.presets[dungeonIdx][currentIdx] = MDT:DeepCopy(preset)
@@ -669,6 +669,8 @@ function MDT:ShowInterface(force)
     if not db.Imported then
         MDT:ImportFromLegacyMDT()
     end
+    
+    MDT:SanitizePresets()
 
 	if self.main_frame:IsShown() and not force then
 		MDT:HideInterface()
@@ -2793,7 +2795,23 @@ function MDT:CreateDungeonSelectDropdown(frame)
 
 	MDT:UpdateDungeonDropDown()
 end
-
+function MDT:SanitizePresets()
+    for dungeonIdx,presets in pairs(db.presets) do
+        local out = {}
+        local firstIdx = 1
+        for presetIdx,preset in pairs(presets) do
+            if MDT:ValidateImportPreset(preset) == false and presetIdx ~= 1 and presetIdx ~= #presets then
+                if presetIdx == db.currentPreset[dungeonIdx] then
+                    db.currentPreset[dungeonIdx] = 1
+                end
+            else
+                out[firstIdx] = MDT:DeepCopy(preset)
+                firstIdx = firstIdx + 1
+            end
+        end
+        db.presets[dungeonIdx] = MDT:DeepCopy(out)
+    end
+end
 ---EnsureDBTables
 ---Makes sure profiles are valid and have their fields set
 function MDT:EnsureDBTables()
