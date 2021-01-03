@@ -2803,7 +2803,18 @@ function MDT:EnsureDBTables()
     end
     local preset = MDT:GetCurrentPreset()
     preset.week = preset.week or MDT:GetCurrentAffixWeek()
-	db.currentPreset[db.currentDungeonIdx] = db.currentPreset[db.currentDungeonIdx] or 1
+    db.currentPreset[db.currentDungeonIdx] = db.currentPreset[db.currentDungeonIdx] or 1
+    if type(db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]]) ~= "table" then
+        db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]] = {}
+    end
+    if type(db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value) ~= "table" then
+        db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value = {
+            ["currentDungeonIdx"] = db.currentDungeonIdx;
+            ["currentSublevel"] = 1;
+            ["currentPull"] = 1;
+            ["pulls"] = {};
+        }
+    end
     db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentDungeonIdx = db.currentDungeonIdx
 	db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel = db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentSublevel or 1
 	db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentPull = db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.currentPull or 1
