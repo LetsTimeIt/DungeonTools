@@ -23,6 +23,23 @@
 - Ingame sharing functions to share routes to party members
 - Live mode for co-operative editing of routes, including drawing, selecting enemies and more!
 
+## Installation
+
+### Directly From [CurseForge](https://www.curseforge.com/) (Recomended)
+
+You can install Dungeon Tools with the addon manager of your choice ([Ajour](https://www.getajour.com/), [CurseForge](https://curseforge.overwolf.com/), [WowUp](https://wowup.io/), ...). It is officially available on [CurseForge](https://www.curseforge.com/wow/addons/dungeon-tools).
+
+### Directly From GitHub
+
+Alternatively, you can install it with [Ajour](https://www.getajour.com/) or [WowUp](https://wowup.io/) directly from GitHub. Just add the repository URL in the place intended by the addon manager of your choice.
+
+### Download ZIP Archive (Not Recommended)
+
+You can also download the latest zip archive from the [GitHub release page](https://github.com/LetsTimeIt/DungeonTools/releases), unzip it and copy the `DungeonTools` folder into your `\_retail_\Interface\AddOns` folder.
+
+> **NOTE:** This installation method has no update functionality whatsoever.
+To quickly get bug fixes or new features, we suggest using one of the two previously mentioned installation methods.
+
 ## Slash Commands
 
 - /dungeontools
