@@ -1,5 +1,10 @@
 local AddonName, MDT = ...
 _G["DungeonTools"] = MDT
+
+if not _G["MDT"] then
+    _G["MDT"] = MDT
+end
+
 local _L = {}
 MDT.L = {}
 local i18nMetaTable = {
