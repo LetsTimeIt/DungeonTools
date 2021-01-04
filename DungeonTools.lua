@@ -800,6 +800,21 @@ function MDT:CreateMenu()
     highlight:SetPoint("TOPRIGHT", resizer, -6, 0)
     resizer:SetHighlightTexture(highlight)
 
+    -- Lock Enemy data on map
+    self.main_frame.lockButton = CreateFrame("Button", "DungeonToolsLockEnemyButton", self.main_frame, "UIPanelCloseButton")
+    db.mapEnemiesLocked = db.mapEnemiesLocked or false
+    local lockToolsButton = self.main_frame.lockButton
+    local lockButtonTexture = (db.mapEnemiesLocked and "Interface\\Buttons\\LockButton-Locked-Up" or "Interface\\Buttons\\LockButton-Unlocked-Up")
+
+    lockToolsButton:ClearAllPoints()
+    lockToolsButton:SetPoint("TOPRIGHT", self.main_frame, "TOPRIGHT", -5, -5)
+    lockToolsButton.Icon = lockToolsButton:CreateTexture(nil, "OVERLAY")
+    lockToolsButton.Icon:SetTexture(lockButtonTexture)
+    lockToolsButton.Icon:SetSize(50,50)
+    lockToolsButton.Icon:SetPoint("CENTER",lockToolsButton,"CENTER")
+    lockToolsButton:SetScript("OnClick", function() self:LockEnemyPullData() end)
+    lockToolsButton:SetFrameLevel(4)
+    lockToolsButton.tooltip = L["Lock enemy data"]
 end
 
 function MDT:SkinMenuButtons()
@@ -989,6 +1004,14 @@ function MDT:Minimize()
     MDT:CreateTutorialButton(MDT.main_frame)
 
     db.maximized = false
+end
+
+function DungeonTools:LockEnemyPullData()
+    db.mapEnemiesLocked = not db.mapEnemiesLocked
+
+    local lockToolsButton = self.main_frame.lockButton
+    local lockButtonTexture = (db.mapEnemiesLocked and "Interface\\Buttons\\LockButton-Locked-Up" or "Interface\\Buttons\\LockButton-Unlocked-Up")
+    lockToolsButton.Icon:SetTexture(lockButtonTexture)
 end
 
 function MDT:SkinProgressBar(progressBar)
