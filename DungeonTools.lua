@@ -187,9 +187,6 @@ do
             C_MythicPlus.RequestCurrentAffixes()
             C_MythicPlus.RequestMapInfo()
             C_MythicPlus.RequestRewards()
-            if not MDT then
-                MDT = DungeonTools
-            end
         end)
         self:UnregisterEvent("PLAYER_ENTERING_WORLD")
     end
