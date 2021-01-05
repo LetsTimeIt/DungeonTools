@@ -307,9 +307,9 @@ local function setUpMouseHandlersAwakened(self,clone,scale,riftOffsets)
 end
 
 function DungeonToolsEnemyMixin:OnClick(button, down)
-    local mapEnemiesLocked = db.mapEnemiesLocked
+    local readOnlyMode = MDT:GetReadOnlyMode()
 
-    if button == "LeftButton" and mapEnemiesLocked == false then
+    if button == "LeftButton" and readOnlyMode == false then
         if IsShiftKeyDown() then
             local newPullIdx = MDT:GetCurrentPull() + 1
             MDT:PresetsAddPull(newPullIdx)
@@ -361,7 +361,7 @@ function DungeonToolsEnemyMixin:OnClick(button, down)
                 MDT:LiveSession_SendCorruptedPositions(preset.value.riftOffsets)
             end
         end
-    elseif button == "LeftButton" and mapEnemiesLocked == true then
+    elseif button == "LeftButton" and readOnlyMode == true then
         -- TODO: once enemy/route data is cleaned up we can hopefully add a reference to which pull this enemy belongs to
         return
     elseif button == "RightButton" then
