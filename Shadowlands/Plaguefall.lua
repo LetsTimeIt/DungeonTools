@@ -35,7 +35,7 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -206.05610428963;
             ["x"] = 526.13877822732;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating Doctor Ickus";
+            ["graveyardDescription"] = L["Unlocks after defeating Doctor Ickus"];
             ["type"] = "graveyard";
         };
     };

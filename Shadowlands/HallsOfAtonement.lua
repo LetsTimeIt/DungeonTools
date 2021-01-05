@@ -39,7 +39,7 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -302.53005735223;
             ["x"] = 722.86101816291;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "There are no other graveyards in this dungeon";
+            ["graveyardDescription"] = L["There are no other graveyards in this dungeon"];
             ["type"] = "graveyard";
         };
     };

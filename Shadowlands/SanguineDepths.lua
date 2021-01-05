@@ -21,7 +21,7 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -259.07489011866;
             ["x"] = 184.71199984255;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Anima Cage";
+            ["text"] = L["Anima Cage"];
             ["type"] = "generalNote";
         };
         [3] = {
@@ -35,35 +35,35 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -436.17147895239;
             ["x"] = 561.46025332905;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Anima Cage";
+            ["text"] = L["Anima Cage"];
             ["type"] = "generalNote";
         };
         [5] = {
             ["y"] = -326.88341164447;
             ["x"] = 469.8798150419;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Anima Cage";
+            ["text"] = L["Anima Cage"];
             ["type"] = "generalNote";
         };
         [6] = {
             ["y"] = -230.52642909355;
             ["x"] = 626.04969656705;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Anima Cage";
+            ["text"] = L["Anima Cage"];
             ["type"] = "generalNote";
         };
         [7] = {
             ["y"] = -98.675708844608;
             ["x"] = 408.65728113078;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating Kryxis the Voracious";
+            ["graveyardDescription"] = L["Unlocks after defeating Kryxis the Voracious"];
             ["type"] = "graveyard";
         };
         [8] = {
             ["y"] = -342.44570099325;
             ["x"] = 518.54572171996;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating Executor Tarvold";
+            ["graveyardDescription"] = L["Unlocks after defeating Executor Tarvold"];
             ["type"] = "graveyard";
         };
     };
@@ -81,14 +81,14 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -82.103783423492;
             ["x"] = 478.46309353475;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Anima Cage";
+            ["text"] = L["Anima Cage"];
             ["type"] = "generalNote";
         };
         [3] = {
             ["y"] = -389.30835353697;
             ["x"] = 486.68938918971;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating Grand Proctor Beryllia";
+            ["graveyardDescription"] = L["Unlocks after defeating Grand Proctor Beryllia"];
             ["type"] = "graveyard";
         };
     };
