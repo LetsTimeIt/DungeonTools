@@ -6,31 +6,14 @@ local canvasDrawLayer = "BORDER"
 local strsub = string.sub
 local lastUpdatedDungeonIdx
 
-local twipe,
-    tinsert,
-    tremove,
-    tgetn,
-    CreateFrame,
-    tonumber,
-    pi,
-    max,
-    min,
-    atan2,
-    abs,
-    pairs,
-    ipairs,
-    GetCursorPosition,
-    GameTooltip =
-    table.wipe,
+local tinsert, tremove, CreateFrame, tonumber, pi, max, min, abs, pairs, ipairs, GetCursorPosition, GameTooltip =
     table.insert,
     table.remove,
-    table.getn,
     CreateFrame,
     tonumber,
     math.pi,
     math.max,
     math.min,
-    math.atan2,
     math.abs,
     pairs,
     ipairs,
@@ -85,7 +68,7 @@ BINDING_NAME_DungeonToolsNPC = L["New NPC at Cursor Position"]
 BINDING_NAME_DungeonToolsWaypoint = L["New Patrol Waypoint at Cursor Position"]
 
 function SlashCmdList.DUNGEONTOOLS(cmd, editbox)
-    local rqst, arg = strsplit(" ", cmd)
+    local rqst, _ = strsplit(" ", cmd)
     if rqst == "devmode" then
         MDT:ToggleDevMode()
     elseif rqst == "reset" then
@@ -889,7 +872,7 @@ end
 function MDT:SkinMenuButtons()
     --attempt to skin close button for ElvUI
     if IsAddOnLoaded("ElvUI") then
-        local E, L, V, P, G = unpack(ElvUI)
+        local E, _, _, _, _ = unpack(ElvUI)
         local S
         if E then
             S = E:GetModule("Skins")
@@ -1087,7 +1070,7 @@ function MDT:SkinProgressBar(progressBar)
     bar.Icon:Hide()
     bar.IconBG:Hide()
     if IsAddOnLoaded("ElvUI") then
-        local E, L, V, P, G = unpack(ElvUI)
+        local E, _, _, _, _ = unpack(ElvUI)
         if bar.BarFrame then
             bar.BarFrame:Hide()
         end
@@ -1378,7 +1361,7 @@ function MDT:MakeSidePanel(frame)
     --button fontInstance
     local fontInstance = CreateFont("MDTButtonFont")
     fontInstance:CopyFontObject(frame.sidePanelNewButton.frame:GetNormalFontObject())
-    local fontName, height = fontInstance:GetFont()
+    local fontName, _ = fontInstance:GetFont()
     fontInstance:SetFont(fontName, 10)
     frame.sidePanelNewButton.frame:SetNormalFontObject(fontInstance)
     frame.sidePanelNewButton.frame:SetHighlightFontObject(fontInstance)
@@ -2204,7 +2187,7 @@ function MDT:DisplayMDISelector()
         MDT.MDISelector.BeguilingDropDown:SetList(beguilingList)
         MDT.MDISelector.BeguilingDropDown:SetCallback(
             "OnValueChanged",
-            function(widget, callbackName, key)
+            function(widgetArg, callbackName, key)
                 local preset = self:GetCurrentPreset()
                 preset.mdi.beguiling = key
                 db.currentSeason = self:GetEffectivePresetSeason(preset)
@@ -2227,7 +2210,7 @@ function MDT:DisplayMDISelector()
         MDT.MDISelector.FreeholdDropDown:SetList(freeholdList)
         MDT.MDISelector.FreeholdDropDown:SetCallback(
             "OnValueChanged",
-            function(widget, callbackName, key)
+            function(widgetArg, callbackName, key)
                 local preset = MDT:GetCurrentPreset()
                 preset.mdi.freehold = key
                 if preset.mdi.freeholdJoined then
@@ -2247,7 +2230,7 @@ function MDT:DisplayMDISelector()
         MDT.MDISelector.FreeholdCheck:SetLabel(L["Join Crew"])
         MDT.MDISelector.FreeholdCheck:SetCallback(
             "OnValueChanged",
-            function(widget, callbackName, value)
+            function(widgetArg, callbackName, value)
                 local preset = MDT:GetCurrentPreset()
                 preset.mdi.freeholdJoined = value
                 MDT:DungeonEnemies_UpdateFreeholdCrew()
@@ -2430,9 +2413,6 @@ function MDT:OnPanFadeOut(deltaTime)
 end
 
 function MDT:ExportCurrentZoomPanSettings()
-    local mainFrame = MDTMapPanelFrame
-    local scrollFrame = MDTScrollFrame
-
     local zoom = MDTMapPanelFrame:GetScale()
     local panH = MDTScrollFrame:GetHorizontalScroll() / MDT:GetScale()
     local panV = MDTScrollFrame:GetVerticalScroll() / MDT:GetScale()
@@ -2566,7 +2546,7 @@ function MDT:UpdatePullTooltip(tooltip)
          then
             --enemy portraits
             local showData
-            for k, v in pairs(frame.sidePanel.newPullButtons[tooltip.currentPull].enemyPortraits) do
+            for _, v in pairs(frame.sidePanel.newPullButtons[tooltip.currentPull].enemyPortraits) do
                 if MouseIsOver(v) then
                     if v:IsShown() then
                         --model
@@ -2615,7 +2595,7 @@ function MDT:UpdatePullTooltip(tooltip)
             end
 
             local countEnemies = 0
-            for k, v in pairs(frame.sidePanel.newPullButtons[tooltip.currentPull].enemyPortraits) do
+            for _, v in pairs(frame.sidePanel.newPullButtons[tooltip.currentPull].enemyPortraits) do
                 if v:IsShown() then
                     countEnemies = countEnemies + 1
                 end
@@ -2652,7 +2632,7 @@ function MDT:CountForces(currentPull, currentOnly)
             if pullIdx <= currentPull then
                 for enemyIdx, clones in pairs(pull) do
                     if tonumber(enemyIdx) then
-                        for k, v in pairs(clones) do
+                        for _, v in pairs(clones) do
                             if MDT:IsCloneIncluded(enemyIdx, v) then
                                 local count =
                                     teeming and self.dungeonEnemies[db.currentDungeonIdx][enemyIdx].teemingCount or
@@ -2826,13 +2806,13 @@ function MDT:GetCurrentLivePreset()
         return
     end
     if self.liveUpdateFrameOpen then
-        for fullName, cachedPreset in pairs(self.transmissionCache) do
+        for _, cachedPreset in pairs(self.transmissionCache) do
             if cachedPreset.uid == self.livePresetUID then
                 return cachedPreset
             end
         end
     end
-    for dungeonIdx, presets in pairs(db.presets) do
+    for _, presets in pairs(db.presets) do
         for presetIdx, preset in pairs(presets) do
             if preset.uid and preset.uid == self.livePresetUID then
                 return preset, presetIdx
@@ -3336,7 +3316,7 @@ function MDT:EnsureDBTables()
     end
 
     --detect gaps in pull list and delete invalid pulls
-    for k, v in pairs(preset.value.pulls) do
+    for k, _ in pairs(preset.value.pulls) do
         if k == 0 or k > #preset.value.pulls then
             preset.value.pulls[k] = nil
         end
@@ -3352,7 +3332,7 @@ function MDT:EnsureDBTables()
             #db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.pulls
     end
 
-    for k, v in pairs(db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.pulls) do
+    for k, _ in pairs(db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.pulls) do
         if k == 0 then
             db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.pulls[0] = nil
             break
@@ -3360,7 +3340,7 @@ function MDT:EnsureDBTables()
     end
 
     --removed clones: remove data from presets
-    for pullIdx, pull in pairs(preset.value.pulls) do
+    for _, pull in pairs(preset.value.pulls) do
         for enemyIdx, clones in pairs(pull) do
             if tonumber(enemyIdx) then
                 --enemy does not exist at all anymore
@@ -3470,7 +3450,7 @@ function MDT:UpdateMap(ignoreSetSelection, ignoreReloadPullButtons, ignoreUpdate
     end
     --handle delete button disable/enable
     local presetCount = 0
-    for k, v in pairs(db.presets[db.currentDungeonIdx]) do
+    for _, _ in pairs(db.presets[db.currentDungeonIdx]) do
         presetCount = presetCount + 1
     end
     if
@@ -3733,7 +3713,7 @@ MDT.zoneIdToDungeonIdx = {
         ["subzone"] = 4
     }
 }
-local lastUpdatedDungeonIdx
+
 function MDT:CheckCurrentZone(init)
     local zoneId = C_Map.GetBestMapForUnit("player")
     local dungeonIdx = MDT.zoneIdToDungeonIdx[zoneId]
@@ -3742,7 +3722,7 @@ function MDT:CheckCurrentZone(init)
         return
     end
 
-    local dungeon = 0
+    local dungeon
     local floor = 1
     -- If it's a table (new format, we load up the values)
     if type(dungeonIdx) == "table" then
@@ -3798,7 +3778,7 @@ function MDT:CreateNewPreset(name)
     end
     local duplicate = false
     local countPresets = 0
-    for k, v in pairs(db.presets[db.currentDungeonIdx]) do
+    for _, v in pairs(db.presets[db.currentDungeonIdx]) do
         countPresets = countPresets + 1
         if v.text == name then
             duplicate = true
@@ -3839,7 +3819,7 @@ function MDT:SanitizePresetName(text)
     else
         local duplicate = false
         local countPresets = 0
-        for k, v in pairs(db.presets[db.currentDungeonIdx]) do
+        for _, v in pairs(db.presets[db.currentDungeonIdx]) do
             countPresets = countPresets + 1
             if v.text == text then
                 duplicate = true
@@ -4121,7 +4101,7 @@ function MDT:ImportPreset(preset, fromLiveSession)
         db.MDI.enabled = mdiEnabled
         local name = preset.text
         local num = 2
-        for k, v in pairs(db.presets[db.currentDungeonIdx]) do
+        for _, v in pairs(db.presets[db.currentDungeonIdx]) do
             if name == v.text then
                 name = preset.text .. " " .. num
                 num = num + 1
@@ -4136,7 +4116,7 @@ function MDT:ImportPreset(preset, fromLiveSession)
             preset.uid = nil
         end
         local countPresets = 0
-        for k, v in pairs(db.presets[db.currentDungeonIdx]) do
+        for _, _ in pairs(db.presets[db.currentDungeonIdx]) do
             countPresets = countPresets + 1
         end
         db.presets[db.currentDungeonIdx][countPresets + 1] = db.presets[db.currentDungeonIdx][countPresets] --put <New Preset> at the end of the list
@@ -4295,9 +4275,8 @@ end
 ---Function executes full coloring of a pull and it's blips
 function MDT:ColorPull(colorValues, pullIdx, preset, bypass, exportColorBlind) -- bypass can be passed as true to color even when automatic coloring is toggled off
     local colorPaletteInfo = MDT:GetPresetColorPaletteInfo(preset)
-    local pullIdx = pullIdx or MDT:GetCurrentPull()
+    pullIdx = pullIdx or MDT:GetCurrentPull()
     if (pullIdx) then
-        local colorValues
         local numberColors
         local r, g, b
         if colorPaletteInfo.autoColoring or bypass == true then
@@ -4671,7 +4650,7 @@ function MDT:SetMapSublevel(pull)
         db.presets[db.currentDungeonIdx][db.currentPreset[db.currentDungeonIdx]].value.pulls[pull]
     ) do
         if tonumber(enemyIdx) then
-            for idx, cloneIdx in pairs(clones) do
+            for _, cloneIdx in pairs(clones) do
                 if MDT.dungeonEnemies[db.currentDungeonIdx][enemyIdx]["clones"][cloneIdx] then
                     lastSubLevel = MDT.dungeonEnemies[db.currentDungeonIdx][enemyIdx]["clones"][cloneIdx].sublevel
                 end
@@ -4698,7 +4677,7 @@ function MDT:SetSelectionToPull(pull)
     --if pull is not specified set pull to last pull in preset (for adding new pulls)
     if not pull then
         local count = 0
-        for k, v in pairs(MDT:GetCurrentPreset().value.pulls) do
+        for _, _ in pairs(MDT:GetCurrentPreset().value.pulls) do
             count = count + 1
         end
         pull = count
@@ -4744,7 +4723,7 @@ function MDT:UpdatePullButtonNPCData(idx)
                     local creatureType = MDT.dungeonEnemies[db.currentDungeonIdx][enemyIdx]["creatureType"]
                     local level = MDT.dungeonEnemies[db.currentDungeonIdx][enemyIdx]["level"]
                     local baseHealth = MDT.dungeonEnemies[db.currentDungeonIdx][enemyIdx]["health"]
-                    for k, cloneIdx in pairs(clones) do
+                    for _, cloneIdx in pairs(clones) do
                         --check if clone exists, remove if not
                         if MDT.dungeonEnemies[db.currentDungeonIdx][enemyIdx]["clones"][cloneIdx] then
                             if self:IsCloneIncluded(enemyIdx, cloneIdx) then
@@ -4779,8 +4758,10 @@ function MDT:UpdatePullButtonNPCData(idx)
     end
     frame.newPullButtons[idx]:SetNPCData(enemyTable)
 
+    --[[ Empty if, no reason?
     if db.MDI.enabled and preset.mdi.beguiling == 13 then
     end
+    --]]
     --display reaping icon
     local pullForces = MDT:CountForces(idx, false)
     local totalForcesMax =
@@ -4823,12 +4804,12 @@ function MDT:ReloadPullButtons()
     --first release all children of the scroll frame
     frame.pullButtonsScrollFrame:ReleaseChildren()
     local maxPulls = 0
-    for k, v in pairs(preset.value.pulls) do
+    for _, _ in pairs(preset.value.pulls) do
         maxPulls = maxPulls + 1
     end
     --add new children to the scrollFrame, the frames are from the widget pool so no memory is wasted
     local idx = 0
-    for k, pull in ipairs(preset.value.pulls) do
+    for _, _ in ipairs(preset.value.pulls) do
         idx = idx + 1
         frame.newPullButtons[idx] = AceGUI:Create("MDTPullButton")
         frame.newPullButtons[idx]:SetMaxPulls(maxPulls)
@@ -4855,7 +4836,7 @@ end
 ---Deselects all pull buttons
 function MDT:ClearPullButtonPicks()
     local frame = MDT.main_frame.sidePanel
-    for k, v in pairs(frame.newPullButtons) do
+    for _, v in pairs(frame.newPullButtons) do
         v:ClearPick()
     end
 end
@@ -4885,6 +4866,7 @@ function MDT:AddPull(index)
 end
 
 function MDT:SetAutomaticColor(index)
+    --[[  This function does nothing currently, sets local values returns nothing
     --if not db.colorPaletteInfo.autoColoring then return end
 
     local H = (index - 1) * 360 / 12 + 120 --db.automaticColorsNum
@@ -4904,6 +4886,7 @@ function MDT:SetAutomaticColor(index)
     --if self.liveSessionActive and self:GetCurrentPreset().uid == self.livePresetUID then
     --	self:LiveSession_QueueColorUpdate()
     --end
+    --]]
 end
 
 function MDT:UpdateAutomaticColors(index)
@@ -4955,7 +4938,7 @@ function MDT:DeletePull(index)
     self:PresetsDeletePull(index)
     self:ReloadPullButtons()
     local pullCount = 0
-    for k, v in pairs(pulls) do
+    for _, _ in pairs(pulls) do
         pullCount = pullCount + 1
     end
     if index > pullCount then
@@ -5018,7 +5001,7 @@ function MDT:MakeRenameFrame(frame)
     frame.RenameFrame.Editbox:SetCallback(
         "OnEnterPressed",
         function(...)
-            local widget, event, text = ...
+            local _, _, text = ...
             --check if name is valid, block button if so, unblock if valid
             if MDT:SanitizePresetName(text) then
                 frame.RenameFrame.PresetRenameLabel:SetText(nil)
@@ -5502,7 +5485,7 @@ function MDT:StorePresetObject(obj, ignoreScale, preset)
             obj.d[1] = obj.d[1] * (1 / scale)
             obj.d[2] = obj.d[2] * (1 / scale)
         else
-            for idx, coord in pairs(obj.l) do
+            for idx, _ in pairs(obj.l) do
                 obj.l[idx] = self:Round(obj.l[idx] * (1 / scale), 1)
             end
         end
@@ -5511,7 +5494,7 @@ function MDT:StorePresetObject(obj, ignoreScale, preset)
     preset.objects = preset.objects or {}
     --we insert the object infront of the first hidden oject
     local pos = 1
-    for k, v in ipairs(preset.objects) do
+    for _, v in ipairs(preset.objects) do
         pos = pos + 1
         if v.d[4] == false then
             pos = pos - 1
@@ -5671,7 +5654,7 @@ function MDT:PresetObjectStepBack(preset, silent)
     end
     preset.objects = preset.objects or {}
     local length = 0
-    for k, v in pairs(preset.objects) do
+    for _, _ in pairs(preset.objects) do
         length = length + 1
     end
     if length > 0 then
@@ -5696,7 +5679,7 @@ function MDT:PresetObjectStepForward(preset, silent)
     end
     preset.objects = preset.objects or {}
     local length = 0
-    for k, v in ipairs(preset.objects) do
+    for _, _ in ipairs(preset.objects) do
         length = length + 1
     end
     if length > 0 then
@@ -5785,7 +5768,7 @@ function MDT:PrintCurrentAffixes()
         [124] = L["Storming"]
     }
     local affixIds = C_MythicPlus.GetCurrentAffixes()
-    for idx, data in ipairs(affixIds) do
+    for _, data in ipairs(affixIds) do
         print(data.id, affixNames[data.id])
     end
 end
@@ -5828,12 +5811,12 @@ function MDT:DropIndicator()
         texture:SetAllPoints(indicator)
         texture:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight")
 
-        local icon = indicator:CreateTexture(nil, "OVERLAY")
-        icon:ClearAllPoints()
-        icon:SetSize(16, 16)
-        icon:SetPoint("CENTER", indicator)
+        local indicatorIcon = indicator:CreateTexture(nil, "OVERLAY")
+        indicatorIcon:ClearAllPoints()
+        indicatorIcon:SetSize(16, 16)
+        indicatorIcon:SetPoint("CENTER", indicator)
 
-        indicator.icon = icon
+        indicator.icon = indicatorIcon
         indicator.texture = texture
         MDT.main_frame.drop_indicator = indicator
 
@@ -5916,7 +5899,7 @@ function MDT:UpdatePullButtonColor(pullIdx, r, g, b)
     local button = MDT:GetPullButton(pullIdx)
 
     local function updateSwatch(t)
-        for k, v in pairs(t) do
+        for _, v in pairs(t) do
             if v.hasColorSwatch then
                 v.r, v.g, v.b = r, g, b
                 return
@@ -6035,7 +6018,7 @@ function initFrames()
                 "BorderTopLeft",
                 "BorderTopRight"
             }
-            for k, v in pairs(borderTextures) do
+            for _, v in pairs(borderTextures) do
                 tooltip[v]:Kill()
             end
             tooltip.Background:Kill()
@@ -6125,9 +6108,11 @@ function initFrames()
                     self:SetFacing(pi * 2 / 360 * self.fac)
                 end
             )
+        --[[ Unreachable Code
         else
             MDT.pullTooltip.Model:SetPortraitZoom(1)
             MDT.pullTooltip.Model:SetFacing(pi * 2 / 360 * 2)
+        --]]
         end
 
         MDT.pullTooltip.Model:SetSize(110, 110)

@@ -16,6 +16,7 @@ globals = {
     "C_MythicPlus",
     "C_Timer",
     "DungeonTools",
+    "DungeonToolsDB",
     "DungeonToolsEnemyMixin",
     "AddOnSkins",
     "BackdropTemplateMixin",

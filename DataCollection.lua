@@ -2,7 +2,6 @@
 local db
 local f
 local MDT = DungeonTools
-local commsObject = MDT.commsObject
 MDT.DataCollection = {}
 local DC = MDT.DataCollection
 function DC:Init()
@@ -30,7 +29,7 @@ function DC:AddCollectedDataToEnemyTable()
         if db.dataCollection[i] then
             for id, spells in pairs(db.dataCollection[i]) do
                 local enemies = MDT.dungeonEnemies[i]
-                for enemyIdx, enemy in pairs(enemies) do
+                for _, enemy in pairs(enemies) do
                     if enemy.id == id then
                         enemy.spells = enemy.spells or {}
                         for spellId, _ in pairs(spells) do
@@ -43,7 +42,7 @@ function DC:AddCollectedDataToEnemyTable()
         if db.dataCollectionCC[i] then
             for id, characteristics in pairs(db.dataCollectionCC[i]) do
                 local enemies = MDT.dungeonEnemies[i]
-                for enemyIdx, enemy in pairs(enemies) do
+                for _, enemy in pairs(enemies) do
                     if enemy.id == id then
                         enemy.characteristics = enemy.characteristics or {}
                         for characteristic, _ in pairs(characteristics) do
@@ -160,6 +159,7 @@ local characteristicsSpells = {
         [1098] = true
     }
 }
+--[[ cmsTimeStamp is local but never accessed in this file
 local cmsTimeStamp
 function DC.CHALLENGE_MODE_START(self, ...)
     local _, timeCM = GetWorldElapsedTime(1)
@@ -177,31 +177,18 @@ function DC.PLAYER_ENTERING_WORLD(self, ...)
     end
     cmsTimeStamp = nil
 end
-
+--]]
 function DC.COMBAT_LOG_EVENT_UNFILTERED(self, ...)
-    local timestamp,
-        subevent,
-        hideCaster,
-        sourceGUID,
-        sourceName,
-        sourceFlags,
-        sourceRaidFlags,
-        destGUID,
-        destName,
-        destFlags,
-        destRaidFlags,
-        spellId,
-        spellName,
-        spellSchool = CombatLogGetCurrentEventInfo()
+    local _, subevent, _, sourceGUID, _, _, _, destGUID, _, _, _, spellId, _, _ = CombatLogGetCurrentEventInfo()
     --enemy spells
     if trackedEvents[subevent] then
-        local unitType, _, serverId, instanceId, zoneId, id, spawnUid = strsplit("-", sourceGUID)
+        local _, _, _, _, _, id, _ = strsplit("-", sourceGUID)
         id = tonumber(id)
         --dungeon
         for i = 29, 36 do
             local enemies = MDT.dungeonEnemies[i]
             --enemy
-            for enemyIdx, enemy in pairs(enemies) do
+            for _, enemy in pairs(enemies) do
                 if enemy.id == id then
                     db.dataCollection[i] = db.dataCollection[i] or {}
                     db.dataCollection[i][id] = db.dataCollection[i][id] or {}
@@ -215,14 +202,14 @@ function DC.COMBAT_LOG_EVENT_UNFILTERED(self, ...)
     end
     --characteristics
     if subevent == "SPELL_AURA_APPLIED" then
-        local unitType, _, serverId, instanceId, zoneId, id, spawnUid = strsplit("-", destGUID)
+        local _, _, _, _, _, id, _ = strsplit("-", destGUID)
         id = tonumber(id)
 
         --dungeon
         for i = 29, 36 do
             local enemies = MDT.dungeonEnemies[i]
             --enemy
-            for enemyIdx, enemy in pairs(enemies) do
+            for _, enemy in pairs(enemies) do
                 if enemy.id == id then
                     for characteristic, spells in pairs(characteristicsSpells) do
                         if spells[spellId] then
@@ -320,7 +307,7 @@ function DC:InitHealthTrack()
     local enemyCount = 0
     local totalEnemies = 0
     local changedEnemies = {}
-    for _, enemy in pairs(MDT.dungeonEnemies[db.currentDungeonIdx]) do
+    for _, _ in pairs(MDT.dungeonEnemies[db.currentDungeonIdx]) do
         totalEnemies = totalEnemies + 1
     end
     f = CreateFrame("Frame")

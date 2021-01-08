@@ -951,7 +951,7 @@ local methods = {
     end,
     ["InitializeScrollHover"] = function(self)
         local scrollFrame = MDT.main_frame.sidePanel.pullButtonsScrollFrame
-        local height = (scrollFrame.frame.height or scrollFrame.frame:GetHeight())
+        local scrollHeight = (scrollFrame.frame.height or scrollFrame.frame:GetHeight())
 
         self.scroll_hover = {
             height = 100,
@@ -972,7 +972,7 @@ local methods = {
                 speed = 0.20,
                 mouseover = {
                     top = ((self.scroll_hover.height + self.scroll_hover.offset) / 5) - self.scroll_hover.offset,
-                    bottom = height - self.scroll_hover.offset,
+                    bottom = scrollHeight - self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
                 }
@@ -984,7 +984,7 @@ local methods = {
                 speed = 0.4,
                 mouseover = {
                     top = 2 * ((self.scroll_hover.height + self.scroll_hover.offset) / 5) - self.scroll_hover.offset,
-                    bottom = height - self.scroll_hover.offset,
+                    bottom = scrollHeight - self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
                 }
@@ -996,7 +996,7 @@ local methods = {
                 speed = 0.6,
                 mouseover = {
                     top = 3 * ((self.scroll_hover.height + self.scroll_hover.offset) / 5) - self.scroll_hover.offset,
-                    bottom = height - self.scroll_hover.offset,
+                    bottom = scrollHeight - self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
                 }
@@ -1008,7 +1008,7 @@ local methods = {
                 speed = 0.8,
                 mouseover = {
                     top = 4 * ((self.scroll_hover.height + self.scroll_hover.offset) / 5) - self.scroll_hover.offset,
-                    bottom = height - self.scroll_hover.offset,
+                    bottom = scrollHeight - self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
                 }
@@ -1021,7 +1021,7 @@ local methods = {
             {
                 speed = 0.2,
                 mouseover = {
-                    top = self.scroll_hover.offset - height,
+                    top = self.scroll_hover.offset - scrollHeight,
                     bottom = (-(self.scroll_hover.height + self.scroll_hover.offset) / 5) + self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
@@ -1033,7 +1033,7 @@ local methods = {
             {
                 speed = 0.4,
                 mouseover = {
-                    top = self.scroll_hover.offset - height,
+                    top = self.scroll_hover.offset - scrollHeight,
                     bottom = 2 * (-(self.scroll_hover.height + self.scroll_hover.offset) / 5) + self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
@@ -1045,7 +1045,7 @@ local methods = {
             {
                 speed = 0.6,
                 mouseover = {
-                    top = self.scroll_hover.offset - height,
+                    top = self.scroll_hover.offset - scrollHeight,
                     bottom = 3 * (-(self.scroll_hover.height + self.scroll_hover.offset) / 5) + self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
@@ -1057,7 +1057,7 @@ local methods = {
             {
                 speed = 0.8,
                 mouseover = {
-                    top = self.scroll_hover.offset - height,
+                    top = self.scroll_hover.offset - scrollHeight,
                     bottom = 4 * (-(self.scroll_hover.height + self.scroll_hover.offset) / 5) + self.scroll_hover.offset,
                     left = -dragdrop_overlap,
                     right = dragdrop_overlap
@@ -1089,12 +1089,12 @@ local methods = {
 
                     local scroll_hover = self.scroll_hover
                     local scrollFrame = MDT.main_frame.sidePanel.pullButtonsScrollFrame
-                    local height = (scrollFrame.frame.height or scrollFrame.frame:GetHeight())
+                    local scrollHeight = (scrollFrame.frame.height or scrollFrame.frame:GetHeight())
 
                     if
                         scrollFrame.frame:IsMouseOver(
                             scroll_hover.height,
-                            height - scroll_hover.offset,
+                            scrollHeight - scroll_hover.offset,
                             -dragdrop_overlap,
                             dragdrop_overlap
                         )
@@ -1125,7 +1125,7 @@ local methods = {
                         end
                     elseif
                         scrollFrame.frame:IsMouseOver(
-                            scroll_hover.offset - height,
+                            scroll_hover.offset - scrollHeight,
                             -scroll_hover.height,
                             -dragdrop_overlap,
                             dragdrop_overlap
@@ -1265,24 +1265,24 @@ local methods = {
             for offset, pullIdx in ipairs(selected_pulls) do
                 --print("offset", offset, "pull", pullIdx)
 
-                local pos = insertID + (offset - 1)
-                --print("pos", pos)
+                local pullPos = insertID + (offset - 1)
+                --print("pos", pullPos)
 
                 local progressed_above =
                     MDT.U.count_if(
                     progressed_pulls,
                     function(entry)
-                        return entry < pos
+                        return entry < pullPos
                     end
                 )
                 --print("progressed above", progressed_above)
 
-                pos = pos - progressed_above
-                --print("pos", pos)
+                pullPos = pullPos - progressed_above
+                --print("pos", pullPos)
 
                 local correctPullIndex = pullIdx
                 --print("correctPullIndex", correctPullIndex)
-                if pos > correctPullIndex then
+                if pullPos > correctPullIndex then
                     correctPullIndex =
                         correctPullIndex -
                         MDT.U.count_if(
@@ -1294,14 +1294,14 @@ local methods = {
                 --print("correctPullIndex", correctPullIndex)
                 end
 
-                if pos <= correctPullIndex then
+                if pullPos <= correctPullIndex then
                     correctPullIndex = correctPullIndex + 1
                 end
                 --print("correctPullIndex", correctPullIndex)
 
-                MDT:PresetsAddPull(pos)
-                MDT:CopyPullOptions(correctPullIndex, pos)
-                local newID = MDT:PresetsMergePulls(correctPullIndex, pos)
+                MDT:PresetsAddPull(pullPos)
+                MDT:CopyPullOptions(correctPullIndex, pullPos)
+                local newID = MDT:PresetsMergePulls(correctPullIndex, pullPos)
                 --print("newID", newID)
 
                 tinsert(progressed_pulls, pullIdx)

@@ -561,8 +561,7 @@ function DungeonToolsEnemyMixin:DisplayPatrol(shown)
 
             --connect 2 waypoints
             if oldWaypointBlip then
-                local _, _, _, startX, startY =
-                    patrolPoints[patrolIdx]:GetPoint()
+                local _, _, _, startX, startY = patrolPoints[patrolIdx]:GetPoint()
                 local _, _, _, endX, endY = oldWaypointBlip:GetPoint()
                 DrawLine(
                     patrolLines[patrolIdx],
@@ -1267,7 +1266,7 @@ end
 ---DungeonEnemies_UpdateInfested
 ---Updates which blips should display infested state based on preset.week
 function MDT:DungeonEnemies_UpdateInfested(week)
-    week = preset.week % 3
+    week = week or preset.week % 3
     if week == 0 then
         week = 3
     end

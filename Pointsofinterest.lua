@@ -869,7 +869,6 @@ end
 
 ---draws all lines from active npcs to spires/doors
 function MDT:DrawAllAnimatedLines()
-    local week = self:GetEffectivePresetWeek()
     for _, blip in pairs(MDT:GetDungeonEnemyBlips()) do
         if not blip:IsShown() and blip.data.corrupted then
             MDT:HideAnimatedLine(blip.animatedLine)

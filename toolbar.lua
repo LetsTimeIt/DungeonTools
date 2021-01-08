@@ -380,7 +380,7 @@ function MDT:initToolbar(frame)
     delete.tooltipText = L["Delete ALL drawings"]
     tinsert(widgets, delete)
 
-    for k, widget in ipairs(widgets) do
+    for _, widget in ipairs(widgets) do
         widget:SetWidth(widgetWidth)
         if widget.type == "EditBox" then
             widget:SetWidth(30)
@@ -390,8 +390,8 @@ function MDT:initToolbar(frame)
         end
         widget:SetCallback(
             "OnEnter",
-            function(widget, callbackName)
-                MDT:ToggleToolbarTooltip(true, widget)
+            function(widgetArg, callbackName)
+                MDT:ToggleToolbarTooltip(true, widgetArg)
             end
         )
         widget:SetCallback(
@@ -437,7 +437,7 @@ end
 
 ---ReleaseAllActiveTextures
 function MDT:ReleaseAllActiveTextures()
-    for k, tex in pairs(activeTextures) do
+    for _, tex in pairs(activeTextures) do
         releaseTexture(tex)
     end
     twipe(activeTextures)
@@ -730,7 +730,7 @@ end
 ---GetHighestFrameLevelAtCursor
 function MDT:GetHighestFrameLevelAtCursor()
     local currentSublevel = -8
-    for k, v in pairs(activeTextures) do
+    for _, v in pairs(activeTextures) do
         if MouseIsOver(v) and v:IsShown() and (not v.isOwn) then
             local _, sublevel = v:GetDrawLayer()
             currentSublevel = max(currentSublevel, sublevel + 1)
@@ -828,7 +828,7 @@ function MDT:StopArrowDrawing()
         self:LiveSession_SendObject(nobj)
     end
     frame.toolbar:SetScript("OnUpdate", nil)
-    for k, v in pairs(activeTextures) do
+    for _, v in pairs(activeTextures) do
         v.isOwn = nil
     end
     drawingActive = false
@@ -927,7 +927,7 @@ end
 function MDT:StopLineDrawing()
     local frame = MDT.main_frame
     frame.toolbar:SetScript("OnUpdate", nil)
-    for k, v in pairs(activeTextures) do
+    for _, v in pairs(activeTextures) do
         v.isOwn = nil
     end
     --split the line into multiple parts
@@ -1051,7 +1051,7 @@ function MDT:StopPencilDrawing()
         )
         --store it
         local size = 0
-        for k, v in ipairs(nobj.l) do
+        for _, _ in ipairs(nobj.l) do
             size = size + 1
         end
         nobj.l[size + 1] = MDT:Round(oldx, 1)
@@ -1061,7 +1061,7 @@ function MDT:StopPencilDrawing()
     end
     frame.toolbar:SetScript("OnUpdate", nil)
     --clear own flags
-    for k, v in pairs(activeTextures) do
+    for _, v in pairs(activeTextures) do
         v.isOwn = nil
     end
 
@@ -1091,7 +1091,7 @@ function MDT:StartMovingObject()
     drawingActive = true
     local frame = MDT.main_frame
     objectIndex = MDT:GetHighestPresetObjectIndexAtCursor()
-    local startx, starty = MDT:GetCursorPosition()
+    startx, starty = MDT:GetCursorPosition()
     originalX, originalY = MDT:GetCursorPosition()
     frame.toolbar:SetScript(
         "OnUpdate",
@@ -1101,7 +1101,7 @@ function MDT:StartMovingObject()
             end
             local x, y = MDT:GetCursorPosition()
             if x ~= startx or y ~= starty then
-                for j, tex in pairs(activeTextures) do
+                for _, tex in pairs(activeTextures) do
                     if tex.objectIndex == objectIndex then
                         for i = 1, tex:GetNumPoints() do
                             local point, relativeTo, relativePoint, xOffset, yOffset = tex:GetPoint(i)
@@ -1156,7 +1156,7 @@ end
 function MDT:GetHighestPresetObjectIndexAtCursor()
     local currentSublevel = -8
     local highestTexture
-    for k, v in pairs(activeTextures) do
+    for _, v in pairs(activeTextures) do
         if MouseIsOver(v) and v:IsShown() then
             local _, sublevel = v:GetDrawLayer()
             if sublevel >= currentSublevel then
@@ -1176,7 +1176,6 @@ function MDT:StartEraserDrawing()
     MDT:DrawAllPresetObjects()
     drawingActive = true
     local frame = MDT.main_frame
-    local startx, starty
     local scale = MDT:GetScale()
     twipe(changedObjects)
     frame.toolbar:SetScript(
@@ -1188,13 +1187,13 @@ function MDT:StartEraserDrawing()
             local x, y = MDT:GetCursorPosition()
             if x ~= startx or y ~= starty then
                 local highestObjectIdx = MDT:GetHighestPresetObjectIndexAtCursor()
-                for j, tex in pairs(activeTextures) do
+                for _, tex in pairs(activeTextures) do
                     if MouseIsOver(tex) and tex:IsShown() and tex.objectIndex == highestObjectIdx then --tex.coords means this is a line
                         tex:Hide()
                         if tex.coords then
                             local x1, y1, x2, y2 = unpack(tex.coords)
                             --hide circle textures of lines
-                            for k, v in pairs(activeTextures) do
+                            for _, v in pairs(activeTextures) do
                                 if v.points then
                                     if
                                         (v.points[1] == x1 and v.points[2] == y1) or
@@ -1206,18 +1205,20 @@ function MDT:StartEraserDrawing()
                             end
                             --delete saved lines
                             local currentPreset = MDT:GetCurrentPreset()
-                            for objectIndex, obj in pairs(currentPreset.objects) do
-                                if objectIndex == highestObjectIdx then
+                            for objIndex, obj in pairs(currentPreset.objects) do
+                                if objIndex == highestObjectIdx then
                                     for coordIdx, coord in pairs(obj.l) do
                                         if
                                             coord * scale == x1 and obj.l[coordIdx + 1] * scale == y1 and
                                                 obj.l[coordIdx + 2] * scale == x2 and
                                                 obj.l[coordIdx + 3] * scale == y2
                                          then
-                                            for i = 1, 4 do
+                                            local i = 0
+                                            repeat
+                                                i = i + 1
                                                 tremove(obj.l, coordIdx)
-                                            end
-                                            changedObjects[objectIndex] = obj
+                                            until i == 4
+                                            changedObjects[objIndex] = obj
                                             break
                                         end
                                     end
@@ -1267,7 +1268,7 @@ function MDT:StartNoteDrawing()
 end
 
 ---DrawCircle
-function MDT:DrawCircle(x, y, size, color, layer, layerSublevel, isOwn, objectIndex, tex, noinsert, extrax, extray)
+function MDT:DrawCircle(x, y, size, color, layer, layerSublevel, isOwn, objIndex, tex, noinsert, extrax, extray)
     local circle = tex or getTexture()
     if not layer then
         layer = objectDrawLayer
@@ -1281,7 +1282,7 @@ function MDT:DrawCircle(x, y, size, color, layer, layerSublevel, isOwn, objectIn
     circle:SetPoint("CENTER", MDT.main_frame.mapPanelTile1, "TOPLEFT", x, y)
     circle:Show()
     circle.isOwn = isOwn
-    circle.objectIndex = objectIndex
+    circle.objectIndex = objIndex
     circle.points = {x, y, extrax, extray}
     if not noinsert then
         tinsert(activeTextures, circle)
@@ -1289,7 +1290,7 @@ function MDT:DrawCircle(x, y, size, color, layer, layerSublevel, isOwn, objectIn
 end
 
 ---DrawLine
-function MDT:DrawLine(x, y, a, b, size, color, smooth, layer, layerSublevel, lineFactor, isOwn, objectIndex)
+function MDT:DrawLine(x, y, a, b, size, color, smooth, layer, layerSublevel, lineFactor, isOwn, objIndex)
     local line = getTexture()
     if not layer then
         layer = objectDrawLayer
@@ -1300,16 +1301,16 @@ function MDT:DrawLine(x, y, a, b, size, color, smooth, layer, layerSublevel, lin
     line:SetDrawLayer(layer, layerSublevel)
     line:Show()
     line.isOwn = isOwn
-    line.objectIndex = objectIndex
+    line.objectIndex = objIndex
     line.coords = {x, y, a, b}
     tinsert(activeTextures, line)
     if smooth == true then
-        MDT:DrawCircle(x, y, size, color, layer, layerSublevel, isOwn, objectIndex)
+        MDT:DrawCircle(x, y, size, color, layer, layerSublevel, isOwn, objIndex)
     end
 end
 
 ---DrawTriangle
-function MDT:DrawTriangle(x, y, rotation, size, color, layer, layerSublevel, isOwn, objectIndex)
+function MDT:DrawTriangle(x, y, rotation, size, color, layer, layerSublevel, isOwn, objIndex)
     local triangle = getTexture()
     if not layer then
         layer = objectDrawLayer
@@ -1324,7 +1325,7 @@ function MDT:DrawTriangle(x, y, rotation, size, color, layer, layerSublevel, isO
     triangle:SetPoint("CENTER", MDT.main_frame.mapPanelTile1, "TOPLEFT", x, y)
     triangle:SetDrawLayer(layer, layerSublevel)
     triangle.isOwn = isOwn
-    triangle.objectIndex = objectIndex
+    triangle.objectIndex = objIndex
     tinsert(activeTextures, triangle)
 end
 
@@ -1465,7 +1466,7 @@ do
 end
 
 ---DrawNote
-function MDT:DrawNote(x, y, text, objectIndex)
+function MDT:DrawNote(x, y, text, objIndex)
     if not notePoolCollection then
         notePoolCollection = CreateFramePoolCollection()
         notePoolCollection:CreatePool("Button", MDT.main_frame.mapPanelFrame, "QuestPinTemplate")
@@ -1474,7 +1475,7 @@ function MDT:DrawNote(x, y, text, objectIndex)
     --setup
     local note = notePoolCollection:Acquire("QuestPinTemplate")
     note.noteIdx = notePoolCollection.pools.QuestPinTemplate.numActiveObjects
-    note.objectIndex = objectIndex
+    note.objectIndex = objIndex
     note:ClearAllPoints()
     note:SetPoint("CENTER", MDT.main_frame.mapPanelTile1, "TOPLEFT", x, y)
     note:SetSize(12 * scale, 12 * scale)
