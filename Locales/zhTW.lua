@@ -1,7 +1,7 @@
-if not(GetLocale() == "zhTW") then
-  return
+if not (GetLocale() == "zhTW") then
+    return
 end
-local addonName, MDT = ...
+local _, MDT = ...
 local L = MDT.L
 L = L or {}
 
@@ -151,7 +151,9 @@ L["Click to go to %s"] = "點一下前往 %s"
 L["Click to set dungeon level to 10"] = "點一下將地城層數設為 10"
 L["Click to switch to current week"] = "點一下切換到這週"
 L["Click to toggle AddOn Window"] = "左鍵: 打開主視窗"
-L["Clicking this button will attempt to join the ongoing Live Session of your group or create a new one if none is found"] = "點一下此按鈕會嘗試加入你所在隊伍的即時連線，如果沒有正在進行中的即時連線，則會建立一個新的。"
+L[
+        "Clicking this button will attempt to join the ongoing Live Session of your group or create a new one if none is found"
+    ] = "點一下此按鈕會嘗試加入你所在隊伍的即時連線，如果沒有正在進行中的即時連線，則會建立一個新的。"
 L["Coin-Operated Crowd Pummeler"] = "投幣式群體打擊者"
 L["Color Blind Friendly"] = "色盲友善"
 L["Colorpicker"] = "選擇顏色"
@@ -509,7 +511,8 @@ L["Loyal Stoneborn"] = "忠誠的石源魔"
 L["Lubricator"] = "潤滑器"
 L["Ludwig Von Tortollan"] = "路德維希·馮·托爾托倫"
 L["Maddened Survivalist"] = "瘋狂的生存專家"
-L["MaggotNote"] = "Devouring Maggots 備註:%s%s有 '寄生' 增益的 Devouring Maggots 會嘗試 '感染' 玩家%s成功的施放 '感染' 後 Devouring Maggots 會消失，然後在受感染的玩家減益時間結束後會重生出 2 個Devouring Maggots。%s只有殺死最初的那隻能夠算一個，其他兩個重生的都不會算入擊殺數量。%s%sInfected Peasants 重生的 3 個 Devouring Maggots，則是每一個都會算一個。%s這些 Devouring Maggots 位於 Infected Peasants 旁邊。"
+L["MaggotNote"] =
+    "Devouring Maggots 備註:%s%s有 '寄生' 增益的 Devouring Maggots 會嘗試 '感染' 玩家%s成功的施放 '感染' 後 Devouring Maggots 會消失，然後在受感染的玩家減益時間結束後會重生出 2 個Devouring Maggots。%s只有殺死最初的那隻能夠算一個，其他兩個重生的都不會算入擊殺數量。%s%sInfected Peasants 重生的 3 個 Devouring Maggots，則是每一個都會算一個。%s這些 Devouring Maggots 位於 Infected Peasants 旁邊。"
 L["Make this preset the live preset"] = "將此路線變成即時連線的路線"
 L["Malfunctioning Scrapbot"] = "失控的拳機"
 L["Malignant Spawn"] = "惡毒之裔"
@@ -624,8 +627,10 @@ L["Plaguefall"] = "瘟疫之臨"
 L["plaguefallDevotedNote"] = "在與艾柯爾·膽肉交戰前被滲液殘軀轉化的凋縛狂熱者不會獲得進度。"
 L["Plagueroc"] = "凋零大鵬"
 L["Plain Texture"] = "一般材質"
-L["Players can join the live session by either clicking this button or the Live Session chat link"] = "玩家可以按下此按鈕或是即時連線的聊天連結來加入即時連線"
-L["Please report any bugs on https://github.com/Nnoggie/MythicDungeonTools/issues"] = "回報任何 bug 請到 https://github.com/Nnoggie/MythicDungeonTools/issues"
+L["Players can join the live session by either clicking this button or the Live Session chat link"] =
+    "玩家可以按下此按鈕或是即時連線的聊天連結來加入即時連線"
+L["Please report any bugs on https://github.com/Nnoggie/MythicDungeonTools/issues"] =
+    "回報任何 bug 請到 https://github.com/Nnoggie/MythicDungeonTools/issues"
 L["Polymorph"] = "變形術"
 L["Portal Guardian"] = "傳送門守衛"
 L["Portrait"] = "頭像"
@@ -853,7 +858,8 @@ L["Surgeon Stitchflesh"] = "外科醫生縫肉"
 L["Tank Buster MK1"] = "反坦克機器人MK1型"
 L["Taskmaster Askari"] = "監工阿斯加裡"
 L["Taunt"] = "嘲諷"
-L["tdBuffGateNote"] = "裡面可能有盟友，會依據他們的種族給你增益效果:%s獸人/矮人: 10%% 力量/敏捷%s不死族/人類: 10%% 耐力%s牛頭人/德萊尼: 每 10 秒回復 1%% 血量+法力%s血精靈/地精: 10%% 智力"
+L["tdBuffGateNote"] =
+    "裡面可能有盟友，會依據他們的種族給你增益效果:%s獸人/矮人: 10%% 力量/敏捷%s不死族/人類: 10%% 耐力%s牛頭人/德萊尼: 每 10 秒回復 1%% 血量+法力%s血精靈/地精: 10%% 智力"
 L["tdGraveyardNote1"] = "擊敗沙後後開放"
 L["tdGraveyardNote2"] = "擊敗傑斯·嚎裡斯後開放"
 L["tdGraveyardNote3"] = "擊敗騎士隊長瓦萊麗後開放"
@@ -891,7 +897,8 @@ L["The MOTHERLODE!! Sublevel"] = "晶喜鎮！"
 L["The Naglfar"] = "奈格法號"
 L["The Necrotic Wake"] = "死靈戰地"
 L["The Platinum Pummeler"] = "白金拳手"
-L["The preset will continuously synchronize between all party members participating in the Live Session"] = "所有參與即時連線的隊友都會持續地同步路線"
+L["The preset will continuously synchronize between all party members participating in the Live Session"] =
+    "所有參與即時連線的隊友都會持續地同步路線"
 L["The Raven's Crown"] = "玄鴉堡之頂"
 L["The Ravenscrypt"] = "玄鴉墓室"
 L["The Robodrome"] = "超爆機械鬥場"
@@ -923,7 +930,9 @@ L["Tidesage Initiate"] = "海賢新兵"
 L["Tidesage Spiritualist"] = "海賢靈魂師"
 L["Tirnenn Villager"] = "仙木靈居民"
 L["T'lonja"] = "特隆加"
-L["To share a different preset while the live session is active simply navigate to the preferred preset and click the new 'Set to Live' Button next to the preset-dropdown"] = "在連線的過程中要分享不同的路線，只要切換到該路線，然後按下路線下拉選單旁新的 '設為即時連線' 按鈕。"
+L[
+        "To share a different preset while the live session is active simply navigate to the preferred preset and click the new 'Set to Live' Button next to the preset-dropdown"
+    ] = "在連線的過程中要分享不同的路線，只要切換到該路線，然後按下路線下拉選單旁新的 '設為即時連線' 按鈕。"
 L["tocNotes"] = "幫助你計算 M+ 的小怪%，規劃出最佳拉怪路線。"
 L["Toggle Window"] = "切換顯示視窗"
 L["Toiling Groundskeeper"] = "勞苦的管理員"
@@ -1000,8 +1009,11 @@ L["Xav the Unfallen"] = "無墮者哈夫"
 L["Xira the Underhanded"] = "卑劣的席拉"
 L["Yazma"] = "亞茲瑪"
 L["You are using MDT. You rock!"] = "你正在使用 MDT，你超棒der!"
-L["You can always return to the current Live Session preset by clicking the 'Return to Live' button next to the preset-dropdown"] = "永遠都可以按下路線下拉選單旁的 '返回即時連線' 按鈕來返回目前正在連線中的路線"
-L["You can choose from different color palettes in the automatic pull coloring settings menu."] = "可以在自動著色拉怪的設定選單中選擇不同的色盤。"
+L[
+        "You can always return to the current Live Session preset by clicking the 'Return to Live' button next to the preset-dropdown"
+    ] = "永遠都可以按下路線下拉選單旁的 '返回即時連線' 按鈕來返回目前正在連線中的路線"
+L["You can choose from different color palettes in the automatic pull coloring settings menu."] =
+    "可以在自動著色拉怪的設定選單中選擇不同的色盤。"
 L["You can cycle through different floors by holding CTRL and using the mousewheel."] = "按住 CTRL 時滾動滑鼠滾輪來循環切換不同的樓層。"
 L["You can cycle through dungeons by holding ALT and using the mousewheel."] = "按住 ALT 時滾動滑鼠滾輪來循環切換地城。"
 L["You can find MDT exports from other users on the wago.io website"] = "可以在 wago.io 網站找到由其他玩家匯出的 MDT 字串"

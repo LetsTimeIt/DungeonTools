@@ -2,8 +2,7 @@ local MDT = DungeonTools
 local L = MDT.L
 local dungeonIndex = 24
 MDT.mapInfo[dungeonIndex] = {
-    viewportPositionOverrides =
-    {
+    viewportPositionOverrides = {
         [4] = {
             zoomScale = 1.5999999046326;
             horizontalPan = 174.118438962;

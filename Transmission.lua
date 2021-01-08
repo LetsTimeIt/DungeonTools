@@ -1,28 +1,28 @@
 local MDT = DungeonTools
 local L = MDT.L
 local Compresser = LibStub:GetLibrary("LibCompress")
-local Encoder = Compresser:GetAddonEncodeTable()
 local Serializer = LibStub:GetLibrary("AceSerializer-3.0")
 local LibDeflate = LibStub:GetLibrary("LibDeflate")
 local configForDeflate = {
-    [1]= {level = 1},
-    [2]= {level = 2},
-    [3]= {level = 3},
-    [4]= {level = 4},
-    [5]= {level = 5},
-    [6]= {level = 6},
-    [7]= {level = 7},
-    [8]= {level = 8},
-    [9]= {level = 9},
+    [1] = {level = 1},
+    [2] = {level = 2},
+    [3] = {level = 3},
+    [4] = {level = 4},
+    [5] = {level = 5},
+    [6] = {level = 6},
+    [7] = {level = 7},
+    [8] = {level = 8},
+    [9] = {level = 9}
 }
-MDT.commsObject = LibStub("AceAddon-3.0"):NewAddon("DungeonToolsCommsObject","AceComm-3.0","AceSerializer-3.0")
+MDT.commsObject = LibStub("AceAddon-3.0"):NewAddon("DungeonToolsCommsObject", "AceComm-3.0", "AceSerializer-3.0")
 local commsObject = MDT.commsObject
 
 -- Lua APIs
-local tostring, string_char, strsplit,tremove,tinsert = tostring, string.char, strsplit,table.remove,table.insert
+local string_char, tremove, tinsert = string.char, table.remove, table.insert
 local pairs, type, unpack = pairs, type, unpack
 local bit_band, bit_lshift, bit_rshift = bit.band, bit.lshift, bit.rshift
 
+-- LuaFormatter off
 --Based on code from WeakAuras2, all credit goes to the authors
 local bytetoB64 = {
     [0]="a","b","c","d","e","f","g","h",
@@ -45,12 +45,13 @@ local B64tobyte = {
     W = 48,  X = 49,  Y = 50,  Z = 51,["0"]=52,["1"]=53,["2"]=54,["3"]=55,
     ["4"]=56,["5"]=57,["6"]=58,["7"]=59,["8"]=60,["9"]=61,["("]=62,[")"]=63
 }
+-- LuaFormatter on
 
 -- This code is based on the Encode7Bit algorithm from LibCompress
 -- Credit goes to Galmok (galmok@gmail.com)
 local decodeB64Table = {}
 
-function decodeB64(str)
+local function decodeB64(str)
     local bit8 = decodeB64Table
     local decoded_size = 0
     local ch
@@ -76,13 +77,13 @@ function decodeB64(str)
     return table.concat(bit8, "", 1, decoded_size)
 end
 
-function MDT:TableToString(inTable, forChat,level)
+function MDT:TableToString(inTable, forChat, level)
     local serialized = Serializer:Serialize(inTable)
     local compressed = LibDeflate:CompressDeflate(serialized, configForDeflate[level])
     -- prepend with "!" so that we know that it is not a legacy compression
     -- also this way, old versions will error out due to the "bad" encoding
     local encoded = "!"
-    if(forChat) then
+    if (forChat) then
         encoded = encoded .. LibDeflate:EncodeForPrint(compressed)
     else
         encoded = encoded .. LibDeflate:EncodeForWoWAddonChannel(compressed)
@@ -94,7 +95,7 @@ function MDT:StringToTable(inString, fromChat)
     -- if gsub strips off a ! at the beginning then we know that this is not a legacy encoding
     local encoded, usesDeflate = inString:gsub("^%!", "")
     local decoded
-    if(fromChat) then
+    if (fromChat) then
         if usesDeflate == 1 then
             decoded = LibDeflate:DecodeForPrint(encoded)
         else
@@ -108,19 +109,21 @@ function MDT:StringToTable(inString, fromChat)
         return "Error decoding."
     end
 
-    local decompressed, errorMsg = nil, "unknown compression method"
+    local decompressed
+    local errorMsg = "unknown compression method"
+
     if usesDeflate == 1 then
         decompressed = LibDeflate:DecompressDeflate(decoded)
     else
         decompressed, errorMsg = Compresser:Decompress(decoded)
     end
-    if not(decompressed) then
+    if not (decompressed) then
         return "Error decompressing: " .. errorMsg
     end
 
     local success, deserialized = Serializer:Deserialize(decompressed)
-    if not(success) then
-        return "Error deserializing "..deserialized
+    if not (success) then
+        return "Error deserializing " .. deserialized
     end
     return deserialized
 end
@@ -133,24 +136,29 @@ local function filterFunc(_, event, msg, player, l, cs, t, flag, channelId, ...)
     local remaining = msg
     local done
     repeat
-        local start, finish, characterName, displayName = remaining:find("%[MythicDungeonTools: ([^%s]+) %- ([^%]]+)%]")
-        local startLive, finishLive, characterNameLive, displayNameLive = remaining:find("%[MDTLive: ([^%s]+) %- ([^%]]+)%]")
-        if(characterName and displayName) then
+        local _, finish, characterName, displayName = remaining:find("%[MythicDungeonTools: ([^%s]+) %- ([^%]]+)%]")
+        local startLive, finishLive, characterNameLive, displayNameLive =
+            remaining:find("%[MDTLive: ([^%s]+) %- ([^%]]+)%]")
+        if (characterName and displayName) then
             characterName = characterName:gsub("|c[Ff][Ff]......", ""):gsub("|r", "")
             displayName = displayName:gsub("|c[Ff][Ff]......", ""):gsub("|r", "")
-            newMsg = newMsg..remaining:sub(1, start-1)
-            newMsg = "|cfff49d38|Hgarrmission:mdt-"..characterName.."|h["..displayName.."]|h|r"
+            -- newMsg = newMsg .. remaining:sub(1, start - 1)
+            newMsg = "|cfff49d38|Hgarrmission:mdt-" .. characterName .. "|h[" .. displayName .. "]|h|r"
             remaining = remaining:sub(finish + 1)
         elseif (characterNameLive and displayNameLive) then
             characterNameLive = characterNameLive:gsub("|c[Ff][Ff]......", ""):gsub("|r", "")
             displayNameLive = displayNameLive:gsub("|c[Ff][Ff]......", ""):gsub("|r", "")
-            newMsg = newMsg..remaining:sub(1, startLive-1)
-            newMsg = newMsg.."|Hgarrmission:mdtlive-"..characterNameLive.."|h[".."|cFF00FF00Live Session: |cfff49d38"..""..displayNameLive.."]|h|r"
+            newMsg = newMsg .. remaining:sub(1, startLive - 1)
+            newMsg =
+                newMsg ..
+                "|Hgarrmission:mdtlive-" ..
+                    characterNameLive ..
+                        "|h[" .. "|cFF00FF00Live Session: |cfff49d38" .. "" .. displayNameLive .. "]|h|r"
             remaining = remaining:sub(finishLive + 1)
         else
             done = true
         end
-    until(done)
+    until (done)
     if newMsg ~= "" then
         return false, newMsg, player, l, cs, t, flag, channelId, ...
     end
@@ -175,20 +183,20 @@ MDT.liveSessionPrefixes = {
     ["mdi"] = "MDTLiveMDI",
     ["reqPre"] = "MDTLiveReqPre",
     ["corrupted"] = "MDTLiveCor",
-    ["difficulty"] = "MDTLiveLvl",
+    ["difficulty"] = "MDTLiveLvl"
 }
 
 MDT.dataCollectionPrefixes = {
     ["request"] = "MDTDataReq",
-    ["distribute"] = "MDTDataDist",
+    ["distribute"] = "MDTDataDist"
 }
 
 function commsObject:OnEnable()
     self:RegisterComm(presetCommPrefix)
-    for _,prefix in pairs(MDT.liveSessionPrefixes) do
+    for _, prefix in pairs(MDT.liveSessionPrefixes) do
         self:RegisterComm(prefix)
     end
-    for _,prefix in pairs(MDT.dataCollectionPrefixes) do
+    for _, prefix in pairs(MDT.dataCollectionPrefixes) do
         self:RegisterComm(prefix)
     end
     MDT.transmissionCache = {}
@@ -199,37 +207,40 @@ function commsObject:OnEnable()
 end
 
 --handle preset chat link clicks
-hooksecurefunc("SetItemRef", function(link, text)
-    if(link and link:sub(0, 19) == "garrmission:mdtlive") then
-        local sender = link:sub(21, string.len(link))
-        local name,realm = string.match(sender,"(.*)+(.*)")
-        sender = name.."-"..realm
-        --ignore importing the live preset when sender is player, open MDT only
-        local playerName,playerRealm = UnitFullName("player")
-        playerName = playerName.."-"..playerRealm
-        if sender==playerName then
-            MDT:ShowInterface(true)
-        else
-            MDT:ShowInterface(true)
-            MDT:LiveSession_Enable()
-        end
-        return
-    elseif (link and link:sub(0, 15) == "garrmission:mdt") then
-        local sender = link:sub(17, string.len(link))
-        local name,realm = string.match(sender,"(.*)+(.*)")
-        if (not name) or (not realm) then
-            print(string.format(L["receiveErrorUpdate"],sender))
+hooksecurefunc(
+    "SetItemRef",
+    function(link, text)
+        if (link and link:sub(0, 19) == "garrmission:mdtlive") then
+            local sender = link:sub(21, string.len(link))
+            local name, realm = string.match(sender, "(.*)+(.*)")
+            sender = name .. "-" .. realm
+            --ignore importing the live preset when sender is player, open MDT only
+            local playerName, playerRealm = UnitFullName("player")
+            playerName = playerName .. "-" .. playerRealm
+            if sender == playerName then
+                MDT:ShowInterface(true)
+            else
+                MDT:ShowInterface(true)
+                MDT:LiveSession_Enable()
+            end
+            return
+        elseif (link and link:sub(0, 15) == "garrmission:mdt") then
+            local sender = link:sub(17, string.len(link))
+            local name, realm = string.match(sender, "(.*)+(.*)")
+            if (not name) or (not realm) then
+                print(string.format(L["receiveErrorUpdate"], sender))
+                return
+            end
+            sender = name .. "-" .. realm
+            local preset = MDT.transmissionCache[sender]
+            if preset then
+                MDT:ShowInterface(true)
+                MDT:OpenChatImportPresetDialog(sender, preset)
+            end
             return
         end
-        sender = name.."-"..realm
-        local preset = MDT.transmissionCache[sender]
-        if preset then
-            MDT:ShowInterface(true)
-            MDT:OpenChatImportPresetDialog(sender,preset)
-        end
-        return
     end
-end)
+)
 
 function commsObject:OnCommReceived(prefix, message, distribution, sender)
     --[[
@@ -237,25 +248,27 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
         UnitFullName("Nnoggie") returns no realm while UnitFullName("player") does
         UnitFullName("Nnoggie-TarrenMill") returns realm even if you are not on the same realm as Nnoggie
         We append our realm if there is no realm
-    ]]
+    --]]
     local name, realm = UnitFullName(sender)
-    if not name then return end
-    if not realm or string.len(realm)<3 then
-        local _,r = UnitFullName("player")
+    if not name then
+        return
+    end
+    if not realm or string.len(realm) < 3 then
+        local _, r = UnitFullName("player")
         realm = r
     end
-    local fullName = name.."-"..realm
+    local fullName = name .. "-" .. realm
 
     --standard preset transmission
     --we cache the preset here already
     --the user still decides if he wants to click the chat link and add the preset to his db
     if prefix == presetCommPrefix then
-        local preset = MDT:StringToTable(message,false)
+        local preset = MDT:StringToTable(message, false)
         MDT.transmissionCache[fullName] = preset
         --live session preset
         if MDT.liveSessionActive and MDT.liveSessionAcceptingPreset and preset.uid == MDT.livePresetUID then
             if MDT:ValidateImportPreset(preset) then
-                MDT:ImportPreset(preset,true)
+                MDT:ImportPreset(preset, true)
                 MDT.liveSessionAcceptingPreset = false
                 MDT.main_frame.SendingStatusBar:Hide()
                 if MDT.main_frame.LoadingSpinner then
@@ -272,13 +285,13 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     end
 
     if prefix == MDT.dataCollectionPrefixes.distribute then
-        local package = MDT:StringToTable(message,false)
+        local package = MDT:StringToTable(message, false)
         MDT.DataCollection:MergeReceiveData(package)
     end
 
     if prefix == MDT.liveSessionPrefixes.enabled then
         if MDT.liveSessionRequested == true then
-            MDT:LiveSession_SessionFound(fullName,message)
+            MDT:LiveSession_SessionFound(fullName, message)
         end
     end
 
@@ -286,7 +299,7 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.pull then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local pulls = MDT:StringToTable(message,false)
+            local pulls = MDT:StringToTable(message, false)
             preset.value.pulls = pulls
             if not preset.value.pulls[preset.value.currentPull] then
                 preset.value.currentPull = #preset.value.pulls
@@ -305,7 +318,7 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.corrupted then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local offsets = MDT:StringToTable(message,false)
+            local offsets = MDT:StringToTable(message, false)
             --only reposition if no blip is currently moving
             if not MDT.draggedBlip then
                 preset.value.riftOffsets = offsets
@@ -319,15 +332,20 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
         if MDT.liveSessionActive then
             local db = MDT:GetDB()
             local difficulty = tonumber(message)
-            if difficulty and difficulty~= db.currentDifficulty then
+            if difficulty and difficulty ~= db.currentDifficulty then
                 local updateSeasonal
-                if ((difficulty>=10 and db.currentDifficulty<10) or (difficulty<10 and db.currentDifficulty>=10)) then
+                if
+                    ((difficulty >= 10 and db.currentDifficulty < 10) or
+                        (difficulty < 10 and db.currentDifficulty >= 10))
+                 then
                     updateSeasonal = true
                 end
                 db.currentDifficulty = difficulty
                 MDT.main_frame.sidePanel.DifficultySlider:SetValue(difficulty)
                 MDT:UpdateProgressbar()
-                if MDT.EnemyInfoFrame and MDT.EnemyInfoFrame.frame:IsShown() then MDT:UpdateEnemyInfoData() end
+                if MDT.EnemyInfoFrame and MDT.EnemyInfoFrame.frame:IsShown() then
+                    MDT:UpdateEnemyInfoData()
+                end
                 MDT:ReloadPullButtons()
                 if updateSeasonal then
                     MDT:DungeonEnemies_UpdateSeasonalAffix()
@@ -379,8 +397,9 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     end
 
     --live session messages that ignore concurrency from here on, we ignore our own messages
-    if sender == UnitFullName("player") then return end
-
+    if sender == UnitFullName("player") then
+        return
+    end
 
     if prefix == MDT.liveSessionPrefixes.request then
         if MDT.liveSessionActive then
@@ -390,25 +409,24 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
 
     --request preset
     if prefix == MDT.liveSessionPrefixes.reqPre then
-        local playerName,playerRealm = UnitFullName("player")
-        playerName = playerName.."-"..playerRealm
+        local playerName, playerRealm = UnitFullName("player")
+        playerName = playerName .. "-" .. playerRealm
         if playerName == message then
-            MDT:SendToGroup(MDT:IsPlayerInGroup(),true,MDT:GetCurrentLivePreset())
+            MDT:SendToGroup(MDT:IsPlayerInGroup(), true, MDT:GetCurrentLivePreset())
         end
     end
-
 
     --ping
     if prefix == MDT.liveSessionPrefixes.ping then
         local currentUID = MDT:GetCurrentPreset().uid
-        if MDT.liveSessionActive and (currentUID and currentUID==MDT.livePresetUID) then
-            local x,y,sublevel = string.match(message,"(.*):(.*):(.*)")
+        if MDT.liveSessionActive and (currentUID and currentUID == MDT.livePresetUID) then
+            local x, y, sublevel = string.match(message, "(.*):(.*):(.*)")
             x = tonumber(x)
             y = tonumber(y)
             sublevel = tonumber(sublevel)
             local scale = MDT:GetScale()
             if sublevel == MDT:GetCurrentSubLevel() then
-                MDT:PingMap(x*scale,y*scale)
+                MDT:PingMap(x * scale, y * scale)
             end
         end
     end
@@ -417,13 +435,13 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.obj then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local obj = MDT:StringToTable(message,false)
-            MDT:StorePresetObject(obj,true,preset)
+            local obj = MDT:StringToTable(message, false)
+            MDT:StorePresetObject(obj, true, preset)
             if preset == MDT:GetCurrentPreset() then
                 local scale = MDT:GetScale()
                 local currentPreset = MDT:GetCurrentPreset()
                 local currentSublevel = MDT:GetCurrentSubLevel()
-                MDT:DrawPresetObject(obj,nil,scale,currentPreset,currentSublevel)
+                MDT:DrawPresetObject(obj, nil, scale, currentPreset, currentSublevel)
             end
         end
     end
@@ -432,12 +450,14 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.objOff then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local objIdx,x,y = string.match(message,"(.*):(.*):(.*)")
+            local objIdx, x, y = string.match(message, "(.*):(.*):(.*)")
             objIdx = tonumber(objIdx)
             x = tonumber(x)
             y = tonumber(y)
-            MDT:UpdatePresetObjectOffsets(objIdx,x,y,preset,true)
-            if preset == MDT:GetCurrentPreset() then MDT:DrawAllPresetObjects() end
+            MDT:UpdatePresetObjectOffsets(objIdx, x, y, preset, true)
+            if preset == MDT:GetCurrentPreset() then
+                MDT:DrawAllPresetObjects()
+            end
         end
     end
 
@@ -445,11 +465,13 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.objChg then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local changedObjects = MDT:StringToTable(message,false)
-            for objIdx,obj in pairs(changedObjects) do
+            local changedObjects = MDT:StringToTable(message, false)
+            for objIdx, obj in pairs(changedObjects) do
                 preset.objects[objIdx] = obj
             end
-            if preset == MDT:GetCurrentPreset() then MDT:DrawAllPresetObjects() end
+            if preset == MDT:GetCurrentPreset() then
+                MDT:DrawAllPresetObjects()
+            end
         end
     end
 
@@ -457,10 +479,18 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.cmd then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            if message == "deletePresetObjects" then MDT:DeletePresetObjects(preset, true) end
-            if message == "undo" then MDT:PresetObjectStepBack(preset, true) end
-            if message == "redo" then MDT:PresetObjectStepForward(preset, true) end
-            if message == "clear" then MDT:ClearPreset(preset,true) end
+            if message == "deletePresetObjects" then
+                MDT:DeletePresetObjects(preset, true)
+            end
+            if message == "undo" then
+                MDT:PresetObjectStepBack(preset, true)
+            end
+            if message == "redo" then
+                MDT:PresetObjectStepForward(preset, true)
+            end
+            if message == "clear" then
+                MDT:ClearPreset(preset, true)
+            end
         end
     end
 
@@ -468,30 +498,32 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.note then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local action,noteIdx,text,y = string.match(message,"(.*):(.*):(.*):(.*)")
+            local action, noteIdx, text, y = string.match(message, "(.*):(.*):(.*):(.*)")
             noteIdx = tonumber(noteIdx)
             if action == "text" then
-                preset.objects[noteIdx].d[5]=text
+                preset.objects[noteIdx].d[5] = text
             elseif action == "delete" then
-                tremove(preset.objects,noteIdx)
+                tremove(preset.objects, noteIdx)
             elseif action == "move" then
                 local x = tonumber(text)
                 y = tonumber(y)
-                preset.objects[noteIdx].d[1]=x
-                preset.objects[noteIdx].d[2]=y
+                preset.objects[noteIdx].d[1] = x
+                preset.objects[noteIdx].d[2] = y
             end
-            if preset == MDT:GetCurrentPreset() then MDT:DrawAllPresetObjects() end
+            if preset == MDT:GetCurrentPreset() then
+                MDT:DrawAllPresetObjects()
+            end
         end
     end
 
     --preset
     if prefix == MDT.liveSessionPrefixes.preset then
         if MDT.liveSessionActive then
-            local preset = MDT:StringToTable(message,false)
+            local preset = MDT:StringToTable(message, false)
             MDT.transmissionCache[fullName] = preset
             if MDT:ValidateImportPreset(preset) then
                 MDT.livePresetUID = preset.uid
-                MDT:ImportPreset(preset,true)
+                MDT:ImportPreset(preset, true)
             end
         end
     end
@@ -500,7 +532,7 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
     if prefix == MDT.liveSessionPrefixes.free then
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
-            local value,week = string.match(message,"(.*):(.*)")
+            local value, week = string.match(message, "(.*):(.*)")
             value = value == "T" and true or false
             week = tonumber(week)
             preset.freeholdCrew = (value and week) or nil
@@ -532,7 +564,7 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
         if MDT.liveSessionActive then
             local preset = MDT:GetCurrentLivePreset()
             local updateUI = preset == MDT:GetCurrentPreset()
-            local action,data = string.match(message,"(.*):(.*)")
+            local action, data = string.match(message, "(.*):(.*)")
             data = tonumber(data)
             if action == "toggle" then
                 MDT:GetDB().MDI.enabled = data == 1 or false
@@ -568,12 +600,9 @@ function commsObject:OnCommReceived(prefix, message, distribution, sender)
                     MDT:UpdateProgressbar()
                 end
             end
-
         end
     end
-
 end
-
 
 ---MakeSendingStatusBar
 ---Creates a bar that indicates sending progress when sharing presets with your group
@@ -588,12 +617,12 @@ function MDT:MakeSendingStatusBar(f)
     statusbar:SetStatusBarTexture("Interface\\TARGETINGFRAME\\UI-StatusBar")
     statusbar:GetStatusBarTexture():SetHorizTile(false)
     statusbar:GetStatusBarTexture():SetVertTile(false)
-    statusbar:SetStatusBarColor(0.26,0.42,1)
+    statusbar:SetStatusBarColor(0.26, 0.42, 1)
 
     statusbar.bg = statusbar:CreateTexture(nil, "BACKGROUND")
     statusbar.bg:SetTexture("Interface\\TARGETINGFRAME\\UI-StatusBar")
     statusbar.bg:SetAllPoints(true)
-    statusbar.bg:SetVertexColor(0.26,0.42,1)
+    statusbar.bg:SetVertexColor(0.26, 0.42, 1)
 
     statusbar.value = statusbar:CreateFontString(nil, "OVERLAY")
     statusbar.value:SetPoint("CENTER", statusbar, "CENTER", 0, 0)
@@ -605,16 +634,18 @@ function MDT:MakeSendingStatusBar(f)
     statusbar:Hide()
 
     if IsAddOnLoaded("ElvUI") then
-        local E, L, V, P, G = unpack(ElvUI)
+        local E, _, _, _, _ = unpack(ElvUI)
         statusbar:SetStatusBarTexture(E.media.normTex)
     end
 end
 
 --callback for SendCommMessage
-local function displaySendingProgress(userArgs,bytesSent,bytesToSend)
+local function displaySendingProgress(userArgs, bytesSent, bytesToSend)
     MDT.main_frame.SendingStatusBar:Show()
-    MDT.main_frame.SendingStatusBar:SetValue(bytesSent/bytesToSend)
-    MDT.main_frame.SendingStatusBar.value:SetText(string.format(L["Sending: %.1f"],bytesSent/bytesToSend*100).."%")
+    MDT.main_frame.SendingStatusBar:SetValue(bytesSent / bytesToSend)
+    MDT.main_frame.SendingStatusBar.value:SetText(
+        string.format(L["Sending: %.1f"], bytesSent / bytesToSend * 100) .. "%"
+    )
     --done sending
     if bytesSent == bytesToSend then
         local distribution = userArgs[1]
@@ -625,9 +656,9 @@ local function displaySendingProgress(userArgs,bytesSent,bytesToSend)
             MDT.main_frame.LiveSessionButton:SetText(L["*Live*"])
         else
             MDT.main_frame.LiveSessionButton:SetText(L["Live"])
-            MDT.main_frame.LiveSessionButton.text:SetTextColor(1,0.8196,0)
+            MDT.main_frame.LiveSessionButton.text:SetTextColor(1, 0.8196, 0)
             MDT.main_frame.LinkToChatButton:SetDisabled(false)
-            MDT.main_frame.LinkToChatButton.text:SetTextColor(1,0.8196,0)
+            MDT.main_frame.LinkToChatButton.text:SetTextColor(1, 0.8196, 0)
         end
         MDT.main_frame.LinkToChatButton:SetText(L["Share"])
         MDT.main_frame.LiveSessionButton:SetDisabled(false)
@@ -638,8 +669,8 @@ local function displaySendingProgress(userArgs,bytesSent,bytesToSend)
             local dungeon = MDT:GetDungeonName(preset.value.currentDungeonIdx)
             local presetName = preset.text
             local name, realm = UnitFullName("player")
-            local fullName = name.."+"..realm
-            SendChatMessage(prefix..fullName.." - "..dungeon..": "..presetName.."]",distribution)
+            local fullName = name .. "+" .. realm
+            SendChatMessage(prefix .. fullName .. " - " .. dungeon .. ": " .. presetName .. "]", distribution)
             MDT:SetThrottleValues(true)
         end
     end
@@ -650,16 +681,18 @@ end
 function MDT:SetUniqueID(preset)
     if not preset.uid then
         local s = {}
-        for i=1,11 do
+        local i = 0
+        repeat
+            i = i + 1
             tinsert(s, bytetoB64[math.random(0, 63)])
-        end
+        until i == 11
         preset.uid = table.concat(s)
     end
 end
 
 ---SendToGroup
 ---Send current preset to group/raid
-function MDT:SendToGroup(distribution,silent,preset)
+function MDT:SendToGroup(distribution, silent, preset)
     MDT:SetThrottleValues()
     preset = preset or MDT:GetCurrentPreset()
     --set unique id
@@ -668,27 +701,37 @@ function MDT:SendToGroup(distribution,silent,preset)
     local db = MDT:GetDB()
     preset.mdiEnabled = db.MDI.enabled
     preset.difficulty = db.currentDifficulty
-    local export = MDT:TableToString(preset,false,5)
-    commsObject:SendCommMessage("MDTPreset", export, distribution, nil, "BULK",displaySendingProgress,{distribution,preset,silent})
+    local export = MDT:TableToString(preset, false, 5)
+    commsObject:SendCommMessage(
+        "MDTPreset",
+        export,
+        distribution,
+        nil,
+        "BULK",
+        displaySendingProgress,
+        {distribution, preset, silent}
+    )
 end
 
 ---GetPresetSize
 ---Returns the number of characters the string version of the preset contains
-function MDT:GetPresetSize(forChat,level)
+function MDT:GetPresetSize(forChat, level)
     local preset = MDT:GetCurrentPreset()
-    local export = MDT:TableToString(preset,forChat,level)
+    local export = MDT:TableToString(preset, forChat, level)
     return string.len(export)
 end
 
 local defaultCPS = tonumber(_G.ChatThrottleLib.MAX_CPS)
 local defaultBURST = tonumber(_G.ChatThrottleLib.BURST)
 function MDT:SetThrottleValues(default)
-    if not _G.ChatThrottleLib then return end
+    if not _G.ChatThrottleLib then
+        return
+    end
     if default then
         _G.ChatThrottleLib.MAX_CPS = defaultCPS
         _G.ChatThrottleLib.BURST = defaultBURST
     else --4000/16000 is fine but we go safe with 2000/10000
-        _G.ChatThrottleLib.MAX_CPS= 2000
+        _G.ChatThrottleLib.MAX_CPS = 2000
         _G.ChatThrottleLib.BURST = 10000
     end
 end
