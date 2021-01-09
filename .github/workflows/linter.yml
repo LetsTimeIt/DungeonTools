@@ -31,6 +31,13 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter@v3
         env:
+          # Validate all files everytime until we are clean then we can validate only new ones
+          VALIDATE_ALL_CODEBASE: true
+          # Errors should not indicate a failing build until we are clean then can remove this
           DISABLE_ERRORS: true
           DEFAULT_BRANCH: main
+          VALIDATE_PYTHON_BLACK: false
+          VALIDATE_PYTHON_FLAKE8: false
+          VALIDATE_PYTHON_ISORT: false
+          VALIDATE_PYTHON_PYLINT: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
