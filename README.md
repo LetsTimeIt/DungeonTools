@@ -6,9 +6,9 @@
 ![Main Window](https://i.imgur.com/HFzS0Xl.jpg 'x')
 
  Dungeon Tools is a Mythic+ Dungeon Planner AddOn designed to help you plan your pulls in order to time your keys as efficiently as possible. With the ability to see mob positions, groups, abilities and percentages of forces, and a breadth of other additional information, you can make choices ahead of time on what to pull, when to pull it and how to approach it.
- 
- Each NPC has been mapped out, along with all their abilities, which CC they are vulnerable to, and additional in-encounter mechanics to be aware of, and is displayed on an interactive map. From there, you can map out what you intend to pull, in the order you wish to pull it. Its collaborative editing and sharing features allow you to also share with your group members, as long as they also have this add-on.
- 
+
+ Each NPC has been mapped out, along with all their abilities, which CC they are vulnerable to, and additional in-encounter mechanics to be aware of, all displayed on an interactive map. From there, you can map out what you intend to pull, in the order you wish to pull it. Collaborative editing and sharing features allow you to also share with group members, as long as they also have this add-on.
+
  Dungeon Tools will always be **completely** free of charge, and is licensed under GPLv2, along with being managed by multiple people. You are welcome to contribute to it, extend it, make it yours (but if you do, don't forget to submit the changes via PR so everybody gets them ;-) ).
 
 ## Features

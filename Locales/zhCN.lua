@@ -1,7 +1,7 @@
-if not(GetLocale() == "zhCN") then
-  return
+if not (GetLocale() == "zhCN") then
+    return
 end
-local addonName, MDT = ...
+local _, MDT = ...
 local L = MDT.L
 L = L or {}
 
@@ -152,7 +152,9 @@ L["Click to go to %s"] = "点击进入 %s"
 L["Click to set dungeon level to 10"] = "点击设置地下城层数为10"
 L["Click to switch to current week"] = "点击切换到本周"
 L["Click to toggle AddOn Window"] = "点击切换到插件窗口"
-L["Clicking this button will attempt to join the ongoing Live Session of your group or create a new one if none is found"] = "点击此按钮将尝试加入你所在队伍的实时连线, 如果无法找到将创建新连线"
+L[
+        "Clicking this button will attempt to join the ongoing Live Session of your group or create a new one if none is found"
+    ] = "点击此按钮将尝试加入你所在队伍的实时连线, 如果无法找到将创建新连线"
 L["Coin-Operated Crowd Pummeler"] = "投币式群体打击者"
 L["Color Blind Friendly"] = "色盲模式"
 L["Colorpicker"] = "颜色选择器"
@@ -513,7 +515,8 @@ L["Loyal Stoneborn"] = "忠诚的石裔魔"
 L["Lubricator"] = "润滑器"
 L["Ludwig Von Tortollan"] = "路德维希·冯·托尔托伦"
 L["Maddened Survivalist"] = "疯狂的生存专家"
-L["MaggotNote"] = "贪吃的蛆虫注释:%s%s有'寄生虫'buff的贪吃的蛆虫会尝试'感染'玩家%s成功施放成功的施放'感染'后贪吃的蛆虫会消失, 当受感染的玩家debuff时间结束后会重生出2个贪吃的蛆虫.%s杀死最初的那1只蛆虫给进度 - 新重生的2个蛆虫不给进度.%s%s被感染的农夫重生的3个贪吃的蛆虫每个都算进度.%s这些贪吃的蛆虫位于被感染的农夫旁边"
+L["MaggotNote"] =
+    "贪吃的蛆虫注释:%s%s有'寄生虫'buff的贪吃的蛆虫会尝试'感染'玩家%s成功施放成功的施放'感染'后贪吃的蛆虫会消失, 当受感染的玩家debuff时间结束后会重生出2个贪吃的蛆虫.%s杀死最初的那1只蛆虫给进度 - 新重生的2个蛆虫不给进度.%s%s被感染的农夫重生的3个贪吃的蛆虫每个都算进度.%s这些贪吃的蛆虫位于被感染的农夫旁边"
 L["Make this preset the live preset"] = "将此路线设置成实时连线的路线"
 L["Malfunctioning Scrapbot"] = "失控的拳机"
 L["Malignant Spawn"] = "恶毒之裔"
@@ -628,8 +631,10 @@ L["Plaguefall"] = "凋魂之殇"
 L["plaguefallDevotedNote"] = "在与艾柯尔·胆肉交战前被渗液残躯转化的凋缚狂热者不会获得进度。"
 L["Plagueroc"] = "凋零大鹏"
 L["Plain Texture"] = "普通材质"
-L["Players can join the live session by either clicking this button or the Live Session chat link"] = "玩家可以通过点击此按钮或实时连线链接加入实时连线"
-L["Please report any bugs on https://github.com/Tomslack/ManbabyDungeonTools/issues"] = "请到 https://github.com/Tomslack/ManbabyDungeonTools/issues 提交错误报告"
+L["Players can join the live session by either clicking this button or the Live Session chat link"] =
+    "玩家可以通过点击此按钮或实时连线链接加入实时连线"
+L["Please report any bugs on https://github.com/Tomslack/ManbabyDungeonTools/issues"] =
+    "请到 https://github.com/Tomslack/ManbabyDungeonTools/issues 提交错误报告"
 L["Polymorph"] = "变形术"
 L["Portal Guardian"] = "传送门守卫"
 L["Portrait"] = "头像"
@@ -857,7 +862,8 @@ L["Surgeon Stitchflesh"] = "外科医生缝肉"
 L["Tank Buster MK1"] = "反坦克机器人MK1型"
 L["Taskmaster Askari"] = "监工阿斯加里"
 L["Taunt"] = "嘲讽"
-L["tdBuffGateNote"] = "里面可能有盟友可以给你一个依赖于他们种族的buff:%s兽人/矮人: 10%% 力量/敏捷%s亡灵/人类: 10%% 耐力%s牛头人/德莱尼: 每10s回复1%% 血量+法力%s血精灵/地精: 10%% 智力"
+L["tdBuffGateNote"] =
+    "里面可能有盟友可以给你一个依赖于他们种族的buff:%s兽人/矮人: 10%% 力量/敏捷%s亡灵/人类: 10%% 耐力%s牛头人/德莱尼: 每10s回复1%% 血量+法力%s血精灵/地精: 10%% 智力"
 L["tdGraveyardNote1"] = "击败泥沙女王后解锁"
 L["tdGraveyardNote2"] = "击败杰斯·豪里斯后解锁"
 L["tdGraveyardNote3"] = "击败骑士队长瓦莱莉后解锁"
@@ -895,7 +901,8 @@ L["The MOTHERLODE!! Sublevel"] = "暴富矿区!!"
 L["The Naglfar"] = "纳格法尔号"
 L["The Necrotic Wake"] = "通灵战潮"
 L["The Platinum Pummeler"] = "白金拳手"
-L["The preset will continuously synchronize between all party members participating in the Live Session"] = "所有参与实时连线的队友都会持续的同步路线"
+L["The preset will continuously synchronize between all party members participating in the Live Session"] =
+    "所有参与实时连线的队友都会持续的同步路线"
 L["The Raven's Crown"] = "渡鸦之冠"
 L["The Ravenscrypt"] = "渡鸦墓地"
 L["The Robodrome"] = "机械天穹"
@@ -927,7 +934,9 @@ L["Tidesage Initiate"] = "海贤新兵"
 L["Tidesage Spiritualist"] = "海贤灵魂师"
 L["Tirnenn Villager"] = "仙木灵居民"
 L["T'lonja"] = "特隆加"
-L["To share a different preset while the live session is active simply navigate to the preferred preset and click the new 'Set to Live' Button next to the preset-dropdown"] = "在实时连线过程中要分享不同的路线, 只需切换到该路线然后点击路线下拉菜单旁边的新的'设置为实时连线'按钮"
+L[
+        "To share a different preset while the live session is active simply navigate to the preferred preset and click the new 'Set to Live' Button next to the preset-dropdown"
+    ] = "在实时连线过程中要分享不同的路线, 只需切换到该路线然后点击路线下拉菜单旁边的新的'设置为实时连线'按钮"
 L["tocNotes"] = "规划和优化大秘境地下城运行的工具"
 L["Toggle Window"] = "切换窗口"
 L["Toiling Groundskeeper"] = "劳苦的管理员"
@@ -1004,8 +1013,11 @@ L["Xav the Unfallen"] = "无堕者哈夫"
 L["Xira the Underhanded"] = "卑劣的席拉"
 L["Yazma"] = "亚兹玛"
 L["You are using MDT. You rock!"] = "你正在使用MDT, 你!真!棒!"
-L["You can always return to the current Live Session preset by clicking the 'Return to Live' button next to the preset-dropdown"] = "可以通过点击路线下拉菜单旁边的'返回实时连线'按钮随时返回当前正在连线中的路线"
-L["You can choose from different color palettes in the automatic pull coloring settings menu."] = "可以在自动着色拉怪设置菜单中选择不同的调色板"
+L[
+        "You can always return to the current Live Session preset by clicking the 'Return to Live' button next to the preset-dropdown"
+    ] = "可以通过点击路线下拉菜单旁边的'返回实时连线'按钮随时返回当前正在连线中的路线"
+L["You can choose from different color palettes in the automatic pull coloring settings menu."] =
+    "可以在自动着色拉怪设置菜单中选择不同的调色板"
 L["You can cycle through different floors by holding CTRL and using the mousewheel."] = "按住CTRL键并使用鼠标滚轮可以在不同的楼层中循环切换"
 L["You can cycle through dungeons by holding ALT and using the mousewheel."] = "按住ALT键使用鼠标滚轮可以在地下城中循环切换"
 L["You can find MDT exports from other users on the wago.io website"] = "可以在wago.io网站找到由其他玩家导出的MDT字符串"
@@ -1019,4 +1031,3 @@ L["Zolramus Necromancer"] = "佐尔拉姆斯通灵师"
 L["Zolramus Siphoner"] = "佐尔拉姆斯虹吸者 "
 L["Zolramus Sorcerer"] = "佐尔拉姆斯巫师"
 L["Zul'Gurub"] = "祖尔格拉布"
-

@@ -1,7 +1,7 @@
-if not(GetLocale() == "ptBR") then
-  return
+if not (GetLocale() == "ptBR") then
+    return
 end
-local addonName, MDT = ...
+local _, MDT = ...
 local L = MDT.L
 L = L or {}
 
@@ -61,7 +61,8 @@ L["Atal'ai High Priest"] = "Sumo Sacerdote Atal'ai"
 L["Atal'ai Hoodoo Hexxer"] = "Mandingueiro Azarento Atal'ai"
 L["Atal'Dazar"] = "Atal'Dazar"
 L["Atal'Dazar Sublevel"] = "Atal'Dazar Subnível "
-L["atalTeemingNote"] = "Nota da Apinhada: %s%sG29 não está sempre presente. %s Os inimigos da Apinhada no G2 nem sempre estão presentes. %sG27 não está sempre presente."
+L["atalTeemingNote"] =
+    "Nota da Apinhada: %s%sG29 não está sempre presente. %s Os inimigos da Apinhada no G2 nem sempre estão presentes. %sG27 não está sempre presente."
 L["Atrium of Sethraliss"] = "Átrio de Sethraliss"
 L["Automatic Coloring"] = "Coloração Automática"
 L["Automatically color pulls"] = "Colorir Automaticamente os pulls"
@@ -149,13 +150,17 @@ L["Choose number of colors"] = "Escolhe número de cores"
 L["Choose preferred color palette"] = "Escolhe a paleta de cores preferida"
 L["Chopper Redhook"] = "Gancho Estraçalho"
 L["Chosen Blood Matron"] = "Máter Sangrenta Escolhida"
-L["Click the fullscreen button for a maximized view of MDT."] = "Clique no botão de tela cheia para obter uma visualização maximizada do MDT"
+L["Click the fullscreen button for a maximized view of MDT."] =
+    "Clique no botão de tela cheia para obter uma visualização maximizada do MDT"
 L["Click to adjust color settings"] = "Clique para ajustar as configurações de cores"
 L["Click to go to %s"] = "Clique para ir à %s"
 L["Click to set dungeon level to 10"] = "Clique para definir o nível da masmorra para 10"
 L["Click to switch to current week"] = "Clique para mudar para a semana atual"
 L["Click to toggle AddOn Window"] = "Clique para alternar na Janela AddOn"
-L["Clicking this button will attempt to join the ongoing Live Session of your group or create a new one if none is found"] = "Clicar neste botão tentará ingressar você na sessão ao vivo em andamento do seu grupo ou criar uma nova se nenhuma for encontrada."
+L[
+        "Clicking this button will attempt to join the ongoing Live Session of your group or create a new one if none is found"
+    ] =
+    "Clicar neste botão tentará ingressar você na sessão ao vivo em andamento do seu grupo ou criar uma nova se nenhuma for encontrada."
 L["Coin-Operated Crowd Pummeler"] = "Espanca-gente de Ficha"
 L["Color Blind Friendly"] = "Amigável à Daltonismo"
 L["Colorpicker"] = "Escolhedor de cores"
@@ -220,8 +225,10 @@ L["Delete ALL drawings"] = "Excluir TODOS os desenhos"
 L["Delete ALL presets"] = "Excluir TODAS as rotas"
 L["Delete Preset"] = "Excluir Rota"
 L["Delete this preset"] = "Excluir esta rota"
-L["deleteAllDrawingsPrompt"] = "Você deseja excluir TODOS os desenhos da rota atual? %s Isso não poderá ser desfeito %s%s"
-L["deleteAllWarning"] = "!!AVISO!!%s Você deseja excluir TODAS as rotas para esta masmorra? %s Você está prestes a excluir %s rota(s) %s Isto não poderá ser desfeito."
+L["deleteAllDrawingsPrompt"] =
+    "Você deseja excluir TODOS os desenhos da rota atual? %s Isso não poderá ser desfeito %s%s"
+L["deleteAllWarning"] =
+    "!!AVISO!!%s Você deseja excluir TODAS as rotas para esta masmorra? %s Você está prestes a excluir %s rota(s) %s Isto não poderá ser desfeito."
 L["Demolishing Terror"] = "Terror Demolidor"
 L["Demon"] = "Demônio"
 L["Depraved Collector"] = "Coletor Depravado"
@@ -263,7 +270,8 @@ L["Drust Harvester"] = "Ceifador Drusto"
 L["Drust Soulcleaver"] = "Rachalma Drusto"
 L["Drust Spiteclaw"] = "Garramal Drusto"
 L["Dungeon Level"] = "Nível da masmorra"
-L["Earlier Version"] = "Você possuí uma versão antiga da rota com o nome '%s'%s Você deseja atualizar ou criar uma nova copia? %s%s%s"
+L["Earlier Version"] =
+    "Você possuí uma versão antiga da rota com o nome '%s'%s Você deseja atualizar ou criar uma nova copia? %s%s%s"
 L["Earthrager"] = "Furitérreo"
 L["Echelon"] = "Escalon"
 L["Edit"] = "Editar"
@@ -273,7 +281,8 @@ L["Embalming Fluid"] = "Fluido Embalsamador"
 L["Emissary of the Tides"] = "Emissária das Marés"
 L["Enable Minimap Button"] = "Habilitar botão do minimapa"
 L["Enchanted Emissary"] = "Emissária Encantada"
-L["Enemies related to seasonal affixes are currently hidden"] = "Inimigos relacionados ao afixo de temporada estão atualmente escondidos"
+L["Enemies related to seasonal affixes are currently hidden"] =
+    "Inimigos relacionados ao afixo de temporada estão atualmente escondidos"
 L["Enemy Info"] = "Informação de Inimigos"
 L["Enemy Info NPC Creature Type"] = "Informação de Inimigo PNJ Tipo de criatura "
 L["Enemy Info NPC Enemy Forces"] = "Informação de Inimigo PNJ Forças inimigas"
@@ -291,7 +300,8 @@ L["Enthralled Guard"] = "Guarda Enfeitiçado"
 L["Entropic Spire of Ny'alotha"] = "Pináculo Entrópico de Ny'alotha"
 L["Etherdiver"] = "Mergulhador do Aéter"
 L["Executor Tarvold"] = "Executor Tarvold"
-L["Expand the top toolbar to gain access to drawing and note features."] = "Expanda a barra de ferramentas superior para ganhar acesso a desenhar e recursos de notas"
+L["Expand the top toolbar to gain access to drawing and note features."] =
+    "Expanda a barra de ferramentas superior para ganhar acesso a desenhar e recursos de notas"
 L["Experimental Sludge"] = "Visgo Experimental"
 L["Expert Technician"] = "Técnico Especialista"
 L["Explosive"] = "Explosivo"
@@ -337,7 +347,8 @@ L["Forsworn Usurper"] = "Usurpador Perjuro"
 L["Forsworn Vanguard"] = "Vanguarda Perjura"
 L["Forsworn Warden"] = "Guardião Perjuro"
 L["Fortified"] = "Fortificado"
-L["frackingNote"] = "Fracking Totem %s Utilizável por jogadores%s Incapacita Furia da Terra por 1min - Quebra com dano.  "
+L["frackingNote"] =
+    "Fracking Totem %s Utilizável por jogadores%s Incapacita Furia da Terra por 1min - Quebra com dano.  "
 L["Freehold"] = "Angra do Facão"
 L["Freehold Barhand"] = "Garçonete de Angra do Facão"
 L["Freehold Deckhand"] = "Marujo de Angra do Facão"
@@ -416,7 +427,8 @@ L["Helmouth Cliffs"] = [=[Penhascos da Boca do Inferno
 L["helpPlateDungeon"] = [=[Customizar opções da masmorra
 ]=]
 L["helpPlateDungeonSelect"] = "Selecione uma masmorra e navegue para diferentes subníveis"
-L["helpPlateNPC"] = "Clique para selecionar inimigos% sCTRL-Clique para selecionar inimigos% sSHIFT-Clique para selecionar inimigos e criar um novo pull"
+L["helpPlateNPC"] =
+    "Clique para selecionar inimigos% sCTRL-Clique para selecionar inimigos% sSHIFT-Clique para selecionar inimigos e criar um novo pull"
 L["helpPlatePresets"] = "Gerenciar, compartilhar e colaborar nas rotas"
 L["helpPlatePulls"] = "Crie e gerencie seus pulls% sClique com o botão direito do mouse para obter mais opções"
 L["High Adjudicator Aleez"] = "Alta-adjudicadora Alee"
@@ -424,8 +436,10 @@ L["High Contrast"] = "Contraste Alto"
 L["Hired Assassin"] = "Assassino de Aluguel"
 L["HK-8 Aerial Oppression Unit"] = "Unidade de Opressão Aérea HK-8"
 L["Hold CTRL to single-select enemies."] = "Segure CTRL para selecionar individualmente inimigos"
-L["Hold SHIFT to create a new pull while selecting enemies."] = "Segure SHIFT para criar um novo pull enquanto seleciona inimigos"
-L["Hold SHIFT to delete all presets with the delete preset button."] = "Segure SHIFT para deletar todas as rotas com o botão de deletar rota"
+L["Hold SHIFT to create a new pull while selecting enemies."] =
+    "Segure SHIFT para criar um novo pull enquanto seleciona inimigos"
+L["Hold SHIFT to delete all presets with the delete preset button."] =
+    "Segure SHIFT para deletar todas as rotas com o botão de deletar rota"
 L["Honored Raptor"] = "Raptor Honrado"
 --[[Translation missing --]]
 --[[ L["Honor's Ascent"] = ""--]]
@@ -510,11 +524,13 @@ L["Kyrian Stitchwerk"] = "Suturado Kyriano"
 L["Lady Waycrest"] = "Lady Capelo"
 L["Lakesis"] = "Lakesis"
 L["Language"] = "Idioma"
-L["LargePresetWarning"] = "Você está tentando compartilhar uma rota muito grande (%d caracteres)%s Ao invés disso é recomendado usar a função de exportar e compartilhar rotas grandes através do wago.io.%s Tem certeza que quer compartilhar essa rota?%s"
+L["LargePresetWarning"] =
+    "Você está tentando compartilhar uma rota muito grande (%d caracteres)%s Ao invés disso é recomendado usar a função de exportar e compartilhar rotas grandes através do wago.io.%s Tem certeza que quer compartilhar essa rota?%s"
 --[[Translation missing --]]
 --[[ L["Legion"] = ""--]]
 L["Level %d %s"] = "Nível %d %s"
-L["Levels below 10 will hide enemies related to seasonal affixes"] = "Níveis abaixo de 10 ocultarão inimigos relacionados a afixos temporais."
+L["Levels below 10 will hide enemies related to seasonal affixes"] =
+    "Níveis abaixo de 10 ocultarão inimigos relacionados a afixos temporais."
 L["Library Floor"] = "Andar da Biblioteca"
 L["Link Spells"] = "Compartilhar Feitiços"
 L["Live"] = "Ao vivo"
@@ -536,7 +552,8 @@ L["Loyal Stoneborn"] = "Litonato Leal"
 L["Lubricator"] = "Lubrificador"
 L["Ludwig Von Tortollan"] = "Ludovico Von Tortollano"
 L["Maddened Survivalist"] = "Sobrevivencialista Louco"
-L["MaggotNote"] = [=[Nota para Verme Devorador:%s%s Vermes Devoradores com o buff 'Parasita' vai tentar 'Infestar' Jogadores.%s Após lançar com sucesso o feitiço 'Infestar' o Verme Devorador vai desaparecer e gerar 2x Vermes Devoradores após um debuff no jogador infestado acabar. %s Você só pode ganhar 1 contagem por matar o Verme Devorador inicial - Os dois Vermes Devoradores gerados recentemente não irão contar. %s% Camponeses Infectados geram 3x Vermes Devoradores onde cada um conta. %s Estes Vermes Devoradores são mapeados ao lado dos Camponeses Infectados
+L["MaggotNote"] =
+    [=[Nota para Verme Devorador:%s%s Vermes Devoradores com o buff 'Parasita' vai tentar 'Infestar' Jogadores.%s Após lançar com sucesso o feitiço 'Infestar' o Verme Devorador vai desaparecer e gerar 2x Vermes Devoradores após um debuff no jogador infestado acabar. %s Você só pode ganhar 1 contagem por matar o Verme Devorador inicial - Os dois Vermes Devoradores gerados recentemente não irão contar. %s% Camponeses Infectados geram 3x Vermes Devoradores onde cada um conta. %s Estes Vermes Devoradores são mapeados ao lado dos Camponeses Infectados
 
 ]=]
 L["Make this preset the live preset"] = "Tornar essa rota a rota ao vivo"
@@ -596,12 +613,15 @@ L["mlGraveyardNote1"] = [=[Desbloqueia após derrotar Espanca-gente de Ficha
 ]=]
 L["mlGraveyardNote2"] = "Desbloqueia após chegar no fim do passeio de vagonete"
 L["mlGraveyardNote3"] = "Desbloqueia após derrotar Rixxa Fazfaísca"
-L["mlJockeyNote"] = "Jóquei Mecanoide 21 e 22 precisam estar marcados no momento em que seus Pacificadores são destruídos"
+L["mlJockeyNote"] =
+    "Jóquei Mecanoide 21 e 22 precisam estar marcados no momento em que seus Pacificadores são destruídos"
 L["Mogul Razdunk"] = "Dalberto Frustrus"
 L["Monzumi"] = "Monzumi"
 L["Mordretha, the Endless Empress"] = "Mordretha, a Imperatriz Infinda"
-L["Mouseover a patrolling enemy with a blue border to view the patrol path."] = "Passe o mouse sobre um inimigo patrulhando com uma borda azul para ver o caminho da patrulha."
-L["Mouseover the Live button while in a group to learn more about Live mode."] = "Passe o mouse sobre o botão Ao vivo enquanto estiver em um grupo para saber mais sobre o modo Ao vivo."
+L["Mouseover a patrolling enemy with a blue border to view the patrol path."] =
+    "Passe o mouse sobre um inimigo patrulhando com uma borda azul para ver o caminho da patrulha."
+L["Mouseover the Live button while in a group to learn more about Live mode."] =
+    "Passe o mouse sobre o botão Ao vivo enquanto estiver em um grupo para saber mais sobre o modo Ao vivo."
 L["Move Object"] = "Mover Objeto"
 L["Mueh'zala"] = "Mueh'zala"
 L["Mythresh, Sky's Talons"] = "Mythresh, as Garras do Céu"
@@ -1237,4 +1257,3 @@ L["Zolramus Siphoner"] = "Canalizadora de Zolramus"
 L["Zolramus Sorcerer"] = "Feiticeiro Zolramus"
 --[[Translation missing --]]
 --[[ L["Zul'Gurub"] = ""--]]
-

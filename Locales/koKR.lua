@@ -1,7 +1,7 @@
-if not(GetLocale() == "koKR") then
-  return
+if not (GetLocale() == "koKR") then
+    return
 end
-local addonName, MDT = ...
+local _, MDT = ...
 local L = MDT.L
 L = L or {}
 
@@ -524,7 +524,8 @@ L["Kyrian Stitchwerk"] = "키리안 누더기괴물"
 L["Lady Waycrest"] = "부인 웨이크레스트"
 L["Lakesis"] = "라케시스"
 L["Language"] = "언어"
-L["LargePresetWarning"] = "매우 큰 길을 공유하려고 합니다 (%d characters)%s대신에 내보내기 기능을 사용하여 wago.io를 통해 큰 길을 공유하기를 추천합니다.%s정말 이 길을 공유하고 싶나요?%s"
+L["LargePresetWarning"] =
+    "매우 큰 길을 공유하려고 합니다 (%d characters)%s대신에 내보내기 기능을 사용하여 wago.io를 통해 큰 길을 공유하기를 추천합니다.%s정말 이 길을 공유하고 싶나요?%s"
 L["Legion"] = "군단"
 L["Level %d %s"] = "레벨 %d %s"
 L["Levels below 10 will hide enemies related to seasonal affixes"] = "10보다 낮은 레벨은 시즌 접두사와 관련된 적들이 숨겨지고 있습니다"
@@ -608,8 +609,10 @@ L["mlJockeyNote"] = "기계화 평화감시단을 부서질 때에 21과 22 로�
 L["Mogul Razdunk"] = "모굴 라즈덩크"
 L["Monzumi"] = "몬주미"
 L["Mordretha, the Endless Empress"] = "무한의 여제 모르드레타"
-L["Mouseover a patrolling enemy with a blue border to view the patrol path."] = "순찰 길을 보이도록 푸른 테두리가 있는 순찰하는 적 위에 마우스를 올려노으시면 됩니다"
-L["Mouseover the Live button while in a group to learn more about Live mode."] = "단체로 계시는 동안 '라이브 모드'대해서 배우도록 '라이브'라는 버튼 위에 마우스를 올려노으시면 됩니다"
+L["Mouseover a patrolling enemy with a blue border to view the patrol path."] =
+    "순찰 길을 보이도록 푸른 테두리가 있는 순찰하는 적 위에 마우스를 올려노으시면 됩니다"
+L["Mouseover the Live button while in a group to learn more about Live mode."] =
+    "단체로 계시는 동안 '라이브 모드'대해서 배우도록 '라이브'라는 버튼 위에 마우스를 올려노으시면 됩니다"
 L["Move Object"] = "물건을 움직기"
 L["Mueh'zala"] = "무에젤라"
 L["Mythresh, Sky's Talons"] = "하늘의 발톱 미스레쉬"
@@ -664,8 +667,10 @@ L["Plaguefall"] = "역병 몰락지"
 L["plaguefallDevotedNote"] = "이코르 바일플래시와 교전 전에 수액이 흐르는 사체에 의해 이미 변화된 역병결합 헌신자는 적 병력 수치를 주지 않습니다."
 L["Plagueroc"] = "역병대괴조"
 L["Plain Texture"] = "일반 텍스처"
-L["Players can join the live session by either clicking this button or the Live Session chat link"] = "선수분들이 이 버튼이나 채팅 링크를 누르시고 라이브 세션에 참여하실 수 있습니다"
-L["Please report any bugs on https://github.com/Tomslack/ManbabyDungeonTools/issues"] = "아무 버그가 있으시면은 https://github.com/Tomslack/ManbabyDungeonTools/issues 에서 신고하시기를 바랍니다"
+L["Players can join the live session by either clicking this button or the Live Session chat link"] =
+    "선수분들이 이 버튼이나 채팅 링크를 누르시고 라이브 세션에 참여하실 수 있습니다"
+L["Please report any bugs on https://github.com/Tomslack/ManbabyDungeonTools/issues"] =
+    "아무 버그가 있으시면은 https://github.com/Tomslack/ManbabyDungeonTools/issues 에서 신고하시기를 바랍니다"
 L["Polymorph"] = "변이"
 L["Portal Guardian"] = "차원문 수호자"
 L["Portrait"] = "초상화"
@@ -896,7 +901,8 @@ L["Surgeon Stitchflesh"] = "의사 스티치플레시"
 L["Tank Buster MK1"] = "전차 타격기 마크1"
 L["Taskmaster Askari"] = "작업반장 아스카리"
 L["Taunt"] = "도발"
-L["tdBuffGateNote"] = "아군을 담음 수 있는 기회. 아군의 종족에 따라서 버프를 줄 겁니다:%s오크/드워프: 10%% 힘/민첩성%s언데드/인간: 10%% 체력%s타우렌/드레나이: 10초당 1%% 생명력+마나%s블러드 엘프/노움: 10%% 지능"
+L["tdBuffGateNote"] =
+    "아군을 담음 수 있는 기회. 아군의 종족에 따라서 버프를 줄 겁니다:%s오크/드워프: 10%% 힘/민첩성%s언데드/인간: 10%% 체력%s타우렌/드레나이: 10초당 1%% 생명력+마나%s블러드 엘프/노움: 10%% 지능"
 L["tdGraveyardNote1"] = "모래 여왕을 패배시킬 후에 얻습니다"
 L["tdGraveyardNote2"] = "제스 하울리스를 패배시킬 후에 얻습니다"
 L["tdGraveyardNote3"] = "기사대장 발리리를 패배시킬 후에 얻습니다"
@@ -935,7 +941,8 @@ L["The MOTHERLODE!! Sublevel"] = "왕노다지 광산!!"
 L["The Naglfar"] = "나글파르"
 L["The Necrotic Wake"] = "죽음의 상흔"
 L["The Platinum Pummeler"] = "백금 난타로봇"
-L["The preset will continuously synchronize between all party members participating in the Live Session"] = "라이브 세션에 참여하시는 파티 맴버들끼리 길이 계속 동기화될 겁니다"
+L["The preset will continuously synchronize between all party members participating in the Live Session"] =
+    "라이브 세션에 참여하시는 파티 맴버들끼리 길이 계속 동기화될 겁니다"
 L["The Raven's Crown"] = "까마귀의 왕관"
 L["The Ravenscrypt"] = "까마귀의 묘"
 L["The Robodrome"] = "로봇 전투장"
@@ -1047,11 +1054,15 @@ L["Xav the Unfallen"] = "몰락하지 않은 자 자브"
 L["Xira the Underhanded"] = "비열한 자 시라"
 L["Yazma"] = "야즈마"
 L["You are using MDT. You rock!"] = "MDT를 사용하셔서 짱이세요!!"
-L["You can always return to the current Live Session preset by clicking the 'Return to Live' button next to the preset-dropdown"] = "길-드롭다운 옆에 있는 '라이브 길에 돌아가기'라는 버튼을 누르시면 현재 라이브 세션 길에 항상 돌아가실 수 있습니다"
+L[
+        "You can always return to the current Live Session preset by clicking the 'Return to Live' button next to the preset-dropdown"
+    ] = "길-드롭다운 옆에 있는 '라이브 길에 돌아가기'라는 버튼을 누르시면 현재 라이브 세션 길에 항상 돌아가실 수 있습니다"
 --[[Translation missing --]]
 --[[ L["You can choose from different color palettes in the automatic pull coloring settings menu."] = ""--]]
-L["You can cycle through different floors by holding CTRL and using the mousewheel."] = "CTRL을 누르시면서 마우스 휠을 사용하신다면 다른 층들에 바꾸실 수 있습니다"
-L["You can cycle through dungeons by holding ALT and using the mousewheel."] = "ALT를 누르시면서 마우스 휠을 사용하신다면 다른 던전들에 바꾸실 수 있습니다"
+L["You can cycle through different floors by holding CTRL and using the mousewheel."] =
+    "CTRL을 누르시면서 마우스 휠을 사용하신다면 다른 층들에 바꾸실 수 있습니다"
+L["You can cycle through dungeons by holding ALT and using the mousewheel."] =
+    "ALT를 누르시면서 마우스 휠을 사용하신다면 다른 던전들에 바꾸실 수 있습니다"
 L["You can find MDT exports from other users on the wago.io website"] = "'wago.io'라는 웹사이트에서 다른 선수분들의 MDT 길들을 찾으실 수 있습니다"
 L["You can share MDT exports on the wago.io website"] = "'wago.io'라는 웹사이트에서 내보내신 길들을 공유하실 수 있습니다"
 L["Zanazal the Wise"] = "현자 자나잘"
@@ -1063,4 +1074,3 @@ L["Zolramus Necromancer"] = "조르라무스 강령술사"
 L["Zolramus Siphoner"] = "조르라무스 착취자"
 L["Zolramus Sorcerer"] = "조르라무스 마술사"
 L["Zul'Gurub"] = "줄구룹"
-

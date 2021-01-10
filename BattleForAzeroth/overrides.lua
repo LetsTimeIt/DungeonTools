@@ -1,10 +1,8 @@
 local MDT = DungeonTools
-local displayIdOverrides = {
-
-}
+local displayIdOverrides = {}
 do
-    for dungeonIdx,enemies in pairs(MDT.dungeonEnemies) do
-        for enemyIdx,data in pairs(enemies) do
+    for _, enemies in pairs(MDT.dungeonEnemies) do
+        for _, data in pairs(enemies) do
             if displayIdOverrides[data.id] then
                 data.displayId = displayIdOverrides[data.id]
             end
