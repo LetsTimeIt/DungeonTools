@@ -109,6 +109,12 @@ function MDT:LiveSession_SessionFound(fullName, uid)
         if timer then
             timer:Cancel()
         end
+        -- Check for requestTimer then cancel it if exists.
+        -- Unsure if these references to requestTimer should have been timer, but adding this to be safe
+        -- it leaves the original flow intact.
+        if requestTimer then
+            requestTimer:Cancel()
+        end
         self.liveSessionAcceptingPreset = true
         --request the preset from one client only after a short delay
         --we have to delay a bit to catch all active clients
@@ -293,15 +299,15 @@ function MDT:LiveSession_SendMDI(action, data)
 end
 
 do
-    local timer
+    local colorTimer
     ---LiveSession_QueueColorUpdate
     ---Disgusting workaround for shitty colorpicker
     ---Only send an update once a color of a pull has not changed for 0.2 seconds
     function MDT:LiveSession_QueueColorUpdate()
-        if timer then
-            timer:Cancel()
+        if colorTimer then
+            colorTimer:Cancel()
         end
-        timer =
+        colorTimer =
             C_Timer.NewTimer(
             0.2,
             function()

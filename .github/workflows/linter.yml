@@ -33,8 +33,7 @@ jobs:
         env:
           # Validate all files everytime until we are clean then we can validate only new ones
           VALIDATE_ALL_CODEBASE: true
-          # Errors should not indicate a failing build until we are clean then can remove this
-          DISABLE_ERRORS: true
+          DISABLE_ERRORS: false
           DEFAULT_BRANCH: main
           VALIDATE_PYTHON_BLACK: false
           VALIDATE_PYTHON_FLAKE8: false

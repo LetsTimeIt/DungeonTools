@@ -99,6 +99,7 @@ globals = {
 
 ignore = {
     "212", -- ignore unused function arguments (reasoning: module:function passes self but if self is never used this warns)
+    "432", -- ignore shadowing upvalue argument.  Most common example shadows self: function foo:froo() {  code; local bar = {}; function bar:baz(thing) { self.stuff = thing}}
 }
 
 max_line_length = false

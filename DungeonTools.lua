@@ -2324,22 +2324,22 @@ end
 
 ---Progressbar_SetValue
 ---Sets the value/progress/color of the count progressbar to the apropriate data
-function MDT:Progressbar_SetValue(self, totalCurrent, totalMax)
+function MDT:Progressbar_SetValue(progressBar, totalCurrent, totalMax)
     local percent = (totalCurrent / totalMax) * 100
     if percent >= 102 then
         if totalCurrent - totalMax > 8 then
-            self.Bar:SetStatusBarColor(1, 0, 0, 1)
+            progressBar.Bar:SetStatusBarColor(1, 0, 0, 1)
         else
-            self.Bar:SetStatusBarColor(0, 1, 0, 1)
+            progressBar.Bar:SetStatusBarColor(0, 1, 0, 1)
         end
     elseif percent >= 100 then
-        self.Bar:SetStatusBarColor(0, 1, 0, 1)
+        progressBar.Bar:SetStatusBarColor(0, 1, 0, 1)
     else
-        self.Bar:SetStatusBarColor(0.26, 0.42, 1)
+        progressBar.Bar:SetStatusBarColor(0.26, 0.42, 1)
     end
-    self.Bar:SetValue(percent)
-    self.Bar.Label:SetText(MDT:FormatEnemyForces(totalCurrent, totalMax, true))
-    self.AnimValue = percent
+    progressBar.Bar:SetValue(percent)
+    progressBar.Bar.Label:SetText(MDT:FormatEnemyForces(totalCurrent, totalMax, true))
+    progressBar.AnimValue = percent
 end
 
 ---UpdateProgressbar
