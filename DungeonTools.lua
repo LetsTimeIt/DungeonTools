@@ -2796,21 +2796,7 @@ function MDT:CreateDungeonSelectDropdown(frame)
 	MDT:UpdateDungeonDropDown()
 end
 function MDT:SanitizePresets()
-    for dungeonIdx,presets in pairs(db.presets) do
-        local out = {}
-        local firstIdx = 1
-        for presetIdx,preset in pairs(presets) do
-            if MDT:ValidateImportPreset(preset) == false and presetIdx ~= 1 and presetIdx ~= #presets then
-                if presetIdx == db.currentPreset[dungeonIdx] then
-                    db.currentPreset[dungeonIdx] = 1
-                end
-            else
-                out[firstIdx] = MDT:DeepCopy(preset)
-                firstIdx = firstIdx + 1
-            end
-        end
-        db.presets[dungeonIdx] = MDT:DeepCopy(out)
-    end
+    MDT:EnsureDBTables()
 end
 ---EnsureDBTables
 ---Makes sure profiles are valid and have their fields set
