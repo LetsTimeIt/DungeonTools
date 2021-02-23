@@ -1,3 +1,11 @@
+## Mandatory Disclaimer: Busy period
+
+I'm currently _extremely_ busy professionally due to a serie of unfortunate circumstances, leading to having to pick up almost every aspect of a large platform and overhaul a large chunk of it. As a result, I have little time to properly contribute to this for now (and likely for at least half of March). The project is not dead - I just, as a person, am under the weather. There's still tons of things I'd like to roll out, including features aimed at new M+ runners to help them hit the ground running, but alas, time isn't on my side at the moment.
+
+If you'd like to contribute something, **now is the time**. Help me, help others, even if it's just mapping issues and triaging them. Don't hesitate to join the fray!
+
+I've also set up alerts for pull requests and new issues and will get to them; however, if I don't get to them, come and ping me on Discord (Mandl#0001). A server was set up for this and you can join it by clicking this invite link: https://discord.gg/P5QksPNgsC
+
 # Dungeon Tools
 
 ![Release version badge](https://img.shields.io/github/v/release/LetsTimeIt/DungeonTools?style=flat-square)
