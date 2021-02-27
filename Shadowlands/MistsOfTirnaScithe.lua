@@ -19,42 +19,42 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -122.57438230062;
             ["x"] = 775.9664045582;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Overgrown Roots";
+            ["text"] = L["Overgrown Roots"];
             ["type"] = "generalNote";
         };
         [3] = {
             ["y"] = -164.85441853805;
             ["x"] = 656.19425736683;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Overgrown Roots";
+            ["text"] = L["Overgrown Roots"];
             ["type"] = "generalNote";
         };
         [4] = {
             ["y"] = -180.07066750107;
             ["x"] = 561.26726228655;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Depleted Anima Seed";
+            ["text"] = L["Depleted Anima Seed"];
             ["type"] = "generalNote";
         };
         [5] = {
             ["y"] = -171.92618209905;
             ["x"] = 570.47488785226;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after activating Depleted Anima Seed";
+            ["graveyardDescription"] = L["Unlocks after activating Depleted Anima Seed"];
             ["type"] = "graveyard";
         };
         [5] = {
             ["y"] = -293.31755059028;
             ["x"] = 350.45643942076;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Depleted Anima Seed";
+            ["text"] = L["Depleted Anima Seed"];
             ["type"] = "generalNote";
         };
         [6] = {
             ["y"] = -304.02149829688;
             ["x"] = 348.4172004187;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after activating Depleted Anima Seed";
+            ["graveyardDescription"] = L["Unlocks after activating Depleted Anima Seed"];
             ["type"] = "graveyard";
         };
     };

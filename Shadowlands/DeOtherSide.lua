@@ -62,42 +62,42 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -443.09469971671;
             ["x"] = 343.33885297951;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Haunted Urn";
+            ["text"] = L["Haunted Urn"];
             ["type"] = "generalNote";
         };
         [5] = {
             ["y"] = -295.55640810943;
             ["x"] = 551.72850107961;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Haunted Urn";
+            ["text"] = L["Haunted Urn"];
             ["type"] = "generalNote";
         };
         [6] = {
             ["y"] = -101.78380147813;
             ["x"] = 424.18832078272;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Default, and activates again upon pulling Mueh'zala";
+            ["graveyardDescription"] = L["Default, and activates again upon pulling Mueh'zala"];
             ["type"] = "graveyard";
         };
         [7] = {
             ["y"] = -324.37716003983;
             ["x"] = 587.0285490497;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Activates upon entering or exiting the Ardenweald side area";
+            ["graveyardDescription"] = L["Activates upon entering or exiting the Ardenweald side area"];
             ["type"] = "graveyard";
         };
         [8] = {
             ["y"] = -499.53413660739;
             ["x"] = 441.04733019363;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Activates upon entering or exiting the Mechagon side area";
+            ["graveyardDescription"] = L["Activates upon entering or exiting the Mechagon side area"];
             ["type"] = "graveyard";
         };
         [9] = {
             ["y"] = -325.9685941744;
             ["x"] = 263.0370852186;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Activates upon entering or exiting the Zul'Gurub side area";
+            ["graveyardDescription"] = L["Activates upon entering or exiting the Zul'Gurub side area"];
             ["type"] = "graveyard";
         };
     };
@@ -115,14 +115,14 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -337.47118602133;
             ["x"] = 519.45839513231;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Sludge Manufacturing Control (requires Engineering)";
+            ["text"] = L["Sludge Manufacturing Control (requires Engineering)"];
             ["type"] = "generalNote";
         };
         [3] = {
             ["y"] = -423.20469070385;
             ["x"] = 444.28053165947;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating The Manastorms";
+            ["graveyardDescription"] = L["Unlocks after defeating The Manastorms"];
             ["type"] = "graveyard";
         };
     };
@@ -140,14 +140,14 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -249.08996618058;
             ["x"] = 494.88787593588;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Haunted Urn";
+            ["text"] = L["Haunted Urn"];
             ["type"] = "generalNote";
         };
         [3] = {
             ["y"] = -268.43122431625;
             ["x"] = 261.99949355366;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating Hakkar the Soulflayer";
+            ["graveyardDescription"] = L["Unlocks after defeating Hakkar the Soulflayer"];
             ["type"] = "graveyard";
         };
     };
@@ -165,14 +165,14 @@ MDT.mapPOIs[dungeonIndex] = {
             ["y"] = -219.60900976823;
             ["x"] = 424.03667345319;
             ["template"] = "MapLinkPinTemplate";
-            ["text"] = "Haunted Urn";
+            ["text"] = L["Haunted Urn"];
             ["type"] = "generalNote";
         };
         [3] = {
             ["y"] = -334.36729374375;
             ["x"] = 709.09276713349;
             ["template"] = "DeathReleasePinTemplate";
-            ["graveyardDescription"] = "Unlocks after defeating Dealer Xy'exa";
+            ["graveyardDescription"] = L["Unlocks after defeating Dealer Xy'exa"];
             ["type"] = "graveyard";
         };
     };
