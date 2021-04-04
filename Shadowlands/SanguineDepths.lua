@@ -2107,6 +2107,3 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["name"] = L["Sanguine Cadet"];
     };
 };
-
-
-
