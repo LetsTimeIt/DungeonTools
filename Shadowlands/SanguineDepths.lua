@@ -46,8 +46,8 @@ MDT.mapPOIs[dungeonIndex] = {
             ["type"] = "generalNote";
         };
         [6] = {
-            ["y"] = -190.52642909355;
-            ["x"] = 549.04969656705;
+            ["y"] = -202.06229081304;
+            ["x"] = 579.25144916528;
             ["template"] = "MapLinkPinTemplate";
             ["text"] = "Anima Cage 2";
             ["type"] = "generalNote";
