@@ -266,7 +266,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [1] = {
                 ["y"] = -360.09502773364;
                 ["x"] = 426.28482697188;
-                ["g"] = 1;
+                ["g"] = 27;
                 ["sublevel"] = 1;
             };
         };
@@ -370,31 +370,6 @@ MDT.dungeonEnemies[dungeonIndex] = {
     [7] = {
         ["clones"] = {
             [1] = {
-                ["y"] = -294.92170535281;
-                ["x"] = 425.25134183422;
-                ["g"] = 2;
-                ["sublevel"] = 1;
-            };
-        };
-        ["id"] = 164464;
-        ["health"] = 96120;
-        ["name"] = L["Xira the Underhanded"];
-        ["displayId"] = 96440;
-        ["creatureType"] = L["Humanoid"];
-        ["level"] = 60;
-        ["count"] = 0;
-        ["scale"] = 1.3;
-        ["spells"] = {
-            [333540] = {};
-        };
-        ["characteristics"] = {
-            ["Taunt"] = true;
-            ["Stun"] = true;
-        };
-    };
-    [8] = {
-        ["clones"] = {
-            [1] = {
                 ["y"] = -307.15338954092;
                 ["x"] = 354.98940856123;
                 ["g"] = 3;
@@ -436,7 +411,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [9] = {
+    [8] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -292.89961904445;
@@ -483,7 +458,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [10] = {
+    [9] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -343.48473546349;
@@ -504,7 +479,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [342125] = {};
         };
     };
-    [11] = {
+    [10] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -262.45855065989;
@@ -525,7 +500,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [334023] = {};
         };
     };
-    [12] = {
+    [11] = {
         ["clones"] = {
             [1] = {
                 ["sublevel"] = 2;
@@ -560,7 +535,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [13] = {
+    [12] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -424.69488113351;
@@ -582,7 +557,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [333861] = {};
         };
     };
-    [14] = {
+    [13] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -428.74506576871;
@@ -615,7 +590,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [320102] = {};
         }
     };
-    [15] = {
+    [14] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -442.99206896552;
@@ -789,7 +764,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [16] = {
+    [15] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -379.31540779101;
@@ -816,7 +791,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [330725] = {};
         };
     };
-    [17] = {
+    [16] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -247.96379310345;
@@ -920,7 +895,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [18] = {
+    [17] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -247.61141335538;
@@ -988,7 +963,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [19] = {
+    [18] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -184.88861756349;
@@ -1010,7 +985,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [331223] = {};
         };
     };
-    [20] = {
+    [19] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -181.2467434963;
@@ -1047,7 +1022,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [333294] = {};
         };
     };
-    [21] = {
+    [20] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -387.79723803804;
@@ -1069,12 +1044,12 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["spells"] = {
             [319521] = {};
             [319626] = {};
-            [319669] = { 
+            [319669] = {
                 ["interruptible"] = true;
             };
         };
     };
-    [22] = {
+    [21] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -334.71987211018;
@@ -1142,7 +1117,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [23] = {
+    [22] = {
         ["clones"] = {
             [1] = {
                 ["sublevel"] = 4;
@@ -1258,7 +1233,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [24] = {
+    [23] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -376.69768033662;
@@ -1304,7 +1279,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [25] = {
+    [24] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -333.6005902607;
@@ -1387,7 +1362,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             ["Repentance"] = true;
         };
     };
-    [26] = {
+    [25] = {
         ["clones"] = {
             [1] = {
                 ["sublevel"] = 4;
@@ -1502,7 +1477,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [330973] = {};
         };
     };
-    [27] = {
+    [26] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -358.71618298082;
@@ -1526,7 +1501,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [318406] = {};
         };
     };
-    [28] = {
+    [27] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -260.65634874517;
@@ -1553,7 +1528,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [339573] = {};
         };
     };
-    [29] = {
+    [28] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -359.25817412643;
@@ -1575,7 +1550,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [317605] = {};
         };
     };
-    [30] = {
+    [29] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -284.32867018819;
@@ -1597,7 +1572,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
             [342135] = {};
         };
     };
-    [31] = {
+    [30] = {
         ["clones"] = {
             [1] = {
                 ["y"] = -408.47326368702;
