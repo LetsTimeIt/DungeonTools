@@ -1044,7 +1044,7 @@ MDT.dungeonEnemies[dungeonIndex] = {
         ["spells"] = {
             [319521] = {};
             [319626] = {};
-            [319669] = { 
+            [319669] = {
                 ["interruptible"] = true;
             };
         };
