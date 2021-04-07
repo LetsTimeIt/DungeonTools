@@ -1030,3 +1030,4 @@ L["ConnectedTip"] = "Group connections in MDT do not reflect if NPCs are linked 
 L["theaterOfPain_miniBossNote"] = "Only one duelist will be alive."
 L["DataImportButtonTooltip"] = "Import external NPC Data."
 L["Import Data"] = "Import Data"
+L["Lock enemy data"] = "Lock enemies placed on map"

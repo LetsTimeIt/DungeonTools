@@ -11,6 +11,8 @@ local SetPortraitTextureFromCreatureDisplayID,MouseIsOver = SetPortraitTextureFr
 local sizex = 840
 local sizey = 555
 
+local readOnlyMode = false
+
 local mythicColor = "|cFFFFFFFF"
 MDT.BackdropColor = { 0.058823399245739, 0.058823399245739, 0.058823399245739, 0.9}
 
@@ -800,6 +802,20 @@ function MDT:CreateMenu()
     highlight:SetPoint("TOPRIGHT", resizer, -6, 0)
     resizer:SetHighlightTexture(highlight)
 
+    -- ReadOnly Mode Button
+    self.main_frame.readOnlyButton = CreateFrame("Button", "DungeonToolsLockEnemyButton", self.main_frame, "UIPanelCloseButton")
+    local readOnlyButton = self.main_frame.readOnlyButton
+    local lockTexture = (readOnlyMode and "Interface\\Buttons\\LockButton-Locked-Up" or "Interface\\Buttons\\LockButton-Unlocked-Up")
+
+    readOnlyButton:ClearAllPoints()
+    readOnlyButton:SetPoint("TOPRIGHT", self.main_frame, "TOPRIGHT", -5, -5)
+    readOnlyButton.Icon = readOnlyButton:CreateTexture(nil, "OVERLAY")
+    readOnlyButton.Icon:SetTexture(lockTexture)
+    readOnlyButton.Icon:SetSize(40,40)
+    readOnlyButton.Icon:SetPoint("CENTER",readOnlyButton,"CENTER")
+    readOnlyButton:SetScript("OnClick", function() self:ToggleReadOnlyMode() end)
+    readOnlyButton:SetFrameLevel(4)
+    readOnlyButton.tooltip = "Daa fuck"
 end
 
 function MDT:SkinMenuButtons()
@@ -989,6 +1005,17 @@ function MDT:Minimize()
     MDT:CreateTutorialButton(MDT.main_frame)
 
     db.maximized = false
+end
+
+function DungeonTools:GetReadOnlyMode()
+    return readOnlyMode
+end
+
+function DungeonTools:ToggleReadOnlyMode()
+    readOnlyMode = not readOnlyMode
+
+    local lockTexture = (readOnlyMode and "Interface\\Buttons\\LockButton-Locked-Up" or "Interface\\Buttons\\LockButton-Unlocked-Up")
+    self.main_frame.readOnlyButton.Icon:SetTexture(lockTexture)
 end
 
 function MDT:SkinProgressBar(progressBar)
